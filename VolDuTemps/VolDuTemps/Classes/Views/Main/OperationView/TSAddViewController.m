@@ -7,7 +7,6 @@
 //
 
 #import "TSAddViewController.h"
-#import "TSDairyModel.h"
 
 @interface TSAddViewController ()
 

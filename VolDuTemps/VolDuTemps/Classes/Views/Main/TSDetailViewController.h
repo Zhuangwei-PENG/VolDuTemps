@@ -15,9 +15,13 @@
 @property (nonatomic, copy) NSString *textDetail;
 @property (nonatomic, copy) NSString *timeDetail;
 
+@property (nonatomic, strong) UITextField *titleField;
+@property (nonatomic, strong) UITextView *textField;
+
+@property (nonatomic, strong) UIBarButtonItem *rightButton;
 + (instancetype)detailView;
 
-+ (instancetype)detailViewWithData:(TSDairyModel *)data successBlock: (void(^)(TSDairyModel *modifiedModel))successBlock;
+//+ (instancetype)detailViewWithData:(TSDairyModel *)data;// successBlock: (void(^)(TSDairyModel *modifiedModel))successBlock;
 
 - (void)saveData;
 @end

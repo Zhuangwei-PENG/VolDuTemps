@@ -17,6 +17,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.titleField.text = self.dairyModelToModify.title;
+    self.textField.text = self.dairyModelToModify.text;
+}
+- (void)saveData{
+    [super saveData];
+    if ([self.delegate respondsToSelector:@selector(TSModifyViewController:)]) {
+        self.dairyModelToModify.title = self.titleDetail;
+        self.dairyModelToModify.text = self.textDetail;
+        [self.delegate TSModifyViewController:self];
+    }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

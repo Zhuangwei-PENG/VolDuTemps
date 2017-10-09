@@ -8,13 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TSDairyModel : NSObject
+@interface TSDairyModel : NSObject<NSCoding>
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *text;
 @property (nonatomic, copy) NSString *time;
 
-@property (nonatomic, assign) NSIndexPath *index;
 
 + (instancetype)dairyModelWithDict:(NSDictionary *)dict;
 - (instancetype)initWithDict:(NSDictionary *)dict;

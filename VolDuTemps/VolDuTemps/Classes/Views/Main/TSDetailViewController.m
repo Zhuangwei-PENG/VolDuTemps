@@ -10,9 +10,6 @@
 
 @interface TSDetailViewController ()
 
-@property (nonatomic, strong) UITextField *titleField;
-@property (nonatomic, strong) UITextView *textField;
-
 
 @end
 
@@ -28,32 +25,32 @@
 + (instancetype)detailView{
     return [[self alloc] init];
 }
-
-+ (instancetype)detailViewWithData:(TSDairyModel *)data successBlock: (void(^)(TSDairyModel *modifiedModel))successBlock{
-    
-    TSDetailViewController *detailView = [self detailView];
-    
-    //获取传过来的数据，填写到控件中
-    detailView.titleDetail = data.title;
-    detailView.textDetail = data.text;
-    detailView.timeDetail = data.time;
-    
-
-    return detailView;
-}
+//
+//+ (instancetype)detailViewWithData:(TSDairyModel *)data {
+//    
+//    TSDetailViewController *detailView = [self detailView];
+//    
+//    //获取传过来的数据，填写到控件中
+//    detailView.titleDetail = data.title;
+//    detailView.textDetail = data.text;
+//    detailView.timeDetail = data.time;
+//    
+//
+//    return detailView;
+//}
 
 - (void)saveData{
     NSLog(@"保存数据");
     self.titleDetail = self.titleField.text;
     self.textDetail = self.textField.text;
-    
-    
+
 }
 
 - (void)setupUI{
     self.view.backgroundColor = [UIColor whiteColor];
     //创建保存按钮
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(saveData)];
+    self.rightButton = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(saveData)];
+    self.navigationItem.rightBarButtonItem = self.rightButton;
     
     UITextField *titleField = [[UITextField alloc] init];
     titleField.placeholder = @"标题";

@@ -8,12 +8,15 @@
 
 #import "TSHomeViewController.h"
 #import "TSAddViewController.h"
+#import "TSModifyViewController.h"
 
 #import "TSTableViewCell.h"
 #import "TSDairyModel.h"
 #import "Addition.h"
 
-@interface TSHomeViewController ()<TSAddViewControllerDelegate>
+#define kPath [@"notes" appendDocumentsPath]
+
+@interface TSHomeViewController ()<TSAddViewControllerDelegate, TSModifyViewControllerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *notes;
 
@@ -38,6 +41,7 @@ static const NSString *cellID = @"TSTableViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.notes = [NSKeyedUnarchiver unarchiveObjectWithFile:kPath];
 }
 
 - (void)setupUI{
@@ -85,12 +89,11 @@ static const NSString *cellID = @"TSTableViewCell";
 #pragma mark - Navigation
 - (void)modefyDetailViewWith:(TSDairyModel *)sender{
     NSLog(@"修改日记");
-    
-    TSAddViewController *detailView = [TSAddViewController detailViewWithData:sender successBlock:^(TSDairyModel *modifiedModel) {
-        [self.myTableView reloadRowsAtIndexPaths:@[modifiedModel.index] withRowAnimation:UITableViewRowAnimationNone];
-    }];
+    TSModifyViewController *modifyVC = [TSModifyViewController detailView];
+    modifyVC.delegate = self;
+    modifyVC.dairyModelToModify = sender;
 
-    [self pushDetailView:detailView];
+    [self pushDetailView:modifyVC];
 }
 
 - (void)addNewOne{
@@ -121,7 +124,7 @@ static const NSString *cellID = @"TSTableViewCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     TSDairyModel *model = self.notes[indexPath.row];
-    model.index = indexPath;
+
     [self modefyDetailViewWith:model];
 }
 
@@ -130,9 +133,24 @@ static const NSString *cellID = @"TSTableViewCell";
     
     [self.notes addObject:dairyModel];
     [self.myTableView reloadData];
+    
+    [NSKeyedArchiver archiveRootObject:self.notes toFile:kPath];
+    
     if (self.videView) {
         [self.videView removeFromSuperview];
     }
 }
 
+- (void)TSModifyViewController: (TSModifyViewController *)TSModifyViewController{
+    [self.myTableView reloadData];
+    [NSKeyedArchiver archiveRootObject:self.notes toFile:kPath];
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [self.notes removeObjectAtIndex:indexPath.row];
+    [self.myTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    
+    [NSKeyedArchiver archiveRootObject:self.notes toFile:kPath];
+}
 @end

@@ -8,7 +8,7 @@
 
 #import "TSDetailViewController.h"
 @class TSAddViewController;
-@class TSDairyModel;
+
 @protocol TSAddViewControllerDelegate <NSObject>
 
 @required

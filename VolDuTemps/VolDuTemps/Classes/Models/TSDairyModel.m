@@ -9,7 +9,21 @@
 #import "TSDairyModel.h"
 
 @implementation TSDairyModel
+- (void)encodeWithCoder:(NSCoder *)aCoder{
+    [aCoder encodeObject:_title forKey:@"title"];
+    [aCoder encodeObject:_text forKey:@"text"];
+    [aCoder encodeObject:_time forKey:@"time"];
+}
 
+- (nullable instancetype)initWithCoder:(NSCoder *)aDecoder{
+    if (self = [super init]) {
+        _title = [aDecoder decodeObjectForKey:@"title"];
+        _text = [aDecoder decodeObjectForKey:@"text"];
+        _time = [aDecoder decodeObjectForKey:@"time"];
+
+    }
+    return self;
+}
 
 - (instancetype)initWithDict:(NSDictionary *)dict{
     if (self = [super init]) {
