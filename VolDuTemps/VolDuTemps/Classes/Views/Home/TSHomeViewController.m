@@ -60,6 +60,7 @@ static const NSString *cellID = @"TSTableViewCell";
     
     //设置按钮
     [initialBtn setTitle:@"开始" forState:UIControlStateNormal];
+    [initialBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     initialBtn.frame = CGRectMake(0, 200, self.view.bounds.size.width, 30);
     
     //添加按钮监听事件
