@@ -15,6 +15,9 @@
 @end
 
 @implementation TSModifyViewController
+- (void)setDairyModelToModify:(TSDairyModel *)dairyModelToModify{
+    _dairyModelToModify = dairyModelToModify;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -46,7 +49,11 @@
 - (TSDairyModel *)saveData{
     
     if ([self.delegate respondsToSelector:@selector(TSModifyViewController:)]) {
-        self.dairyModelToModify = [super saveData];
+        TSDairyModel *model = [super saveData];
+        self.dairyModelToModify.title = model.title;
+        self.dairyModelToModify.text = model.text;
+        self.dairyModelToModify.time = model.time;
+        
         [self.delegate TSModifyViewController:self];
     }
     [self.navigationController popViewControllerAnimated:YES];
