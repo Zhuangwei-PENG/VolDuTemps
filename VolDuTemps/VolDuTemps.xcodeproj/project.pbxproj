@@ -21,6 +21,8 @@
 		CFA797641F8B34AF0085D4A1 /* TSDairyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA797631F8B34AF0085D4A1 /* TSDairyModel.m */; };
 		CFA797651F8B3F7F0085D4A1 /* NSString+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = CF91492C1F8B0EB40085BEDF /* NSString+Hash.m */; };
 		CFA797671F8B3F7F0085D4A1 /* NSString+path.m in Sources */ = {isa = PBXBuildFile; fileRef = CF91492E1F8B0EB40085BEDF /* NSString+path.m */; };
+		CFA7976B1F8B57820085D4A1 /* TSAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA7976A1F8B57820085D4A1 /* TSAddViewController.m */; };
+		CFA7976E1F8B578F0085D4A1 /* TSModifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA7976D1F8B578F0085D4A1 /* TSModifyViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +88,10 @@
 		CFA797601F8B2EDE0085D4A1 /* TSDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDetailViewController.m; sourceTree = "<group>"; };
 		CFA797621F8B34AF0085D4A1 /* TSDairyModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDairyModel.h; sourceTree = "<group>"; };
 		CFA797631F8B34AF0085D4A1 /* TSDairyModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDairyModel.m; sourceTree = "<group>"; };
+		CFA797691F8B57820085D4A1 /* TSAddViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSAddViewController.h; sourceTree = "<group>"; };
+		CFA7976A1F8B57820085D4A1 /* TSAddViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSAddViewController.m; sourceTree = "<group>"; };
+		CFA7976C1F8B578F0085D4A1 /* TSModifyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSModifyViewController.h; sourceTree = "<group>"; };
+		CFA7976D1F8B578F0085D4A1 /* TSModifyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSModifyViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +211,7 @@
 		CF91490E1F8B062C0085BEDF /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				CFA797681F8B57560085D4A1 /* OperationView */,
 				CF9149101F8B06A10085BEDF /* TSMainViewController.h */,
 				CF9149111F8B06A10085BEDF /* TSMainViewController.m */,
 				CF9149131F8B072B0085BEDF /* TSNavigationController.h */,
@@ -258,6 +265,17 @@
 				CF91493A1F8B0EB40085BEDF /* UIView+Addition.m */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		CFA797681F8B57560085D4A1 /* OperationView */ = {
+			isa = PBXGroup;
+			children = (
+				CFA797691F8B57820085D4A1 /* TSAddViewController.h */,
+				CFA7976A1F8B57820085D4A1 /* TSAddViewController.m */,
+				CFA7976C1F8B578F0085D4A1 /* TSModifyViewController.h */,
+				CFA7976D1F8B578F0085D4A1 /* TSModifyViewController.m */,
+			);
+			path = OperationView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -365,6 +383,8 @@
 				CFA797671F8B3F7F0085D4A1 /* NSString+path.m in Sources */,
 				CFA797611F8B2EDE0085D4A1 /* TSDetailViewController.m in Sources */,
 				CF91491B1F8B07790085BEDF /* TSHomeViewController.m in Sources */,
+				CFA7976B1F8B57820085D4A1 /* TSAddViewController.m in Sources */,
+				CFA7976E1F8B578F0085D4A1 /* TSModifyViewController.m in Sources */,
 				CFA797641F8B34AF0085D4A1 /* TSDairyModel.m in Sources */,
 				CF9148F41F8B05710085BEDF /* main.m in Sources */,
 				CF9149181F8B075F0085BEDF /* TSBaseViewController.m in Sources */,

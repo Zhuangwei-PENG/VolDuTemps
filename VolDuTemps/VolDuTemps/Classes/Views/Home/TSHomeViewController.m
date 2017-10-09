@@ -77,10 +77,12 @@ static const NSString *cellID = @"TSTableViewCell";
 
 - (void)modefyDetailViewWith:(TSDairyModel *)sender{
     NSLog(@"修改日记");
-    [self pushDetailView: [TSDetailViewController detailViewWithData:[TSDairyModel new] successBlock:^(TSDairyModel *modifiedModel) {
-        
+    
+    TSDetailViewController *detailView = [TSDetailViewController detailViewWithData:sender successBlock:^(TSDairyModel *modifiedModel) {
         [self.myTableView reloadRowsAtIndexPaths:@[modifiedModel.index] withRowAnimation:UITableViewRowAnimationNone];
-    }]];
+    }];
+
+    [self pushDetailView:detailView];
 }
 
 - (void)addNewOne{
@@ -101,12 +103,13 @@ static const NSString *cellID = @"TSTableViewCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     TSTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TSTableViewCell" forIndexPath:indexPath];
-    NSLog(@"111%s",__func__);
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self modefyDetailViewWith:[TSDairyModel new]];
+    TSDairyModel *model = self.notes[indexPath.row];
+    model.index = indexPath;
+    [self modefyDetailViewWith:model];
 }
 
 @end
