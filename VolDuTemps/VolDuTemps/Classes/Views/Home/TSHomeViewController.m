@@ -8,6 +8,8 @@
 
 #import "TSHomeViewController.h"
 #import "TSTableViewCell.h"
+#import "TSDetailViewController.h"
+#import "TSDairyModel.h"
 
 @interface TSHomeViewController ()
 
@@ -33,9 +35,20 @@ static const NSString *cellID = @"TSTableViewCell";
     
 }
 
+- (void)modefyDetailViewWith:(TSDairyModel *)sender{
+    NSLog(@"修改日记");
+    [self pushDetailView];
+}
+
 - (void)addNewOne{
     NSLog(@"添加新日记");
+    [self pushDetailView];
 }
+
+- (void)pushDetailView{
+    [self.navigationController pushViewController:[[TSDetailViewController alloc] init] animated:YES];
+}
+
 
 #pragma mark - DataSource
 
@@ -49,5 +62,8 @@ static const NSString *cellID = @"TSTableViewCell";
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self modefyDetailViewWith:[TSDairyModel new]];
+}
 
 @end

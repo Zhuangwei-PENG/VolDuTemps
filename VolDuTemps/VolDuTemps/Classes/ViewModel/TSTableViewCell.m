@@ -19,6 +19,7 @@
 
 - (void)setupCell{
     self.contentView.backgroundColor = [UIColor yellowColor];
+    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     UILabel *titleLbl = [[UILabel alloc] init];
     UILabel *textLbl = [[UILabel alloc] init];
