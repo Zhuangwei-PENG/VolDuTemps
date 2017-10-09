@@ -83,23 +83,23 @@ static const NSString *cellID = @"TSTableViewCell";
     //注册tableview Cell
     [self.myTableView registerClass:[TSTableViewCell class] forCellReuseIdentifier:@"TSTableViewCell"];
     //设置tableview行高
-    self.myTableView.rowHeight = 100;
+    self.myTableView.rowHeight = 110;
 }
 
 #pragma mark - Navigation
+//修改日记
 - (void)modefyDetailViewWith:(TSDairyModel *)sender{
-    NSLog(@"修改日记");
     TSModifyViewController *modifyVC = [TSModifyViewController detailView];
     modifyVC.delegate = self;
     modifyVC.dairyModelToModify = sender;
 
     [self pushDetailView:modifyVC];
 }
-
+//添加新日记
 - (void)addNewOne{
-    NSLog(@"添加新日记");
     TSAddViewController *addVC = [TSAddViewController detailView];
     addVC.delegate = self;
+    
     [self pushDetailView:addVC];
 }
 
@@ -118,7 +118,7 @@ static const NSString *cellID = @"TSTableViewCell";
     TSTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TSTableViewCell" forIndexPath:indexPath];
     TSDairyModel *model = self.notes[indexPath.row];
     cell.dairyModel = model;
-//    cell.backgroundColor = [UIColor redColor];
+
     return cell;
 }
 

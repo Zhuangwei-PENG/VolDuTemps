@@ -36,16 +36,12 @@
 }
 
 - (void)setupCell{
-    self.contentView.backgroundColor = [UIColor yellowColor];
+//    self.contentView.backgroundColor = [UIColor yellowColor];
     self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
-    UILabel *titleLbl = [[UILabel alloc] init];
-    UILabel *textLbl = [[UILabel alloc] init];
-    UILabel *timeLbl = [[UILabel alloc] init];
-    
-    self.titleLbl = titleLbl;
-    self.textLbl = textLbl;
-    self.timeLbl = timeLbl;
+    self.titleLbl = [[UILabel alloc] init];
+    self.textLbl = [[UILabel alloc] init];
+    self.timeLbl = [[UILabel alloc] init];
     
     [self.contentView addSubview:self.titleLbl];
     [self.contentView addSubview:self.textLbl];
@@ -56,24 +52,21 @@
     self.timeLbl.numberOfLines = 1;
     
     //设置字体大小
-
+    self.titleLbl.font = [UIFont systemFontOfSize:16];
+    self.textLbl.font = [UIFont systemFontOfSize:12];
+    self.timeLbl.font = [UIFont systemFontOfSize:14];
     
     for (UIView *subview in self.contentView.subviews) {
         //取消autoresizing
         subview.translatesAutoresizingMaskIntoConstraints = NO;
-        //自动调节大小
-//        [subview sizeToFit];
     }
     
     //测试内容
-
-    self.titleLbl.backgroundColor = [UIColor redColor];
-    self.textLbl.backgroundColor = [UIColor darkGrayColor];
     self.timeLbl.text = @"2017-10-9";
     self.timeLbl.textAlignment = NSTextAlignmentRight;
 
     
-    
+    //自动布局
     CGFloat margin = 8;
     //设置titleLbl的自动布局
     [self.contentView addConstraints:@[[NSLayoutConstraint constraintWithItem:self.titleLbl
@@ -98,7 +91,7 @@
                                                                        toItem:nil
                                                                     attribute:NSLayoutAttributeNotAnAttribute
                                                                    multiplier:1
-                                                                     constant:200]
+                                                                     constant:180]
                                        ]];
     
     //设置timeLbl的自动布局
@@ -119,12 +112,12 @@
                                                                      constant: -margin],
                                        
                                        [NSLayoutConstraint constraintWithItem:self.timeLbl
-                                                                    attribute:NSLayoutAttributeRight
+                                                                    attribute:NSLayoutAttributeLeft
                                                                     relatedBy:NSLayoutRelationEqual
                                                                        toItem:self.titleLbl
                                                                     attribute:NSLayoutAttributeRight
                                                                    multiplier:1
-                                                                     constant:96]
+                                                                     constant:margin]
                                        ]];
 
     //设置textLbl的自动布局
