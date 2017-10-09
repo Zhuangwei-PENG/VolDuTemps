@@ -31,7 +31,7 @@
     _dairyModel = dairyModel;
     self.textLbl.text = dairyModel.text;
     self.titleLbl.text = dairyModel.title;
-//    self.timeLbl.text = dairyModel.time;
+    self.timeLbl.text = dairyModel.time;
     
 }
 
@@ -62,7 +62,7 @@
     }
     
     //测试内容
-    self.timeLbl.text = @"2017-10-9";
+//    self.timeLbl.text = @"2017-10-9";
     self.timeLbl.textAlignment = NSTextAlignmentRight;
 
     

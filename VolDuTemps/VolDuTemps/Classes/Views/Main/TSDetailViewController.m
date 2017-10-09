@@ -30,6 +30,7 @@
     NSLog(@"保存数据");
     self.titleDetail = self.titleField.text;
     self.textDetail = self.textField.text;
+    self.timeDetail = self.dateField.text;
 
 }
 - (void)finishedSelection{
@@ -41,6 +42,7 @@
     //将日期转换成字符串
     NSString *dateStr = [formatter stringFromDate:date];
     self.dateField.text = dateStr;
+    [self.dateField resignFirstResponder];
 }
 
 - (void)chooseDate{
