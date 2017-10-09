@@ -10,4 +10,6 @@
 
 @interface TSBaseViewController : UIViewController
 
+@property (nonatomic, assign) UITableViewStyle tableViewStyle;
+
 @end

@@ -8,31 +8,52 @@
 
 #import "TSBaseViewController.h"
 
-@interface TSBaseViewController ()
+@interface TSBaseViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @end
 
 @implementation TSBaseViewController
 
+- (void)setTableViewStyle:(UITableViewStyle)tableViewStyle{
+    _tableViewStyle = tableViewStyle;
+//    [self setupTableView];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self setupUI];
+}
+
+- (void)setupUI{
     self.view.backgroundColor = [UIColor whiteColor];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    [self setupTableView];
+    
+}
+- (void)setupTableView{
+    if (!self.tableViewStyle) {
+        self.tableViewStyle = UITableViewStylePlain;
+    }
+    
+    UITableView *tv = [[UITableView alloc] initWithFrame:self.view.bounds style:_tableViewStyle];
+    [self.view addSubview:tv];
+    tv.delegate = self;
+    tv.dataSource = self;
+    
+    //设置缩进
+    CGFloat topInset = self.navigationController.navigationBar.bounds.size.height;
+    CGFloat bottomInset = self.tabBarController.tabBar.bounds.size.height ? self.tabBarController.tabBar.bounds.size.height:49;
+    tv.contentInset = UIEdgeInsetsMake(0, 0, bottomInset, 0);
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - Delegate & DataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 0;
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return [[UITableViewCell alloc] init];
 }
-*/
 
 @end
