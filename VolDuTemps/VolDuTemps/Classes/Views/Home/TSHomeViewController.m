@@ -44,24 +44,29 @@ static const NSString *cellID = @"TSTableViewCell";
     
 }
 
+//设置空视图
 - (void)setupVideView{
+    //创建空视图
     UIView *vide = [[UIView alloc] initWithFrame:self.view.bounds];
     [self.view insertSubview:vide belowSubview:self.navigationController.navigationBar];
     
+    //创建按钮
     UIButton *initialBtn = [[UIButton alloc] init];
     [vide addSubview:initialBtn];
     
-    vide.backgroundColor = [UIColor yellowColor];
-    initialBtn.backgroundColor = [UIColor redColor];
+    //测试颜色
+//    vide.backgroundColor = [UIColor yellowColor];
+//    initialBtn.backgroundColor = [UIColor redColor];
     
+    //设置按钮
     [initialBtn setTitle:@"开始" forState:UIControlStateNormal];
     initialBtn.frame = CGRectMake(0, 200, self.view.bounds.size.width, 30);
     
-    [initialBtn addTarget:self action:@selector(addNewOne) forControlEvents:UIControlEventTouchUpInside];    
-    
-    
+    //添加按钮监听事件
+    [initialBtn addTarget:self action:@selector(addNewOne) forControlEvents:UIControlEventTouchUpInside];
 }
 
+//设置tableView视图
 - (void)setupTableView{
     //注册tableview Cell
     [self.myTableView registerClass:[TSTableViewCell class] forCellReuseIdentifier:@"TSTableViewCell"];
