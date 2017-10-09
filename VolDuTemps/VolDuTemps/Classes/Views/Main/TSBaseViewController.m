@@ -14,11 +14,6 @@
 
 @implementation TSBaseViewController
 
-- (void)setTableViewStyle:(UITableViewStyle)tableViewStyle{
-    _tableViewStyle = tableViewStyle;
-//    [self setupTableView];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -43,7 +38,7 @@
     tv.dataSource = self;
     
     //设置缩进
-    CGFloat topInset = self.navigationController.navigationBar.bounds.size.height;
+//    CGFloat topInset = self.navigationController.navigationBar.bounds.size.height;
     CGFloat bottomInset = self.tabBarController.tabBar.bounds.size.height ? self.tabBarController.tabBar.bounds.size.height:49;
     tv.contentInset = UIEdgeInsetsMake(0, 0, bottomInset, 0);
 }

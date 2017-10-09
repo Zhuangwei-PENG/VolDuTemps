@@ -12,4 +12,5 @@
 
 @property (nonatomic, assign) UITableViewStyle tableViewStyle;
 
+- (void)setupUI;
 @end

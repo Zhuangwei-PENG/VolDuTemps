@@ -8,6 +8,7 @@
 
 #import "TSMainViewController.h"
 #import "TSNavigationController.h"
+#import "TSBaseViewController.h"
 
 @interface TSMainViewController()
     
@@ -19,8 +20,16 @@
 @implementation TSMainViewController
 - (NSArray *)subControllers{
     if (!_subControllers) {
-        _subControllers = @[@{@"className":@"TSHomeViewController", @"imageName":@"tabbar_home", @"title":@"主页"},
-                            @{@"className":@"TSProfileViewController", @"imageName":@"tabbar_profile", @"title":@"我的"}];
+        _subControllers = @[@{@"className":@"TSHomeViewController",
+                              @"imageName":@"tabbar_home",
+                              @"title":@"主页",
+                              @"tableViewStyle": @"Plain"},
+                            
+                            @{@"className":@"TSProfileViewController",
+                              @"imageName":@"tabbar_profile",
+                              @"title":@"我的",
+                              @"tableViewStyle": @"Grouped"}
+                            ];
     }
     return _subControllers;
 }
@@ -43,15 +52,22 @@
     NSString *clsName = dict[@"className"];
     NSString *imageName = dict[@"imageName"];
     NSString *title = dict[@"title"];
+    NSString *style = dict[@"tableViewStyle"];
     
     if (!clsName) {
         return [[UIViewController alloc] init];;
     }
 
-    UIViewController *vc = [[NSClassFromString(clsName) alloc] init];
+    TSBaseViewController *vc = [[NSClassFromString(clsName) alloc] init];
     vc.title = title;
     vc.tabBarItem.image = [UIImage imageNamed:imageName];
     vc.tabBarItem.selectedImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@_selected",imageName]];
+    
+    if ([style isEqualToString:@"Plein"]) {
+        vc.tableViewStyle = 0;
+    }else if ([style isEqualToString:@"Grouped"]){
+        vc.tableViewStyle = 1;
+    }
     
     TSNavigationController *nav = [[TSNavigationController alloc] initWithRootViewController:vc];
     
