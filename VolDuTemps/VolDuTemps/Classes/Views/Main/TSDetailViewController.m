@@ -10,6 +10,10 @@
 
 @interface TSDetailViewController ()
 
+@property (nonatomic, copy) NSString *titleDetail;
+@property (nonatomic, copy) NSString *textDetail;
+@property (nonatomic, copy) NSString *timeDetail;
+
 @end
 
 @implementation TSDetailViewController
@@ -20,19 +24,39 @@
     self.view.backgroundColor = [UIColor whiteColor];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
++ (instancetype)detailView{
+    
+    TSDetailViewController *detailView = [[self alloc] init];
+    
+    detailView.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(saveData)];
+    
+    UITextField *titleField = [[UITextField alloc] initWithFrame:CGRectMake(0, 70, [UIScreen mainScreen].bounds.size.width, 30)];
+    titleField.placeholder = @"标题";
+    
+    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(0, 110, [UIScreen mainScreen].bounds.size.width, 200)];
+    titleField.placeholder = @"内容";
+    
+    [detailView.view addSubview:titleField];
+    [detailView.view addSubview:textField];
+    
+    return detailView;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
++ (instancetype)detailViewWithData:(TSDairyModel *)data successBlock: (void(^)(TSDairyModel *modifiedModel))successBlock{
+    TSDetailViewController *detailView = [self detailView];
+    
+    detailView.titleDetail = data.title;
+    detailView.textDetail = data.text;
+    detailView.timeDetail = data.time;
+    
+    
+    
+    return detailView;
 }
-*/
 
+- (void)saveData{
+    NSLog(@"保存数据");
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
 @end

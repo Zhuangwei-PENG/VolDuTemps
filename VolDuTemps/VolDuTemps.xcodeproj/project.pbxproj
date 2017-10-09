@@ -19,6 +19,8 @@
 		CF91493D1F8B1B200085BEDF /* TSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF91493C1F8B1B200085BEDF /* TSTableViewCell.m */; };
 		CFA797611F8B2EDE0085D4A1 /* TSDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA797601F8B2EDE0085D4A1 /* TSDetailViewController.m */; };
 		CFA797641F8B34AF0085D4A1 /* TSDairyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA797631F8B34AF0085D4A1 /* TSDairyModel.m */; };
+		CFA797651F8B3F7F0085D4A1 /* NSString+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = CF91492C1F8B0EB40085BEDF /* NSString+Hash.m */; };
+		CFA797671F8B3F7F0085D4A1 /* NSString+path.m in Sources */ = {isa = PBXBuildFile; fileRef = CF91492E1F8B0EB40085BEDF /* NSString+path.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -359,6 +361,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFA797651F8B3F7F0085D4A1 /* NSString+Hash.m in Sources */,
+				CFA797671F8B3F7F0085D4A1 /* NSString+path.m in Sources */,
 				CFA797611F8B2EDE0085D4A1 /* TSDetailViewController.m in Sources */,
 				CF91491B1F8B07790085BEDF /* TSHomeViewController.m in Sources */,
 				CFA797641F8B34AF0085D4A1 /* TSDairyModel.m in Sources */,

@@ -10,4 +10,14 @@
 
 @interface TSDairyModel : NSObject
 
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *text;
+@property (nonatomic, copy) NSString *time;
+
+@property (nonatomic, assign) NSIndexPath *index;
+
+
+
+
+
 @end

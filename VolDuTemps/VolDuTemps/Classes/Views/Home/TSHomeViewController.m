@@ -10,14 +10,25 @@
 #import "TSTableViewCell.h"
 #import "TSDetailViewController.h"
 #import "TSDairyModel.h"
+#import "Addition.h"
 
 @interface TSHomeViewController ()
+
+@property (nonatomic, strong) NSMutableArray *notes;
 
 @end
 
 @implementation TSHomeViewController
 
 static const NSString *cellID = @"TSTableViewCell";
+//
+- (NSMutableArray *)notes {
+    if (!_notes){
+        NSString *path = [@"notes" appendDocumentsPath];
+        _notes = [NSMutableArray arrayWithContentsOfFile:path];
+    }
+    return _notes;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -28,25 +39,51 @@ static const NSString *cellID = @"TSTableViewCell";
     [super setupUI];
     self.navigationItem.title = @"笔记列表📒";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewOne)];
+    
+    self.notes != nil ? [self setupTableView] : [self setupVideView];
+    
+}
+
+- (void)setupVideView{
+    UIView *vide = [[UIView alloc] initWithFrame:self.view.bounds];
+    [self.view insertSubview:vide belowSubview:self.navigationController.navigationBar];
+    
+    UIButton *initialBtn = [[UIButton alloc] init];
+    [vide addSubview:initialBtn];
+    
+    vide.backgroundColor = [UIColor yellowColor];
+    initialBtn.backgroundColor = [UIColor redColor];
+    
+    [initialBtn setTitle:@"开始" forState:UIControlStateNormal];
+    initialBtn.frame = CGRectMake(0, 200, self.view.bounds.size.width, 30);
+    
+    [initialBtn addTarget:self action:@selector(addNewOne) forControlEvents:UIControlEventTouchUpInside];    
+    
+    
+}
+
+- (void)setupTableView{
     //注册tableview Cell
     [self.myTableView registerClass:[TSTableViewCell class] forCellReuseIdentifier:@"TSTableViewCell"];
     //设置tableview行高
     self.myTableView.rowHeight = 100;
-    
 }
 
 - (void)modefyDetailViewWith:(TSDairyModel *)sender{
     NSLog(@"修改日记");
-    [self pushDetailView];
+    [self pushDetailView: [TSDetailViewController detailViewWithData:[TSDairyModel new] successBlock:^(TSDairyModel *modifiedModel) {
+        
+        [self.myTableView reloadRowsAtIndexPaths:@[modifiedModel.index] withRowAnimation:UITableViewRowAnimationNone];
+    }]];
 }
 
 - (void)addNewOne{
     NSLog(@"添加新日记");
-    [self pushDetailView];
+    [self pushDetailView:[TSDetailViewController detailView]];
 }
 
-- (void)pushDetailView{
-    [self.navigationController pushViewController:[[TSDetailViewController alloc] init] animated:YES];
+- (void)pushDetailView:(TSDetailViewController *)controller{
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 

@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TSDairyModel.h"
 
 @interface TSDetailViewController : UIViewController
+
++ (instancetype)detailView;
+
++ (instancetype)detailViewWithData:(TSDairyModel *)data successBlock: (void(^)(TSDairyModel *modifiedModel))successBlock;
 
 @end
