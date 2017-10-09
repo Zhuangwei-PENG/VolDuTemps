@@ -10,16 +10,36 @@
 
 @interface TSModifyViewController ()
 
+@property (nonatomic, strong) UIBarButtonItem *modifyBtn;
+
 @end
 
 @implementation TSModifyViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    //显示原本数据
     self.titleField.text = self.dairyModelToModify.title;
     self.textField.text = self.dairyModelToModify.text;
+    
+    self.titleField.userInteractionEnabled = NO;
+    self.textField.userInteractionEnabled = NO;
+    
+    self.rightButton = [[UIBarButtonItem alloc] initWithTitle:@"修改" style:UIBarButtonItemStylePlain target:self action:@selector(modify)];
+    self.navigationItem.rightBarButtonItem = self.rightButton;
+
 }
+- (void)modify{
+    self.titleField.userInteractionEnabled = !self.titleField.userInteractionEnabled;
+    self.textField.userInteractionEnabled = !self.textField.userInteractionEnabled;
+    
+    if ([self.rightButton.title isEqualToString:@"保存"]) {
+        [self saveData];
+    }
+    
+    self.textField.userInteractionEnabled ? [self.rightButton setTitle:@"保存"] : [self.rightButton setTitle:@"修改"];
+}
+
 - (void)saveData{
     [super saveData];
     if ([self.delegate respondsToSelector:@selector(TSModifyViewController:)]) {

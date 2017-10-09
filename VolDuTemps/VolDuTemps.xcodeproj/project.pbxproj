@@ -211,7 +211,6 @@
 		CF91490E1F8B062C0085BEDF /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				CFA797681F8B57560085D4A1 /* OperationView */,
 				CF9149101F8B06A10085BEDF /* TSMainViewController.h */,
 				CF9149111F8B06A10085BEDF /* TSMainViewController.m */,
 				CF9149131F8B072B0085BEDF /* TSNavigationController.h */,
@@ -220,6 +219,7 @@
 				CF9149171F8B075F0085BEDF /* TSBaseViewController.m */,
 				CFA7975F1F8B2EDE0085D4A1 /* TSDetailViewController.h */,
 				CFA797601F8B2EDE0085D4A1 /* TSDetailViewController.m */,
+				CFA797681F8B57560085D4A1 /* OperationView */,
 			);
 			path = Main;
 			sourceTree = "<group>";

@@ -17,6 +17,7 @@
 
 @property (nonatomic, strong) UITextField *titleField;
 @property (nonatomic, strong) UITextView *textField;
+@property (nonatomic, strong) UITextField *dateField;
 
 @property (nonatomic, strong) UIBarButtonItem *rightButton;
 + (instancetype)detailView;
