@@ -7,12 +7,15 @@
 //
 
 #import "TSHomeViewController.h"
+#import "TSTableViewCell.h"
 
 @interface TSHomeViewController ()
 
 @end
 
 @implementation TSHomeViewController
+
+static const NSString *cellID = @"TSTableViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -23,9 +26,27 @@
     [super setupUI];
     self.navigationItem.title = @"笔记列表📒";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewOne)];
+    //注册tableview Cell
+    [self.myTableView registerClass:[TSTableViewCell class] forCellReuseIdentifier:@"TSTableViewCell"];
+    
 }
 
 - (void)addNewOne{
     NSLog(@"添加新日记");
 }
+
+#pragma mark - DataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    TSTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TSTableViewCell" forIndexPath:indexPath];
+    NSLog(@"111%s",__func__);
+    return cell;
+}
+
+
+
 @end

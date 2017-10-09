@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TSBaseViewController : UIViewController
+@interface TSBaseViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, assign) UITableViewStyle tableViewStyle;
-
+@property (nonatomic, strong) UITableView *myTableView;
 - (void)setupUI;
+
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 @end

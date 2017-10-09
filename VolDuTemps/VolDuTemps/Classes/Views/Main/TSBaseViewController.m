@@ -8,7 +8,7 @@
 
 #import "TSBaseViewController.h"
 
-@interface TSBaseViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface TSBaseViewController ()
 
 @end
 
@@ -32,15 +32,15 @@
         self.tableViewStyle = UITableViewStylePlain;
     }
     
-    UITableView *tv = [[UITableView alloc] initWithFrame:self.view.bounds style:_tableViewStyle];
-    [self.view addSubview:tv];
-    tv.delegate = self;
-    tv.dataSource = self;
+    self.myTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:_tableViewStyle];
+    [self.view addSubview:self.myTableView];
+    self.myTableView.delegate = self;
+    self.myTableView.dataSource = self;
     
     //设置缩进
 //    CGFloat topInset = self.navigationController.navigationBar.bounds.size.height;
     CGFloat bottomInset = self.tabBarController.tabBar.bounds.size.height ? self.tabBarController.tabBar.bounds.size.height:49;
-    tv.contentInset = UIEdgeInsetsMake(0, 0, bottomInset, 0);
+    self.myTableView.contentInset = UIEdgeInsetsMake(0, 0, bottomInset, 0);
 }
 
 #pragma mark - Delegate & DataSource
@@ -48,6 +48,7 @@
     return 0;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"%s",__func__);
     return [[UITableViewCell alloc] init];
 }
 
