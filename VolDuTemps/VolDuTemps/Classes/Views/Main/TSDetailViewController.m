@@ -10,9 +10,9 @@
 
 @interface TSDetailViewController ()
 
-@property (nonatomic, copy) NSString *titleDetail;
-@property (nonatomic, copy) NSString *textDetail;
-@property (nonatomic, copy) NSString *timeDetail;
+@property (nonatomic, strong) UITextField *titleField;
+@property (nonatomic, strong) UITextView *textField;
+
 
 @end
 
@@ -44,7 +44,9 @@
 
 - (void)saveData{
     NSLog(@"保存数据");
-    [self.navigationController popViewControllerAnimated:YES];
+    self.titleDetail = self.titleField.text;
+    self.textDetail = self.textField.text;
+    
     
 }
 
@@ -53,11 +55,13 @@
     //创建保存按钮
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(saveData)];
     
-    UITextField *titleField = [[UITextField alloc] init]; //WithFrame:CGRectMake(0, 110, [UIScreen mainScreen].bounds.size.width, 30)];
+    UITextField *titleField = [[UITextField alloc] init];
     titleField.placeholder = @"标题";
     
-    UITextView *textField = [[UITextView alloc] init]; //WithFrame:CGRectMake(0, 130, [UIScreen mainScreen].bounds.size.width, 200)];
+    UITextView *textField = [[UITextView alloc] init];
     
+    self.titleField = titleField;
+    self.textField = textField;
     
     [self.view addSubview:titleField];
     [self.view addSubview:textField];

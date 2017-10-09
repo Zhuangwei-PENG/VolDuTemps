@@ -7,14 +7,17 @@
 //
 
 #import "TSHomeViewController.h"
+#import "TSAddViewController.h"
+
 #import "TSTableViewCell.h"
-#import "TSDetailViewController.h"
 #import "TSDairyModel.h"
 #import "Addition.h"
 
-@interface TSHomeViewController ()
+@interface TSHomeViewController ()<TSAddViewControllerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *notes;
+
+@property (nonatomic, strong) UIView *videView;
 
 @end
 
@@ -24,8 +27,10 @@ static const NSString *cellID = @"TSTableViewCell";
 //
 - (NSMutableArray *)notes {
     if (!_notes){
-        NSString *path = [@"notes" appendDocumentsPath];
-        _notes = [NSMutableArray arrayWithContentsOfFile:path];
+//        NSString *path = [@"notes" appendDocumentsPath];
+//        [NSMutableArray arrayWithContentsOfFile:path];
+        _notes = [NSMutableArray arrayWithCapacity:4];
+        
     }
     return _notes;
 }
@@ -40,19 +45,20 @@ static const NSString *cellID = @"TSTableViewCell";
     self.navigationItem.title = @"笔记列表📒";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewOne)];
     
-    self.notes != nil ? [self setupTableView] : [self setupVideView];
+    [self setupTableView];
+//    self.notes != nil ? [self setupTableView] : [self setupVideView];
     
 }
 
 //设置空视图
 - (void)setupVideView{
     //创建空视图
-    UIView *vide = [[UIView alloc] initWithFrame:self.view.bounds];
-    [self.view insertSubview:vide belowSubview:self.navigationController.navigationBar];
+    self.videView = [[UIView alloc] initWithFrame:self.view.bounds];
+    [self.view insertSubview:self.videView belowSubview:self.navigationController.navigationBar];
     
     //创建按钮
     UIButton *initialBtn = [[UIButton alloc] init];
-    [vide addSubview:initialBtn];
+    [self.videView addSubview:initialBtn];
     
     //测试颜色
 //    vide.backgroundColor = [UIColor yellowColor];
@@ -69,16 +75,18 @@ static const NSString *cellID = @"TSTableViewCell";
 
 //设置tableView视图
 - (void)setupTableView{
+    [super setupTableView];
     //注册tableview Cell
     [self.myTableView registerClass:[TSTableViewCell class] forCellReuseIdentifier:@"TSTableViewCell"];
     //设置tableview行高
     self.myTableView.rowHeight = 100;
 }
 
+#pragma mark - Navigation
 - (void)modefyDetailViewWith:(TSDairyModel *)sender{
     NSLog(@"修改日记");
     
-    TSDetailViewController *detailView = [TSDetailViewController detailViewWithData:sender successBlock:^(TSDairyModel *modifiedModel) {
+    TSAddViewController *detailView = [TSAddViewController detailViewWithData:sender successBlock:^(TSDairyModel *modifiedModel) {
         [self.myTableView reloadRowsAtIndexPaths:@[modifiedModel.index] withRowAnimation:UITableViewRowAnimationNone];
     }];
 
@@ -87,7 +95,9 @@ static const NSString *cellID = @"TSTableViewCell";
 
 - (void)addNewOne{
     NSLog(@"添加新日记");
-    [self pushDetailView:[TSDetailViewController detailView]];
+    TSAddViewController *addVC = [TSAddViewController detailView];
+    addVC.delegate = self;
+    [self pushDetailView:addVC];
 }
 
 - (void)pushDetailView:(TSDetailViewController *)controller{
@@ -98,11 +108,14 @@ static const NSString *cellID = @"TSTableViewCell";
 #pragma mark - DataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    return self.notes.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     TSTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TSTableViewCell" forIndexPath:indexPath];
+    TSDairyModel *model = self.notes[indexPath.row];
+    cell.dairyModel = model;
+//    cell.backgroundColor = [UIColor redColor];
     return cell;
 }
 
@@ -110,6 +123,16 @@ static const NSString *cellID = @"TSTableViewCell";
     TSDairyModel *model = self.notes[indexPath.row];
     model.index = indexPath;
     [self modefyDetailViewWith:model];
+}
+
+#pragma mark - Delegate
+- (void)TSAddViewController: (TSAddViewController *)TSAddViewController dairy: (TSDairyModel *)dairyModel{
+    
+    [self.notes addObject:dairyModel];
+    [self.myTableView reloadData];
+    if (self.videView) {
+        [self.videView removeFromSuperview];
+    }
 }
 
 @end

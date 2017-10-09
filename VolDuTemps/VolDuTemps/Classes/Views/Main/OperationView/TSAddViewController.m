@@ -7,6 +7,7 @@
 //
 
 #import "TSAddViewController.h"
+#import "TSDairyModel.h"
 
 @interface TSAddViewController ()
 
@@ -17,21 +18,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)saveData{
+    [super saveData];
+    
+    if ([self.delegate respondsToSelector:@selector(TSAddViewController:dairy:)]) {
+        TSDairyModel *model = [TSDairyModel dairyModelWithTitle:self.titleDetail text:self.textDetail time:self.timeDetail];
+        [self.delegate TSAddViewController:self dairy:model];
+    }
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

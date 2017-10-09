@@ -11,8 +11,13 @@
 
 @interface TSDetailViewController : UIViewController
 
+@property (nonatomic, copy) NSString *titleDetail;
+@property (nonatomic, copy) NSString *textDetail;
+@property (nonatomic, copy) NSString *timeDetail;
+
 + (instancetype)detailView;
 
 + (instancetype)detailViewWithData:(TSDairyModel *)data successBlock: (void(^)(TSDairyModel *modifiedModel))successBlock;
 
+- (void)saveData;
 @end

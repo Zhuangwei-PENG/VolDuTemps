@@ -7,7 +7,17 @@
 //
 
 #import "TSDetailViewController.h"
+@class TSAddViewController;
+@class TSDairyModel;
+@protocol TSAddViewControllerDelegate <NSObject>
+
+@required
+- (void)TSAddViewController: (TSAddViewController *)TSAddViewController dairy: (TSDairyModel *)dairyModel;
+@end
+
 
 @interface TSAddViewController : TSDetailViewController
+
+@property (nonatomic, strong) id<TSAddViewControllerDelegate> delegate;
 
 @end

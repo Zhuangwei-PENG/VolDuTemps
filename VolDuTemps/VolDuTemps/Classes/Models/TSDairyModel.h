@@ -16,8 +16,8 @@
 
 @property (nonatomic, assign) NSIndexPath *index;
 
++ (instancetype)dairyModelWithDict:(NSDictionary *)dict;
+- (instancetype)initWithDict:(NSDictionary *)dict;
 
-
-
-
++ (instancetype)dairyModelWithTitle: (NSString *)title text:(NSString *)text time:(NSString *)time;
 @end
