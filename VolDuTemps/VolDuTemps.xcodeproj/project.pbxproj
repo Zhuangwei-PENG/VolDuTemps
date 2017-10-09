@@ -1,0 +1,507 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CF9148E61F8B05710085BEDF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9148E51F8B05710085BEDF /* AppDelegate.m */; };
+		CF9148EE1F8B05710085BEDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF9148ED1F8B05710085BEDF /* Assets.xcassets */; };
+		CF9148F41F8B05710085BEDF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9148F31F8B05710085BEDF /* main.m */; };
+		CF9148FE1F8B05710085BEDF /* VolDuTempsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9148FD1F8B05710085BEDF /* VolDuTempsTests.m */; };
+		CF9149121F8B06A10085BEDF /* TSMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9149111F8B06A10085BEDF /* TSMainViewController.m */; };
+		CF9149151F8B072B0085BEDF /* TSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9149141F8B072B0085BEDF /* TSNavigationController.m */; };
+		CF9149181F8B075F0085BEDF /* TSBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9149171F8B075F0085BEDF /* TSBaseViewController.m */; };
+		CF91491B1F8B07790085BEDF /* TSHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF91491A1F8B07790085BEDF /* TSHomeViewController.m */; };
+		CF91491E1F8B07870085BEDF /* TSProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF91491D1F8B07870085BEDF /* TSProfileViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CF9148FA1F8B05710085BEDF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CF9148D91F8B05710085BEDF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CF9148E01F8B05710085BEDF;
+			remoteInfo = VolDuTemps;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CF9148E11F8B05710085BEDF /* VolDuTemps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VolDuTemps.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF9148E41F8B05710085BEDF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CF9148E51F8B05710085BEDF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CF9148ED1F8B05710085BEDF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CF9148F21F8B05710085BEDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF9148F31F8B05710085BEDF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CF9148F91F8B05710085BEDF /* VolDuTempsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VolDuTempsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF9148FD1F8B05710085BEDF /* VolDuTempsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VolDuTempsTests.m; sourceTree = "<group>"; };
+		CF9148FF1F8B05710085BEDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF9149101F8B06A10085BEDF /* TSMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSMainViewController.h; sourceTree = "<group>"; };
+		CF9149111F8B06A10085BEDF /* TSMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSMainViewController.m; sourceTree = "<group>"; };
+		CF9149131F8B072B0085BEDF /* TSNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSNavigationController.h; sourceTree = "<group>"; };
+		CF9149141F8B072B0085BEDF /* TSNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSNavigationController.m; sourceTree = "<group>"; };
+		CF9149161F8B075F0085BEDF /* TSBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSBaseViewController.h; sourceTree = "<group>"; };
+		CF9149171F8B075F0085BEDF /* TSBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSBaseViewController.m; sourceTree = "<group>"; };
+		CF9149191F8B07790085BEDF /* TSHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSHomeViewController.h; sourceTree = "<group>"; };
+		CF91491A1F8B07790085BEDF /* TSHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSHomeViewController.m; sourceTree = "<group>"; };
+		CF91491C1F8B07870085BEDF /* TSProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSProfileViewController.h; sourceTree = "<group>"; };
+		CF91491D1F8B07870085BEDF /* TSProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSProfileViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CF9148DE1F8B05710085BEDF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF9148F61F8B05710085BEDF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CF9148D81F8B05710085BEDF = {
+			isa = PBXGroup;
+			children = (
+				CF9148E31F8B05710085BEDF /* VolDuTemps */,
+				CF9148FC1F8B05710085BEDF /* VolDuTempsTests */,
+				CF9148E21F8B05710085BEDF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CF9148E21F8B05710085BEDF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CF9148E11F8B05710085BEDF /* VolDuTemps.app */,
+				CF9148F91F8B05710085BEDF /* VolDuTempsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CF9148E31F8B05710085BEDF /* VolDuTemps */ = {
+			isa = PBXGroup;
+			children = (
+				CF9148E41F8B05710085BEDF /* AppDelegate.h */,
+				CF9148E51F8B05710085BEDF /* AppDelegate.m */,
+				CF9149081F8B062C0085BEDF /* Classes */,
+				CF9148ED1F8B05710085BEDF /* Assets.xcassets */,
+				CF9148F21F8B05710085BEDF /* Info.plist */,
+				CF9148F31F8B05710085BEDF /* main.m */,
+			);
+			path = VolDuTemps;
+			sourceTree = "<group>";
+		};
+		CF9148FC1F8B05710085BEDF /* VolDuTempsTests */ = {
+			isa = PBXGroup;
+			children = (
+				CF9148FD1F8B05710085BEDF /* VolDuTempsTests.m */,
+				CF9148FF1F8B05710085BEDF /* Info.plist */,
+			);
+			path = VolDuTempsTests;
+			sourceTree = "<group>";
+		};
+		CF9149081F8B062C0085BEDF /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				CF91490C1F8B062C0085BEDF /* Views */,
+				CF9149091F8B062C0085BEDF /* Models */,
+				CF91490B1F8B062C0085BEDF /* ViewModel */,
+				CF91490A1F8B062C0085BEDF /* Tools */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		CF9149091F8B062C0085BEDF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CF91490A1F8B062C0085BEDF /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		CF91490B1F8B062C0085BEDF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CF91490C1F8B062C0085BEDF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CF91490E1F8B062C0085BEDF /* Main */,
+				CF91490D1F8B062C0085BEDF /* Home */,
+				CF91490F1F8B062C0085BEDF /* Profile */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CF91490D1F8B062C0085BEDF /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				CF9149191F8B07790085BEDF /* TSHomeViewController.h */,
+				CF91491A1F8B07790085BEDF /* TSHomeViewController.m */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		CF91490E1F8B062C0085BEDF /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				CF9149101F8B06A10085BEDF /* TSMainViewController.h */,
+				CF9149111F8B06A10085BEDF /* TSMainViewController.m */,
+				CF9149131F8B072B0085BEDF /* TSNavigationController.h */,
+				CF9149141F8B072B0085BEDF /* TSNavigationController.m */,
+				CF9149161F8B075F0085BEDF /* TSBaseViewController.h */,
+				CF9149171F8B075F0085BEDF /* TSBaseViewController.m */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		CF91490F1F8B062C0085BEDF /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				CF91491C1F8B07870085BEDF /* TSProfileViewController.h */,
+				CF91491D1F8B07870085BEDF /* TSProfileViewController.m */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CF9148E01F8B05710085BEDF /* VolDuTemps */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CF9149021F8B05710085BEDF /* Build configuration list for PBXNativeTarget "VolDuTemps" */;
+			buildPhases = (
+				CF9148DD1F8B05710085BEDF /* Sources */,
+				CF9148DE1F8B05710085BEDF /* Frameworks */,
+				CF9148DF1F8B05710085BEDF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VolDuTemps;
+			productName = VolDuTemps;
+			productReference = CF9148E11F8B05710085BEDF /* VolDuTemps.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CF9148F81F8B05710085BEDF /* VolDuTempsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CF9149051F8B05710085BEDF /* Build configuration list for PBXNativeTarget "VolDuTempsTests" */;
+			buildPhases = (
+				CF9148F51F8B05710085BEDF /* Sources */,
+				CF9148F61F8B05710085BEDF /* Frameworks */,
+				CF9148F71F8B05710085BEDF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CF9148FB1F8B05710085BEDF /* PBXTargetDependency */,
+			);
+			name = VolDuTempsTests;
+			productName = VolDuTempsTests;
+			productReference = CF9148F91F8B05710085BEDF /* VolDuTempsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CF9148D91F8B05710085BEDF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = TS;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = "Zhuangwei PENG";
+				TargetAttributes = {
+					CF9148E01F8B05710085BEDF = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+					CF9148F81F8B05710085BEDF = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = CF9148E01F8B05710085BEDF;
+					};
+				};
+			};
+			buildConfigurationList = CF9148DC1F8B05710085BEDF /* Build configuration list for PBXProject "VolDuTemps" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF9148D81F8B05710085BEDF;
+			productRefGroup = CF9148E21F8B05710085BEDF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CF9148E01F8B05710085BEDF /* VolDuTemps */,
+				CF9148F81F8B05710085BEDF /* VolDuTempsTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CF9148DF1F8B05710085BEDF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF9148EE1F8B05710085BEDF /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF9148F71F8B05710085BEDF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CF9148DD1F8B05710085BEDF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF91491B1F8B07790085BEDF /* TSHomeViewController.m in Sources */,
+				CF9148F41F8B05710085BEDF /* main.m in Sources */,
+				CF9149181F8B075F0085BEDF /* TSBaseViewController.m in Sources */,
+				CF9149121F8B06A10085BEDF /* TSMainViewController.m in Sources */,
+				CF91491E1F8B07870085BEDF /* TSProfileViewController.m in Sources */,
+				CF9149151F8B072B0085BEDF /* TSNavigationController.m in Sources */,
+				CF9148E61F8B05710085BEDF /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF9148F51F8B05710085BEDF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF9148FE1F8B05710085BEDF /* VolDuTempsTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CF9148FB1F8B05710085BEDF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CF9148E01F8B05710085BEDF /* VolDuTemps */;
+			targetProxy = CF9148FA1F8B05710085BEDF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		CF9149001F8B05710085BEDF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		CF9149011F8B05710085BEDF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CF9149031F8B05710085BEDF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = VolDuTemps/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.self.VolDuTemps;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CF9149041F8B05710085BEDF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = VolDuTemps/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.self.VolDuTemps;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CF9149061F8B05710085BEDF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = VolDuTempsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.self.VolDuTempsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VolDuTemps.app/VolDuTemps";
+			};
+			name = Debug;
+		};
+		CF9149071F8B05710085BEDF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = VolDuTempsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.self.VolDuTempsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VolDuTemps.app/VolDuTemps";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CF9148DC1F8B05710085BEDF /* Build configuration list for PBXProject "VolDuTemps" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF9149001F8B05710085BEDF /* Debug */,
+				CF9149011F8B05710085BEDF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CF9149021F8B05710085BEDF /* Build configuration list for PBXNativeTarget "VolDuTemps" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF9149031F8B05710085BEDF /* Debug */,
+				CF9149041F8B05710085BEDF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CF9149051F8B05710085BEDF /* Build configuration list for PBXNativeTarget "VolDuTempsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF9149061F8B05710085BEDF /* Debug */,
+				CF9149071F8B05710085BEDF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CF9148D91F8B05710085BEDF /* Project object */;
+}
