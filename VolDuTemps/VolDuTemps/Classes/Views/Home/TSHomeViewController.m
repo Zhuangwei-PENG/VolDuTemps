@@ -27,30 +27,35 @@
 @implementation TSHomeViewController
 
 static const NSString *cellID = @"TSTableViewCell";
-//
+#pragma mark - Lazy instantiation
 - (NSMutableArray *)notes {
     if (!_notes){
-//        NSString *path = [@"notes" appendDocumentsPath];
-//        [NSMutableArray arrayWithContentsOfFile:path];
         _notes = [NSMutableArray arrayWithCapacity:4];
-        
     }
     return _notes;
+}
+- (UIView *)videView{
+    if (!_videView) {
+        _videView = [[UIView alloc] init];
+    }
+    return _videView;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.notes = [NSKeyedUnarchiver unarchiveObjectWithFile:kPath];
+    
 }
 
 - (void)setupUI{
     [super setupUI];
+
     self.navigationItem.title = @"笔记列表📒";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewOne)];
     
-    [self setupTableView];
-//    self.notes != nil ? [self setupTableView] : [self setupVideView];
+    //根据notes是否有数据判断显示哪个页面
+    self.notes = [NSKeyedUnarchiver unarchiveObjectWithFile:kPath];
+    self.notes.count != 0 ? [self setupTableView] : [self setupVideView];
     
 }
 
@@ -65,12 +70,11 @@ static const NSString *cellID = @"TSTableViewCell";
     [self.videView addSubview:initialBtn];
     
     //测试颜色
-//    vide.backgroundColor = [UIColor yellowColor];
-//    initialBtn.backgroundColor = [UIColor redColor];
+    self.videView.backgroundColor = [UIColor colorWithHex:0xEDEDED];
     
     //设置按钮
-    [initialBtn setTitle:@"开始" forState:UIControlStateNormal];
-    [initialBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [initialBtn setTitle:@"Le temps passe vite! 开始记录吧..." forState:UIControlStateNormal];
+    [initialBtn setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
     initialBtn.frame = CGRectMake(0, 200, self.view.bounds.size.width, 30);
     
     //添加按钮监听事件
@@ -80,6 +84,7 @@ static const NSString *cellID = @"TSTableViewCell";
 //设置tableView视图
 - (void)setupTableView{
     [super setupTableView];
+    self.myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     //注册tableview Cell
     [self.myTableView registerClass:[TSTableViewCell class] forCellReuseIdentifier:@"TSTableViewCell"];
     //设置tableview行高

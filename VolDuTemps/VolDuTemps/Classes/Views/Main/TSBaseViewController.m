@@ -48,7 +48,6 @@
     return 0;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"%s",__func__);
     return [[UITableViewCell alloc] init];
 }
 

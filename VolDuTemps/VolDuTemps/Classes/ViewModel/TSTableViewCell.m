@@ -8,23 +8,46 @@
 
 #import "TSTableViewCell.h"
 #import "TSDairyModel.h"
+#import "Addition.h"
 
 @interface TSTableViewCell()
 
 @property (nonatomic, strong) UILabel *titleLbl;
 @property (nonatomic, strong) UILabel *textLbl;
 @property (nonatomic, strong) UILabel *timeLbl;
+@property (nonatomic, strong) UIView *bottomLine;
 
 @end
 
 
 @implementation TSTableViewCell
+#pragma mark - Lazy instantiation
+- (UIView *)bottomLine{
+    if (!_bottomLine) {
+        _bottomLine = [[UIView alloc] init];
+    }
+    return _bottomLine;
+}
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    [self setupCell];
-    
-    return self;
+- (UILabel *)titleLbl{
+    if (!_titleLbl) {
+        _titleLbl = [[UILabel alloc] init];
+    }
+    return _titleLbl;
+}
+
+- (UILabel *)textLbl{
+    if (!_textLbl) {
+        _textLbl = [[UILabel alloc] init];
+    }
+    return _textLbl;
+}
+
+- (UILabel *)timeLbl{
+    if (!_timeLbl) {
+        _timeLbl = [[UILabel alloc] init];
+    }
+    return _timeLbl;
 }
 
 - (void)setDairyModel:(TSDairyModel *)dairyModel{
@@ -35,17 +58,27 @@
     
 }
 
-- (void)setupCell{
-//    self.contentView.backgroundColor = [UIColor yellowColor];
-    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+#pragma mark - designed initializer
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    [self setupCell];
     
-    self.titleLbl = [[UILabel alloc] init];
-    self.textLbl = [[UILabel alloc] init];
-    self.timeLbl = [[UILabel alloc] init];
+    return self;
+}
+
+
+
+- (void)setupCell{
     
     [self.contentView addSubview:self.titleLbl];
     [self.contentView addSubview:self.textLbl];
     [self.contentView addSubview:self.timeLbl];
+    [self.contentView addSubview:self.bottomLine];
+    
+//    self.bottomLine.frame = CGRectMake(1, self.contentView.bounds.size.height - 1, self.contentView.bounds.size.width - 2, 1);
+    
+    self.bottomLine.backgroundColor = [UIColor colorWithHex:0xEDEDED];
+    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     self.titleLbl.numberOfLines = 1;
     self.textLbl.numberOfLines = 3;
@@ -62,7 +95,6 @@
     }
     
     //测试内容
-//    self.timeLbl.text = @"2017-10-9";
     self.timeLbl.textAlignment = NSTextAlignmentRight;
 
     
@@ -135,7 +167,7 @@
                                                                        toItem:self.titleLbl
                                                                     attribute:NSLayoutAttributeLeft
                                                                    multiplier:1
-                                                                     constant:0],
+                                                                     constant:2 * margin],
                                        
                                        [NSLayoutConstraint constraintWithItem:self.textLbl
                                                                     attribute:NSLayoutAttributeRight
@@ -144,6 +176,39 @@
                                                                     attribute:NSLayoutAttributeRight
                                                                    multiplier:1
                                                                      constant:0]
+                                       ]];
+    
+    [self.contentView addConstraints:@[[NSLayoutConstraint constraintWithItem:self.bottomLine
+                                                                    attribute:NSLayoutAttributeTop
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.contentView
+                                                                    attribute:NSLayoutAttributeBottom
+                                                                   multiplier:1
+                                                                     constant:-1],
+
+                                       [NSLayoutConstraint constraintWithItem:self.bottomLine
+                                                                    attribute:NSLayoutAttributeLeft
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.titleLbl
+                                                                    attribute:NSLayoutAttributeLeft
+                                                                   multiplier:1
+                                                                     constant:2 * margin],
+
+                                       [NSLayoutConstraint constraintWithItem:self.bottomLine
+                                                                    attribute:NSLayoutAttributeRight
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.textLbl
+                                                                    attribute:NSLayoutAttributeRight
+                                                                   multiplier:1
+                                                                     constant:0],
+                                       
+                                       [NSLayoutConstraint constraintWithItem:self.bottomLine
+                                                                    attribute:NSLayoutAttributeHeight
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:nil
+                                                                    attribute:NSLayoutAttributeNotAnAttribute
+                                                                   multiplier:1
+                                                                     constant:1]
                                        ]];
 }
 

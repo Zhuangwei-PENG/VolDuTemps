@@ -23,6 +23,7 @@
 		CFA797671F8B3F7F0085D4A1 /* NSString+path.m in Sources */ = {isa = PBXBuildFile; fileRef = CF91492E1F8B0EB40085BEDF /* NSString+path.m */; };
 		CFA7976B1F8B57820085D4A1 /* TSAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA7976A1F8B57820085D4A1 /* TSAddViewController.m */; };
 		CFA7976E1F8B578F0085D4A1 /* TSModifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA7976D1F8B578F0085D4A1 /* TSModifyViewController.m */; };
+		CFA7976F1F8BC11B0085D4A1 /* UIColor+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9149321F8B0EB40085BEDF /* UIColor+Addition.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -379,6 +380,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFA7976F1F8BC11B0085D4A1 /* UIColor+Addition.m in Sources */,
 				CFA797651F8B3F7F0085D4A1 /* NSString+Hash.m in Sources */,
 				CFA797671F8B3F7F0085D4A1 /* NSString+path.m in Sources */,
 				CFA797611F8B2EDE0085D4A1 /* TSDetailViewController.m in Sources */,
