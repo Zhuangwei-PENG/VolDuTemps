@@ -9,7 +9,7 @@
 #import "TSDetailViewController.h"
 
 @interface TSDetailViewController ()
-
+@property (nonatomic, strong) UIDatePicker *datePicker;
 
 @end
 
@@ -34,10 +34,18 @@
 }
 - (void)finishedSelection{
     //获取时间
+    NSDate *date = self.datePicker.date;
+    //格式化日期
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyy-MM-dd";
+    //将日期转换成字符串
+    NSString *dateStr = [formatter stringFromDate:date];
+    self.dateField.text = dateStr;
 }
 
 - (void)chooseDate{
     UIDatePicker *date = [[UIDatePicker alloc] init];
+    self.datePicker = date;
     date.locale = [NSLocale localeWithLocaleIdentifier:@"zh"];
     
     //设置DatePicker模式为日期
@@ -74,11 +82,9 @@
     //创建时间选择按钮
     self.dateField = [[UITextField alloc] init];
     self.dateField.placeholder = @"选择日期📅";
-    
+    self.dateField.font = [UIFont systemFontOfSize:12];
+    //设置时间选择键盘
     [self chooseDate];
-  
-    //创建时间选择器
-//    self.datePicker = [[UIDatePicker alloc] init];
 
     
     [self.view addSubview:self.titleField];
@@ -140,7 +146,7 @@
                                                                 toItem:nil
                                                              attribute:NSLayoutAttributeNotAnAttribute
                                                             multiplier:1
-                                                              constant:80],
+                                                              constant:100],
                                 
                                 [NSLayoutConstraint constraintWithItem:self.dateField
                                                              attribute:NSLayoutAttributeBottom
