@@ -20,16 +20,16 @@
     
 }
 
-- (void)saveData{
-    [super saveData];
+- (TSDairyModel *)saveData{
     
     if ([self.delegate respondsToSelector:@selector(TSAddViewController:dairy:)]) {
-        TSDairyModel *model = [TSDairyModel dairyModelWithTitle:self.titleDetail text:self.textDetail time:self.timeDetail];
+        TSDairyModel *model = [super saveData];
         [self.delegate TSAddViewController:self dairy:model];
     }
     
     [self.navigationController popViewControllerAnimated:YES];
     
+    return nil;
 }
 
 @end

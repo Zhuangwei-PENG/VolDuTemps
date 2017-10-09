@@ -43,15 +43,15 @@
     self.textField.userInteractionEnabled ? [self.rightButton setTitle:@"保存"] : [self.rightButton setTitle:@"修改"];
 }
 
-- (void)saveData{
-    [super saveData];
+- (TSDairyModel *)saveData{
+    
     if ([self.delegate respondsToSelector:@selector(TSModifyViewController:)]) {
-        self.dairyModelToModify.title = self.titleDetail;
-        self.dairyModelToModify.text = self.textDetail;
-        self.dairyModelToModify.time = self.timeDetail;
+        self.dairyModelToModify = [super saveData];
         [self.delegate TSModifyViewController:self];
     }
     [self.navigationController popViewControllerAnimated:YES];
+    
+    return nil;
 }
 
 - (void)didReceiveMemoryWarning {

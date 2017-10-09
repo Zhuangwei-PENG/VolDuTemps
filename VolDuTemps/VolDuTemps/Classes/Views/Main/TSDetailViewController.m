@@ -9,6 +9,10 @@
 #import "TSDetailViewController.h"
 
 @interface TSDetailViewController ()
+@property (nonatomic, copy) NSString *titleDetail;
+@property (nonatomic, copy) NSString *textDetail;
+@property (nonatomic, copy) NSString *timeDetail;
+
 @property (nonatomic, strong) UIDatePicker *datePicker;
 
 @end
@@ -26,11 +30,13 @@
     return [[self alloc] init];
 }
 
-- (void)saveData{
+- (TSDairyModel *)saveData{
     NSLog(@"保存数据");
-    self.titleDetail = self.titleField.text;
-    self.textDetail = self.textField.text;
-    self.timeDetail = self.dateField.text;
+    return [TSDairyModel dairyModelWithTitle:self.titleField.text text:self.textField.text time:self.dateField.text];
+    
+//    self.titleDetail = self.titleField.text;
+//    self.textDetail = self.textField.text;
+//    self.timeDetail = self.dateField.text;
 
 }
 - (void)finishedSelection{
@@ -72,6 +78,7 @@
 }
 
 - (void)setupUI{
+ 
     self.view.backgroundColor = [UIColor whiteColor];
     //创建保存按钮
     self.rightButton = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(saveData)];

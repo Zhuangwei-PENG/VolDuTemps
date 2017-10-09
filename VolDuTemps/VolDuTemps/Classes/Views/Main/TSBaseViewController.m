@@ -23,7 +23,7 @@
 - (void)setupUI{
     self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
+
     [self setupTableView];
     
 }
