@@ -7,7 +7,66 @@
 //
 
 #import "TSMainViewController.h"
+#import "TSNavigationController.h"
+
+@interface TSMainViewController()
+    
+@property (nonatomic, strong) NSArray *subControllers;
+
+@end
+
 
 @implementation TSMainViewController
+- (NSArray *)subControllers{
+    if (!_subControllers) {
+        _subControllers = @[@{@"className":@"TSHomeViewController", @"imageName":@"tabbar_home", @"title":@"主页"},
+                            @{@"className":@"TSProfileViewController", @"imageName":@"tabbar_profile", @"title":@"我的"}];
+    }
+    return _subControllers;
+}
+
+- (void)viewDidLoad{
+    [super viewDidLoad];
+    [self setChildControllers];
+}
+
+- (void)setChildControllers{
+    NSMutableArray *mArr = [NSMutableArray arrayWithCapacity:3];
+    for (NSDictionary *dict in self.subControllers) {
+        UIViewController *vc = [self creatController:dict];
+        [mArr addObject:vc];
+    }
+    self.viewControllers = mArr.copy;
+}
+
+- (UIViewController *)creatController:(NSDictionary *)dict{
+    NSString *clsName = dict[@"className"];
+    NSString *imageName = dict[@"imageName"];
+    NSString *title = dict[@"title"];
+    
+    if (!clsName) {
+        return [[UIViewController alloc] init];;
+    }
+
+    UIViewController *vc = [[NSClassFromString(clsName) alloc] init];
+    vc.title = title;
+    vc.tabBarItem.image = [UIImage imageNamed:imageName];
+    vc.tabBarItem.selectedImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@_selected",imageName]];
+    
+    TSNavigationController *nav = [[TSNavigationController alloc] initWithRootViewController:vc];
+    
+    return nav;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 @end
