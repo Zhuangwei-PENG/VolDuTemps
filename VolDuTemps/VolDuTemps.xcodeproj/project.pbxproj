@@ -177,8 +177,6 @@
 			children = (
 				CF91493B1F8B1B200085BEDF /* TSTableViewCell.h */,
 				CF91493C1F8B1B200085BEDF /* TSTableViewCell.m */,
-				CFA7975F1F8B2EDE0085D4A1 /* TSDetailViewController.h */,
-				CFA797601F8B2EDE0085D4A1 /* TSDetailViewController.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -211,6 +209,8 @@
 				CF9149141F8B072B0085BEDF /* TSNavigationController.m */,
 				CF9149161F8B075F0085BEDF /* TSBaseViewController.h */,
 				CF9149171F8B075F0085BEDF /* TSBaseViewController.m */,
+				CFA7975F1F8B2EDE0085D4A1 /* TSDetailViewController.h */,
+				CFA797601F8B2EDE0085D4A1 /* TSDetailViewController.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
