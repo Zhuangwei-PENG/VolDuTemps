@@ -19,4 +19,5 @@
 - (instancetype)initWithDict:(NSDictionary *)dict;
 
 + (instancetype)dairyModelWithTitle: (NSString *)title text:(NSString *)text time:(NSString *)time;
+- (BOOL)isSameTo:(TSDairyModel*)model;
 @end

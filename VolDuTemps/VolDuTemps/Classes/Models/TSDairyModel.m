@@ -44,4 +44,17 @@
     
     return model;
 }
+
+- (BOOL)isSameTo:(TSDairyModel*)model{
+    
+    if ([self.title isEqualToString:model.title]) {
+        if ([self.time isEqualToString:model.time]) {
+            if ([self.text isEqualToString:model.text]) {
+                return YES;
+            }
+        }
+    }
+    return NO;
+    
+}
 @end

@@ -15,9 +15,6 @@
 @end
 
 @implementation TSModifyViewController
-- (void)setDairyModelToModify:(TSDairyModel *)dairyModelToModify{
-    _dairyModelToModify = dairyModelToModify;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,10 +23,10 @@
     self.textField.text = self.dairyModelToModify.text;
     self.dateField.text = self.dairyModelToModify.time;
     
-    self.titleField.userInteractionEnabled = NO;
-    self.textField.userInteractionEnabled = NO;
-    self.dateField.userInteractionEnabled = NO;
-    
+//    self.titleField.userInteractionEnabled = NO;
+//    self.textField.userInteractionEnabled = NO;
+//    self.dateField.userInteractionEnabled = NO;
+    self.view.userInteractionEnabled = NO;
     self.rightButton = [[UIBarButtonItem alloc] initWithTitle:@"修改" style:UIBarButtonItemStylePlain target:self action:@selector(modify)];
     self.rightButton.tintColor = [UIColor darkTextColor];
 
@@ -37,10 +34,10 @@
 
 }
 - (void)modify{
-    self.titleField.userInteractionEnabled = !self.titleField.userInteractionEnabled;
-    self.textField.userInteractionEnabled = !self.textField.userInteractionEnabled;
-    self.dateField.userInteractionEnabled = !self.dateField.userInteractionEnabled;
-    
+//    self.titleField.userInteractionEnabled = !self.titleField.userInteractionEnabled;
+//    self.textField.userInteractionEnabled = !self.textField.userInteractionEnabled;
+//    self.dateField.userInteractionEnabled = !self.dateField.userInteractionEnabled;
+     self.view.userInteractionEnabled = !self.view.userInteractionEnabled;
     if ([self.rightButton.title isEqualToString:@"保存"]) {
         [self saveData];
     }
@@ -63,19 +60,22 @@
     return nil;
 }
 
+- (void)popBack{
+//如果是修改页面，有一个位置修改了，返回时提示是否保存
+    TSDairyModel *model = [super saveData];
+    if ([model isSameTo:self.dairyModelToModify]) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
+        [super popBack];
+    }
+    NSLog(@"%d",[model isSameTo:self.dairyModelToModify]);
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    NSLog(@"内存警告");
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
