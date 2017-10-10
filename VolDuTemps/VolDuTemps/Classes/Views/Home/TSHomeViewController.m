@@ -94,7 +94,7 @@ static const NSString *cellID = @"TSTableViewCell";
 
 #pragma mark - Navigation
 //修改日记
-- (void)modefyDetailViewWith:(TSDairyModel *)sender{
+- (void)editDetailViewWith:(TSDairyModel *)sender{
     TSModifyViewController *modifyVC = [TSModifyViewController detailView];
     modifyVC.delegate = self;
     modifyVC.dairyModelToModify = sender;
@@ -131,7 +131,7 @@ static const NSString *cellID = @"TSTableViewCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     TSDairyModel *model = self.notes[indexPath.row];
 
-    [self modefyDetailViewWith:model];
+    [self editDetailViewWith:model];
 }
 
 #pragma mark - Delegate
@@ -156,24 +156,44 @@ static const NSString *cellID = @"TSTableViewCell";
     [NSKeyedArchiver archiveRootObject:self.notes toFile:kPath];
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    [self.notes removeObjectAtIndex:indexPath.row];
-    [self.myTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    
-    [NSKeyedArchiver archiveRootObject:self.notes toFile:kPath];
+//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+//
+//    [self.notes removeObjectAtIndex:indexPath.row];
+//    [self.myTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+//
+//    [NSKeyedArchiver archiveRootObject:self.notes toFile:kPath];
+//}
+
+- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
+    //创建左滑删除按钮
+    UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"删除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        [self.notes removeObjectAtIndex:indexPath.row];
+        [self.myTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        
+        [NSKeyedArchiver archiveRootObject:self.notes toFile:kPath];
+    }];
+//    deleteAction.backgroundColor = [UIColor redColor];
+    //创建左滑编辑按钮
+    UITableViewRowAction *editAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"编辑" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        [self editDetailViewWith:self.notes[indexPath.row]];
+    }];
+    editAction.backgroundColor = [UIColor colorWithHex:0xE0AD3B];
+//    editAction.backgroundColor = [UIColor orangeColor];
+    return @[deleteAction,editAction];
 }
 
 #pragma mark - Sorting self.notes
 - (void)sorting{
+    //按照日期排序 - 降序
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"_time" ascending:NO];
     
     NSArray *sortedArr = [self.notes.copy sortedArrayUsingDescriptors:[NSArray arrayWithObject:sort]];
-    
-    for (int i = 0; i< sortedArr.count; i++) {
-        NSLog(@"%@ -- %@",[sortedArr[i] title], [sortedArr[i] time]);
-    }
     self.notes = [sortedArr mutableCopy];
+    
+//    for (int i = 0; i< sortedArr.count; i++) {
+//        NSLog(@"%@ -- %@",[sortedArr[i] title], [sortedArr[i] time]);
+//    }
+    
 }
 
 @end
