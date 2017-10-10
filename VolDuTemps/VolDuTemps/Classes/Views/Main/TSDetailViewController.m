@@ -208,11 +208,22 @@
 - (void)popBack{
     //如果时新建页面，只要有一个不为空，返回时提示是否保存
     //如果时修改页面，有一个位置修改了，返回时提示是否保存
-//    if (<#condition#>) {
-//        <#statements#>
-//    }
-    NSLog(@"%s",__func__);
-    [UIAlertController alertControllerWithTitle:@"是否保存" message:@"确定要返回并保存吗？" preferredStyle:UIAlertControllerStyleActionSheet];
+
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"是否保存" message:@"确定要返回并保存吗？" preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    
+    UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"保存" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self saveData];
+    }];
+    
+    [alertController addAction:cancel];
+    [alertController addAction:confirm];
+
+    [self presentViewController:alertController animated:YES completion:^{
+        
+    }];
 }
 
 #pragma mark - datePicker keyboard
