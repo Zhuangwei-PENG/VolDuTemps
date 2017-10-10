@@ -31,6 +31,8 @@
     self.dateField.userInteractionEnabled = NO;
     
     self.rightButton = [[UIBarButtonItem alloc] initWithTitle:@"修改" style:UIBarButtonItemStylePlain target:self action:@selector(modify)];
+    self.rightButton.tintColor = [UIColor darkTextColor];
+
     self.navigationItem.rightBarButtonItem = self.rightButton;
 
 }

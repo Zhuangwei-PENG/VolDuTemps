@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF60C95B1F8C58FF007CFE8F /* UIBarButtonItem+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = CF60C95A1F8C58FF007CFE8F /* UIBarButtonItem+Addition.m */; };
 		CF9148E61F8B05710085BEDF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9148E51F8B05710085BEDF /* AppDelegate.m */; };
 		CF9148EE1F8B05710085BEDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF9148ED1F8B05710085BEDF /* Assets.xcassets */; };
 		CF9148F41F8B05710085BEDF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9148F31F8B05710085BEDF /* main.m */; };
@@ -37,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CF60C9591F8C58FF007CFE8F /* UIBarButtonItem+Addition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Addition.h"; sourceTree = "<group>"; };
+		CF60C95A1F8C58FF007CFE8F /* UIBarButtonItem+Addition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Addition.m"; sourceTree = "<group>"; };
 		CF9148E11F8B05710085BEDF /* VolDuTemps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VolDuTemps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF9148E41F8B05710085BEDF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CF9148E51F8B05710085BEDF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -264,6 +267,8 @@
 				CF9149381F8B0EB40085BEDF /* UILabel+Addition.m */,
 				CF9149391F8B0EB40085BEDF /* UIView+Addition.h */,
 				CF91493A1F8B0EB40085BEDF /* UIView+Addition.m */,
+				CF60C9591F8C58FF007CFE8F /* UIBarButtonItem+Addition.h */,
+				CF60C95A1F8C58FF007CFE8F /* UIBarButtonItem+Addition.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -390,6 +395,7 @@
 				CFA797641F8B34AF0085D4A1 /* TSDairyModel.m in Sources */,
 				CF9148F41F8B05710085BEDF /* main.m in Sources */,
 				CF9149181F8B075F0085BEDF /* TSBaseViewController.m in Sources */,
+				CF60C95B1F8C58FF007CFE8F /* UIBarButtonItem+Addition.m in Sources */,
 				CF9149121F8B06A10085BEDF /* TSMainViewController.m in Sources */,
 				CF91491E1F8B07870085BEDF /* TSProfileViewController.m in Sources */,
 				CF9149151F8B072B0085BEDF /* TSNavigationController.m in Sources */,

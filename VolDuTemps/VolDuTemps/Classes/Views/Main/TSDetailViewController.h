@@ -18,6 +18,7 @@
 @property (nonatomic, strong) UITextField *dateField;
 
 @property (nonatomic, strong) UIBarButtonItem *rightButton;
+@property (nonatomic, strong) UIBarButtonItem *leftButton;
 + (instancetype)detailView;
 
 //+ (instancetype)detailViewWithData:(TSDairyModel *)data;// successBlock: (void(^)(TSDairyModel *modifiedModel))successBlock;

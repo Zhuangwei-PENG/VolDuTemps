@@ -7,6 +7,7 @@
 //
 
 #import "TSDetailViewController.h"
+#import "Addition.h"
 
 @interface TSDetailViewController ()
 
@@ -24,9 +25,16 @@
 //创建保存按钮
 - (UIBarButtonItem *)rightButton{
     if (!_rightButton) {
-        _rightButton = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(saveData)];
+        _rightButton = [[UIBarButtonItem alloc] initWithTitle:@"保存" fontSize:16 target:self action:@selector(saveData) isPopBack:NO];
     }
     return _rightButton;
+}
+//创建返回按钮
+- (UIBarButtonItem *)leftButton{
+    if (!_leftButton) {
+        _leftButton = [[UIBarButtonItem alloc] initWithTitle:@"返回" fontSize:16 target:self action:@selector(popBack) isPopBack:YES];
+    }
+    return _leftButton;
 }
 //创建标题
 - (UITextField *)titleField{
@@ -60,7 +68,8 @@
 }
 
 - (void)setupUI{
-    
+    self.navigationItem.leftBarButtonItem = self.leftButton;
+ 
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.titleField];
     [self.view addSubview:self.textField];
@@ -194,6 +203,16 @@
     NSLog(@"保存数据");
     return [TSDairyModel dairyModelWithTitle:self.titleField.text text:self.textField.text time:self.dateField.text];
 
+}
+
+- (void)popBack{
+    //如果时新建页面，只要有一个不为空，返回时提示是否保存
+    //如果时修改页面，有一个位置修改了，返回时提示是否保存
+//    if (<#condition#>) {
+//        <#statements#>
+//    }
+    NSLog(@"%s",__func__);
+    [UIAlertController alertControllerWithTitle:@"是否保存" message:@"确定要返回并保存吗？" preferredStyle:UIAlertControllerStyleActionSheet];
 }
 
 #pragma mark - datePicker keyboard

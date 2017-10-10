@@ -177,7 +177,7 @@
                                                                    multiplier:1
                                                                      constant:0]
                                        ]];
-    
+    //设置cell底部的分割线
     [self.contentView addConstraints:@[[NSLayoutConstraint constraintWithItem:self.bottomLine
                                                                     attribute:NSLayoutAttributeTop
                                                                     relatedBy:NSLayoutRelationEqual
