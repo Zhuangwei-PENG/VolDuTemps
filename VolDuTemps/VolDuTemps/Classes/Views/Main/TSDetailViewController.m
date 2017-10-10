@@ -11,7 +11,7 @@
 
 @interface TSDetailViewController ()
 
-
+@property (nonatomic, strong) UIView *bottomLine;
 @property (nonatomic, strong) UIDatePicker *datePicker;
 
 @end
@@ -50,21 +50,25 @@
     }
     return _textField;
 }
+//创建标题底部的线
+- (UIView *)bottomLine{
+    if (!_bottomLine) {
+        _bottomLine = [[UIView alloc] init];
+    }
+    return _bottomLine;
+}
 //创建时间选择框
 - (UITextField *)dateField{
     if (!_dateField) {
         _dateField = [[UITextField alloc] init];
     }
     return _dateField;
-    
 }
 
 #pragma mark - UI setUp
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     [self setupUI];
-   
 }
 
 - (void)setupUI{
@@ -74,6 +78,9 @@
     [self.view addSubview:self.titleField];
     [self.view addSubview:self.textField];
     [self.view addSubview:self.dateField];
+    [self.view addSubview:self.bottomLine];
+    
+    self.bottomLine.backgroundColor = [UIColor colorWithHex:0xEDEDED];
     
     self.navigationItem.rightBarButtonItem = self.rightButton;
     self.titleField.placeholder = @"标题";
@@ -195,6 +202,39 @@
                                                             multiplier:1
                                                               constant:margin]
                                 ]];
+    //设置title底部的分割线
+    [self.view addConstraints:@[[NSLayoutConstraint constraintWithItem:self.bottomLine
+                                                                    attribute:NSLayoutAttributeTop
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.titleField
+                                                                    attribute:NSLayoutAttributeBottom
+                                                                   multiplier:1
+                                                                     constant:1],
+                                       
+                                       [NSLayoutConstraint constraintWithItem:self.bottomLine
+                                                                    attribute:NSLayoutAttributeLeft
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.view
+                                                                    attribute:NSLayoutAttributeLeft
+                                                                   multiplier:1
+                                                                     constant:margin],
+                                       
+                                       [NSLayoutConstraint constraintWithItem:self.bottomLine
+                                                                    attribute:NSLayoutAttributeRight
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.view
+                                                                    attribute:NSLayoutAttributeRight
+                                                                   multiplier:1
+                                                                     constant:-margin],
+                                       
+                                       [NSLayoutConstraint constraintWithItem:self.bottomLine
+                                                                    attribute:NSLayoutAttributeHeight
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:nil
+                                                                    attribute:NSLayoutAttributeNotAnAttribute
+                                                                   multiplier:1
+                                                                     constant:1]
+                                       ]];
     
     
 }
@@ -206,6 +246,7 @@
 }
 
 - (void)popBack{
+    //自类重写父类方法
     //如果时新建页面，只要有一个不为空，返回时提示是否保存
     //如果时修改页面，有一个位置修改了，返回时提示是否保存
 
