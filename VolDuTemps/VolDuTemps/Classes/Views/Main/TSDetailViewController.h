@@ -24,4 +24,5 @@
 //+ (instancetype)detailViewWithData:(TSDairyModel *)data;// successBlock: (void(^)(TSDairyModel *modifiedModel))successBlock;
 
 - (TSDairyModel *)saveData;
+- (void)popBack;
 @end

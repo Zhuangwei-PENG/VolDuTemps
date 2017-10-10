@@ -21,6 +21,7 @@
 #import "UIView+Addition.h"
 #import "UIImage+Additions.h"
 #import "NSString+path.h"
+#import "NSString+Addition.h"
 #import "UIButton+Addition.h"
 #import "UIBarButtonItem+Addition.h"
 //#import "NSArray+log.h"
