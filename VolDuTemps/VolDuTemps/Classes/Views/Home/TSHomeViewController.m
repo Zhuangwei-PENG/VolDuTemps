@@ -156,14 +156,6 @@ static const NSString *cellID = @"TSTableViewCell";
     [NSKeyedArchiver archiveRootObject:self.notes toFile:kPath];
 }
 
-//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
-//
-//    [self.notes removeObjectAtIndex:indexPath.row];
-//    [self.myTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-//
-//    [NSKeyedArchiver archiveRootObject:self.notes toFile:kPath];
-//}
-
 - (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
     //创建左滑删除按钮
     UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"删除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
@@ -172,13 +164,11 @@ static const NSString *cellID = @"TSTableViewCell";
         
         [NSKeyedArchiver archiveRootObject:self.notes toFile:kPath];
     }];
-//    deleteAction.backgroundColor = [UIColor redColor];
     //创建左滑编辑按钮
     UITableViewRowAction *editAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"编辑" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
         [self editDetailViewWith:self.notes[indexPath.row]];
     }];
     editAction.backgroundColor = [UIColor colorWithHex:0xE0AD3B];
-//    editAction.backgroundColor = [UIColor orangeColor];
     return @[deleteAction,editAction];
 }
 

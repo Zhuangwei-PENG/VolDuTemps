@@ -7,6 +7,8 @@
 //
 
 #import "TSProfileViewController.h"
+#import "TSSettingGroup.h"
+#import "TSSettingItem.h"
 
 @interface TSProfileViewController ()
 

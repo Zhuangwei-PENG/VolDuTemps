@@ -249,19 +249,24 @@
     //自类重写父类方法
     //如果时新建页面，只要有一个不为空，返回时提示是否保存
     //如果时修改页面，有一个位置修改了，返回时提示是否保存
-
+ 
+    
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"是否保存" message:@"确定要返回并保存吗？" preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
     }];
     
-    UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"保存" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *save = [UIAlertAction actionWithTitle:@"保存" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self saveData];
     }];
     
+    UIAlertAction *notSave = [UIAlertAction actionWithTitle:@"不保存" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+    
     [alertController addAction:cancel];
-    [alertController addAction:confirm];
-
+    [alertController addAction:save];
+    [alertController addAction:notSave];
     [self presentViewController:alertController animated:YES completion:^{
         
     }];

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		CF60C95B1F8C58FF007CFE8F /* UIBarButtonItem+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = CF60C95A1F8C58FF007CFE8F /* UIBarButtonItem+Addition.m */; };
 		CF60C95E1F8C6647007CFE8F /* NSString+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = CF60C95D1F8C6647007CFE8F /* NSString+Addition.m */; };
+		CF60C9611F8C89DD007CFE8F /* TSSettingGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = CF60C9601F8C89DD007CFE8F /* TSSettingGroup.m */; };
+		CF60C9641F8C89F0007CFE8F /* TSSettingItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CF60C9631F8C89F0007CFE8F /* TSSettingItem.m */; };
 		CF9148E61F8B05710085BEDF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9148E51F8B05710085BEDF /* AppDelegate.m */; };
 		CF9148EE1F8B05710085BEDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF9148ED1F8B05710085BEDF /* Assets.xcassets */; };
 		CF9148F41F8B05710085BEDF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9148F31F8B05710085BEDF /* main.m */; };
@@ -43,6 +45,10 @@
 		CF60C95A1F8C58FF007CFE8F /* UIBarButtonItem+Addition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Addition.m"; sourceTree = "<group>"; };
 		CF60C95C1F8C6647007CFE8F /* NSString+Addition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Addition.h"; sourceTree = "<group>"; };
 		CF60C95D1F8C6647007CFE8F /* NSString+Addition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Addition.m"; sourceTree = "<group>"; };
+		CF60C95F1F8C89DD007CFE8F /* TSSettingGroup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSSettingGroup.h; sourceTree = "<group>"; };
+		CF60C9601F8C89DD007CFE8F /* TSSettingGroup.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSSettingGroup.m; sourceTree = "<group>"; };
+		CF60C9621F8C89F0007CFE8F /* TSSettingItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSSettingItem.h; sourceTree = "<group>"; };
+		CF60C9631F8C89F0007CFE8F /* TSSettingItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSSettingItem.m; sourceTree = "<group>"; };
 		CF9148E11F8B05710085BEDF /* VolDuTemps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VolDuTemps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF9148E41F8B05710085BEDF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CF9148E51F8B05710085BEDF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -175,6 +181,10 @@
 			children = (
 				CFA797621F8B34AF0085D4A1 /* TSDairyModel.h */,
 				CFA797631F8B34AF0085D4A1 /* TSDairyModel.m */,
+				CF60C95F1F8C89DD007CFE8F /* TSSettingGroup.h */,
+				CF60C9601F8C89DD007CFE8F /* TSSettingGroup.m */,
+				CF60C9621F8C89F0007CFE8F /* TSSettingItem.h */,
+				CF60C9631F8C89F0007CFE8F /* TSSettingItem.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -399,7 +409,9 @@
 				CFA7976E1F8B578F0085D4A1 /* TSModifyViewController.m in Sources */,
 				CFA797641F8B34AF0085D4A1 /* TSDairyModel.m in Sources */,
 				CF9148F41F8B05710085BEDF /* main.m in Sources */,
+				CF60C9611F8C89DD007CFE8F /* TSSettingGroup.m in Sources */,
 				CF9149181F8B075F0085BEDF /* TSBaseViewController.m in Sources */,
+				CF60C9641F8C89F0007CFE8F /* TSSettingItem.m in Sources */,
 				CF60C95B1F8C58FF007CFE8F /* UIBarButtonItem+Addition.m in Sources */,
 				CF9149121F8B06A10085BEDF /* TSMainViewController.m in Sources */,
 				CF91491E1F8B07870085BEDF /* TSProfileViewController.m in Sources */,
