@@ -238,7 +238,7 @@
     
     
 }
-
+#pragma mark - Navigation
 - (TSDairyModel *)saveData{
     NSLog(@"保存数据");
     return [TSDairyModel dairyModelWithTitle:self.titleField.text text:self.textField.text time:self.dateField.text];
@@ -277,6 +277,7 @@
     //将日期转换成字符串
     NSString *dateStr = [formatter stringFromDate:date];
     self.dateField.text = dateStr;
+
     [self.dateField resignFirstResponder];
 }
 

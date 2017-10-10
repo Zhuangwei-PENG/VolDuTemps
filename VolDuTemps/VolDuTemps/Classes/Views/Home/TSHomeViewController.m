@@ -55,6 +55,7 @@ static const NSString *cellID = @"TSTableViewCell";
     
     //根据notes是否有数据判断显示哪个页面
     self.notes = [NSKeyedUnarchiver unarchiveObjectWithFile:kPath];
+    [self sorting];
     self.notes.count != 0 ? [self setupTableView] : [self setupVideView];
     
 }
@@ -137,6 +138,8 @@ static const NSString *cellID = @"TSTableViewCell";
 - (void)TSAddViewController: (TSAddViewController *)TSAddViewController dairy: (TSDairyModel *)dairyModel{
     
     [self.notes addObject:dairyModel];
+    //在这里需要对self.notes按时间排序
+    [self sorting];
     [self.myTableView reloadData];
     
     [NSKeyedArchiver archiveRootObject:self.notes toFile:kPath];
@@ -147,6 +150,8 @@ static const NSString *cellID = @"TSTableViewCell";
 }
 
 - (void)TSModifyViewController: (TSModifyViewController *)TSModifyViewController{
+    //在这里需要对self.notes按时间排序
+    [self sorting];
     [self.myTableView reloadData];
     [NSKeyedArchiver archiveRootObject:self.notes toFile:kPath];
 }
@@ -158,4 +163,17 @@ static const NSString *cellID = @"TSTableViewCell";
     
     [NSKeyedArchiver archiveRootObject:self.notes toFile:kPath];
 }
+
+#pragma mark - Sorting self.notes
+- (void)sorting{
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"_time" ascending:NO];
+    
+    NSArray *sortedArr = [self.notes.copy sortedArrayUsingDescriptors:[NSArray arrayWithObject:sort]];
+    
+    for (int i = 0; i< sortedArr.count; i++) {
+        NSLog(@"%@ -- %@",[sortedArr[i] title], [sortedArr[i] time]);
+    }
+    self.notes = [sortedArr mutableCopy];
+}
+
 @end
