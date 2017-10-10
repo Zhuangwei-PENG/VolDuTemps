@@ -18,6 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    //添加修改时键盘自动弹出
+    [self.titleField becomeFirstResponder];
     
 }
 

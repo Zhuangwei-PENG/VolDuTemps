@@ -37,7 +37,9 @@
 //    self.titleField.userInteractionEnabled = !self.titleField.userInteractionEnabled;
 //    self.textField.userInteractionEnabled = !self.textField.userInteractionEnabled;
 //    self.dateField.userInteractionEnabled = !self.dateField.userInteractionEnabled;
-     self.view.userInteractionEnabled = !self.view.userInteractionEnabled;
+    self.view.userInteractionEnabled = !self.view.userInteractionEnabled;
+    //添加修改时键盘自动弹出
+    [self.titleField becomeFirstResponder];
     if ([self.rightButton.title isEqualToString:@"保存"]) {
         [self saveData];
     }
