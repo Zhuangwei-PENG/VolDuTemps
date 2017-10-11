@@ -21,7 +21,7 @@
 - (UISwitch *)switchView{
     if (!_switchView) {
         _switchView = [[UISwitch alloc] init];
-        [_switchView addTarget:self action:@selector(switchValueChanged) forControlEvents:UIControlEventValueChanged];
+        [_switchView addTarget:self action:@selector(valueChanged) forControlEvents:UIControlEventValueChanged];
     }
     return _switchView;
 }
@@ -62,11 +62,17 @@
 
 - (void)setupAccessoryView{
     if ([_item isKindOfClass:[TSSwitchItem class]]) {
+        TSSwitchItem *switchItem = (TSSwitchItem *)self.item;
+        [self.switchView setOn:switchItem.isOn];
         self.accessoryView = self.switchView;
     }
 }
-- (void)switchValueChanged{
-    NSLog(@"Switch改变");
+- (void)valueChanged{
+    if ([self.delegate respondsToSelector:@selector(switchValueChanged:atIndexPath:)]) {
+        TSSwitchItem *switchItem = (TSSwitchItem *)self.item;
+        switchItem.isOn = self.switchView.isOn;
+        [self.delegate switchValueChanged:switchItem atIndexPath:self.indexPath];
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

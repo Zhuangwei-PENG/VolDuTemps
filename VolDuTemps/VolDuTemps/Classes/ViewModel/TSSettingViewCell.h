@@ -8,9 +8,19 @@
 
 #import <UIKit/UIKit.h>
 @class TSSettingItem;
+@class TSSwitchItem;
+
+@protocol TSSettingViewCellDelegate<NSObject>
+
+- (void)switchValueChanged:(TSSwitchItem *)item atIndexPath:(NSIndexPath *)indexPath;
+
+@end
+
 @interface TSSettingViewCell : UITableViewCell
 
 @property (nonatomic, strong) TSSettingItem *item;
+@property (nonatomic, strong) id<TSSettingViewCellDelegate> delegate;
+@property (nonatomic, strong) NSIndexPath *indexPath;
 
 + (instancetype)cellWithTableView:(UITableView *)tableView;
 

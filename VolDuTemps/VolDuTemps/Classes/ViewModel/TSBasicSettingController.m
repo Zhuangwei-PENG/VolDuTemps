@@ -8,7 +8,6 @@
 
 #import "TSBasicSettingController.h"
 
-
 @interface TSBasicSettingController ()
 
 @end
@@ -56,7 +55,9 @@
     TSSettingGroup *group = self.groups[indexPath.section];
     TSSettingItem *item = group.items[indexPath.row];
     cell.item = item;
-
+    
+    cell.indexPath = indexPath;
+    
     return cell;
 }
 
