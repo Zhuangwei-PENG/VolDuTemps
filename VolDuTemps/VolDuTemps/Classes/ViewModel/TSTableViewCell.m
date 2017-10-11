@@ -60,9 +60,9 @@
 
 #pragma mark - designed initializer
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    [self setupCell];
-    
+    if(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]){
+        [self setupCell];
+    }
     return self;
 }
 
@@ -74,8 +74,6 @@
     [self.contentView addSubview:self.textLbl];
     [self.contentView addSubview:self.timeLbl];
     [self.contentView addSubview:self.bottomLine];
-    
-//    self.bottomLine.frame = CGRectMake(1, self.contentView.bounds.size.height - 1, self.contentView.bounds.size.width - 2, 1);
     
     self.bottomLine.backgroundColor = [UIColor colorWithHex:0xEDEDED];
     self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -94,10 +92,9 @@
         subview.translatesAutoresizingMaskIntoConstraints = NO;
     }
     
-    //测试内容
+    //设置对齐
     self.timeLbl.textAlignment = NSTextAlignmentRight;
 
-    
     //自动布局
     CGFloat margin = 8;
     //设置titleLbl的自动布局

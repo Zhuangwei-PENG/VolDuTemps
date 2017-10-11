@@ -12,6 +12,8 @@
 		CF60C9611F8C89DD007CFE8F /* TSSettingGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = CF60C9601F8C89DD007CFE8F /* TSSettingGroup.m */; };
 		CF60C9641F8C89F0007CFE8F /* TSSettingItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CF60C9631F8C89F0007CFE8F /* TSSettingItem.m */; };
 		CF83009C1F8DA95900C2A63E /* TSBasicSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF83009B1F8DA95900C2A63E /* TSBasicSettingController.m */; };
+		CF83009F1F8DAE3700C2A63E /* TSSettingViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF83009E1F8DAE3700C2A63E /* TSSettingViewCell.m */; };
+		CF8300A21F8DB63900C2A63E /* TSSwitchItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8300A11F8DB63900C2A63E /* TSSwitchItem.m */; };
 		CF9148E61F8B05710085BEDF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9148E51F8B05710085BEDF /* AppDelegate.m */; };
 		CF9148EE1F8B05710085BEDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF9148ED1F8B05710085BEDF /* Assets.xcassets */; };
 		CF9148F41F8B05710085BEDF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9148F31F8B05710085BEDF /* main.m */; };
@@ -52,6 +54,10 @@
 		CF60C9631F8C89F0007CFE8F /* TSSettingItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSSettingItem.m; sourceTree = "<group>"; };
 		CF83009A1F8DA95900C2A63E /* TSBasicSettingController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSBasicSettingController.h; sourceTree = "<group>"; };
 		CF83009B1F8DA95900C2A63E /* TSBasicSettingController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSBasicSettingController.m; sourceTree = "<group>"; };
+		CF83009D1F8DAE3700C2A63E /* TSSettingViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSSettingViewCell.h; sourceTree = "<group>"; };
+		CF83009E1F8DAE3700C2A63E /* TSSettingViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSSettingViewCell.m; sourceTree = "<group>"; };
+		CF8300A01F8DB63900C2A63E /* TSSwitchItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSSwitchItem.h; sourceTree = "<group>"; };
+		CF8300A11F8DB63900C2A63E /* TSSwitchItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSSwitchItem.m; sourceTree = "<group>"; };
 		CF9148E11F8B05710085BEDF /* VolDuTemps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VolDuTemps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF9148E41F8B05710085BEDF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CF9148E51F8B05710085BEDF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -188,6 +194,8 @@
 				CF60C9601F8C89DD007CFE8F /* TSSettingGroup.m */,
 				CF60C9621F8C89F0007CFE8F /* TSSettingItem.h */,
 				CF60C9631F8C89F0007CFE8F /* TSSettingItem.m */,
+				CF8300A01F8DB63900C2A63E /* TSSwitchItem.h */,
+				CF8300A11F8DB63900C2A63E /* TSSwitchItem.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -207,6 +215,8 @@
 				CF91493C1F8B1B200085BEDF /* TSTableViewCell.m */,
 				CF83009A1F8DA95900C2A63E /* TSBasicSettingController.h */,
 				CF83009B1F8DA95900C2A63E /* TSBasicSettingController.m */,
+				CF83009D1F8DAE3700C2A63E /* TSSettingViewCell.h */,
+				CF83009E1F8DAE3700C2A63E /* TSSettingViewCell.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -419,12 +429,14 @@
 				CF60C9641F8C89F0007CFE8F /* TSSettingItem.m in Sources */,
 				CF83009C1F8DA95900C2A63E /* TSBasicSettingController.m in Sources */,
 				CF60C95B1F8C58FF007CFE8F /* UIBarButtonItem+Addition.m in Sources */,
+				CF83009F1F8DAE3700C2A63E /* TSSettingViewCell.m in Sources */,
 				CF9149121F8B06A10085BEDF /* TSMainViewController.m in Sources */,
 				CF91491E1F8B07870085BEDF /* TSProfileViewController.m in Sources */,
 				CF60C95E1F8C6647007CFE8F /* NSString+Addition.m in Sources */,
 				CF9149151F8B072B0085BEDF /* TSNavigationController.m in Sources */,
 				CF91493D1F8B1B200085BEDF /* TSTableViewCell.m in Sources */,
 				CF9148E61F8B05710085BEDF /* AppDelegate.m in Sources */,
+				CF8300A21F8DB63900C2A63E /* TSSwitchItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

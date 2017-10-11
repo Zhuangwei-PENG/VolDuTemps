@@ -6,8 +6,9 @@
 //  Copyright © 2017年 Zhuangwei PENG. All rights reserved.
 //
 
-#import "TSBaseViewController.h"
+#import "TSBasicSettingController.h"
 
-@interface TSProfileViewController : TSBaseViewController
+
+@interface TSProfileViewController : TSBasicSettingController
 
 @end

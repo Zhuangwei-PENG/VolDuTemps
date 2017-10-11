@@ -10,5 +10,7 @@
 @class TSDairyModel;
 
 @interface TSTableViewCell : UITableViewCell
+
 @property (nonatomic, strong) TSDairyModel *dairyModel;
+
 @end

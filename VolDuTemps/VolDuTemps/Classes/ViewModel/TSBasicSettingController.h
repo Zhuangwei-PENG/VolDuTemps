@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TSBasicSettingController : UIViewController
+@interface TSBasicSettingController : UITableViewController
+//从外界获取数据
+@property (nonatomic, strong) NSMutableArray *groups;
 
 @end

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void(^settingOption) ();
+typedef void(^settingOption) (void);
 
 @interface TSSettingItem : NSObject
 
@@ -16,7 +16,7 @@ typedef void(^settingOption) ();
 @property (nonatomic, copy) NSString *image;
 @property (nonatomic, copy) NSString *subTitle;
 
-@property (nonatomic, assign) Class *destinationVC;
+@property (nonatomic, assign) Class destinationVC;
 @property (nonatomic, copy) settingOption option;
 
 + (instancetype)itemWithTitle:(NSString *)title image:(NSString *)image;

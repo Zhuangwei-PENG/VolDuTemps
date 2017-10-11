@@ -53,22 +53,22 @@
     NSString *clsName = dict[@"className"];
     NSString *imageName = dict[@"imageName"];
     NSString *title = dict[@"title"];
-    NSString *style = dict[@"tableViewStyle"];
+//    NSString *style = dict[@"tableViewStyle"];
     
     if (!clsName) {
         return [[UIViewController alloc] init];;
     }
 
-    TSBaseViewController *vc = [[NSClassFromString(clsName) alloc] init];
+    UIViewController *vc = [[NSClassFromString(clsName) alloc] init];
     vc.title = title;
     vc.tabBarItem.image = [UIImage imageNamed:imageName];
     vc.tabBarItem.selectedImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@_selected",imageName]];
     
-    if ([style isEqualToString:@"Plein"]) {
-        vc.tableViewStyle = 0;
-    }else if ([style isEqualToString:@"Grouped"]){
-        vc.tableViewStyle = 1;
-    }
+//    if ([style isEqualToString:@"Plein"]) {
+//        vc.tableViewStyle = 0;
+//    }else if ([style isEqualToString:@"Grouped"]){
+//        vc.tableViewStyle = 1;
+//    }
     
     TSNavigationController *nav = [[TSNavigationController alloc] initWithRootViewController:vc];
     
