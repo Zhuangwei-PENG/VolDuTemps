@@ -8,6 +8,8 @@
 
 #import "TSProfileViewController.h"
 #import "TSSettingViewController.h"
+#import "TSPrivateController.h"
+
 #import "TSSettingGroup.h"
 #import "TSSettingItem.h"
 
@@ -45,6 +47,7 @@ static NSString *cellId = @"staticCell";
     setting.destinationVC = [TSSettingViewController class];
     
     TSSettingItem *private = [TSSettingItem itemWithTitle:@"隐私"];
+    private.destinationVC = [TSPrivateController class];
     TSSettingItem *aboutus = [TSSettingItem itemWithTitle:@"关于"];
     TSSettingGroup *groupTwo = [TSSettingGroup groupWithItems:@[setting,private,aboutus]];
     [self.groups addObject:groupTwo];

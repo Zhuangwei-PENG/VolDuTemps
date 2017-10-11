@@ -56,13 +56,7 @@
     TSSettingGroup *group = self.groups[indexPath.section];
     TSSettingItem *item = group.items[indexPath.row];
     cell.item = item;
-    
-//    if (indexPath.section == 0) {
-//        cell.imageView.image = [UIImage imageNamed:item.image];
-//        cell.textLabel.textAlignment = NSTextAlignmentCenter;
-//        return cell;
-//    }
-    
+
     return cell;
 }
 
@@ -79,9 +73,6 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    if (indexPath.section == 0) {
-//        return 100;
-//    }
     return 44;
 }
 
