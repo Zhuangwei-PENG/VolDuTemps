@@ -7,6 +7,9 @@
 //
 
 #import "TSBasicSettingController.h"
+#import "TSSettingGroup.h"
+#import "TSSettingItem.h"
+#import "TSSettingViewCell.h"
 
 @interface TSBasicSettingController ()
 
@@ -14,24 +17,87 @@
 
 @implementation TSBasicSettingController
 
+#pragma mark - Lazy instansitaion
+- (NSMutableArray *)groups{
+    if (!_groups) {
+        _groups = [NSMutableArray arrayWithCapacity:4];
+    }
+    return _groups;
+}
+
+- (instancetype)init{
+    return [self initWithStyle:UITableViewStyleGrouped];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [self setupTableView];
+
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)setupTableView{
+    self.tableView.backgroundColor = [UIColor whiteColor];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - DataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return [self.groups count];
 }
-*/
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    NSArray *group = [self.groups[section] items];
+    return [group count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    TSSettingViewCell *cell = [TSSettingViewCell cellWithTableView:tableView];
+    TSSettingGroup *group = self.groups[indexPath.section];
+    TSSettingItem *item = group.items[indexPath.row];
+    cell.item = item;
+    
+    if (indexPath.section == 0) {
+        cell.imageView.image = [UIImage imageNamed:item.image];
+        cell.textLabel.textAlignment = NSTextAlignmentCenter;
+        return cell;
+    }
+    
+    return cell;
+}
+
+#pragma mark - Delegate
+//返回脚部标题
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+    TSSettingGroup *group = self.groups[section];
+    return group.footerTitle;
+}
+//返回头部标题
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    TSSettingGroup *group = self.groups[section];
+    return group.headerTitle;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0) {
+        return 100;
+    }
+    return 44;
+}
+
+//当cell选中的时候执行该方法
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    TSSettingGroup *group = self.groups[indexPath.section];
+    TSSettingItem *item = group.items[indexPath.row];
+    if (item.destinationVC) {//如果有跳转就执行跳转
+        UIViewController *destinationVC = [[item.destinationVC alloc] init];
+        [self.navigationController pushViewController:destinationVC animated:YES];
+    }
+    if (item.option) {//哪个cell有事情就做事情(自己的事情自己干)
+        item.option();
+    }
+}
 
 @end
