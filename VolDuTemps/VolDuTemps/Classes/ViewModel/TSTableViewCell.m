@@ -7,7 +7,6 @@
 //
 
 #import "TSTableViewCell.h"
-#import "TSDairyModel.h"
 #import "Addition.h"
 
 @interface TSTableViewCell()
@@ -66,7 +65,13 @@
     return self;
 }
 
-
+//设置字体大小
+- (void)setTitleFont:(CGFloat)titleFont{
+    _titleFont = titleFont;
+    self.titleLbl.font = [UIFont systemFontOfSize:_titleFont];
+    self.textLbl.font = [UIFont systemFontOfSize:_titleFont-2];
+    self.timeLbl.font = [UIFont systemFontOfSize:_titleFont-2];
+}
 
 - (void)setupCell{
     
@@ -82,10 +87,12 @@
     self.textLbl.numberOfLines = 3;
     self.timeLbl.numberOfLines = 1;
     
-    //设置字体大小
-    self.titleLbl.font = [UIFont systemFontOfSize:16];
-    self.textLbl.font = [UIFont systemFontOfSize:12];
-    self.timeLbl.font = [UIFont systemFontOfSize:14];
+    if (!self.titleFont) {
+        self.titleFont = 16;
+    }
+    self.titleLbl.font = [UIFont systemFontOfSize:self.titleFont];
+    self.textLbl.font = [UIFont systemFontOfSize:self.titleFont-2];
+    self.timeLbl.font = [UIFont systemFontOfSize:self.titleFont-2];
     
     for (UIView *subview in self.contentView.subviews) {
         //取消autoresizing

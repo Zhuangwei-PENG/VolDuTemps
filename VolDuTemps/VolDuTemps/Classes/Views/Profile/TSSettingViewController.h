@@ -10,4 +10,6 @@
 
 @interface TSSettingViewController : TSBasicSettingController
 
+@property (nonatomic, assign) CGFloat fontSize;
+
 @end

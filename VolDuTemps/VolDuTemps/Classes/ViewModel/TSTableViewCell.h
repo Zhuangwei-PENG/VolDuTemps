@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-@class TSDairyModel;
+#import "TSDairyModel.h"
 
 @interface TSTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) TSDairyModel *dairyModel;
+@property (nonatomic, assign) CGFloat titleFont;
 
 @end

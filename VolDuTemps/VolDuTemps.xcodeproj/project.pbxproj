@@ -137,6 +137,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF8300A91F8DEC3F00C2A63E /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		CF9148D81F8B05710085BEDF = {
 			isa = PBXGroup;
 			children = (
@@ -262,6 +269,7 @@
 		CF91490F1F8B062C0085BEDF /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				CF8300A91F8DEC3F00C2A63E /* New Group */,
 				CF91491C1F8B07870085BEDF /* TSProfileViewController.h */,
 				CF91491D1F8B07870085BEDF /* TSProfileViewController.m */,
 				CF8300A61F8DC82400C2A63E /* TSSettingViewController.h */,

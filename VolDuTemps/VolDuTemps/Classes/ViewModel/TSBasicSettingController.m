@@ -37,6 +37,7 @@
 - (void)setupTableView{
     self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.scrollEnabled = NO;
 }
 
 #pragma mark - DataSource
