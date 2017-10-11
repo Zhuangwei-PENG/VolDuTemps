@@ -8,7 +8,6 @@
 
 #import "TSBasicSettingController.h"
 
-
 @interface TSProfileViewController : TSBasicSettingController
 
 @end

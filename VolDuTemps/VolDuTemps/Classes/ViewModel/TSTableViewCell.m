@@ -88,7 +88,7 @@
     self.timeLbl.numberOfLines = 1;
     
     if (!self.titleFont) {
-        self.titleFont = 16;
+        self.titleFont = 15;
     }
     self.titleLbl.font = [UIFont systemFontOfSize:self.titleFont];
     self.textLbl.font = [UIFont systemFontOfSize:self.titleFont-2];

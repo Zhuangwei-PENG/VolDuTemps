@@ -22,6 +22,8 @@
 
 @property (nonatomic, strong) UIView *videView;
 
+@property (nonatomic, assign) CGFloat userFontSize;
+
 @end
 
 @implementation TSHomeViewController
@@ -45,6 +47,14 @@ static const NSString *cellID = @"TSTableViewCell";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+}
+
+#pragma mark -SetUp UI
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    self.userFontSize = [userDefaults floatForKey:@"myFontSize"];
+    [self.myTableView reloadData];
 }
 
 - (void)setupUI{
@@ -125,6 +135,7 @@ static const NSString *cellID = @"TSTableViewCell";
     TSTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TSTableViewCell" forIndexPath:indexPath];
     TSDairyModel *model = self.notes[indexPath.row];
     cell.dairyModel = model;
+    cell.titleFont = self.userFontSize;
 
     return cell;
 }

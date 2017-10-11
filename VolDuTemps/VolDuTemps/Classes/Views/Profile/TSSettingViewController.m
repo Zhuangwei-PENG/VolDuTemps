@@ -8,17 +8,9 @@
 
 #import "TSSettingViewController.h"
 #import "TSFontController.h"
-#import "TSTableViewCell.h"
-#import "Addition.h"
-
-#define kHeightOfCell 60
 
 @interface TSSettingViewController ()
-@property (nonatomic, strong) UIView *fontView;
-@property (nonatomic, strong) UISlider *slider;
-@property (nonatomic, strong) UIButton *confirmBtn;
-@property (nonatomic, strong) UIButton *cancelBtn;
-@property (nonatomic, strong) TSTableViewCell *modelCell;
+
 @end
 
 @implementation TSSettingViewController

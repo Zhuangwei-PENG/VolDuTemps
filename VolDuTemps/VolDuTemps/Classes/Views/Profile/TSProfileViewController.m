@@ -51,31 +51,7 @@ static NSString *cellId = @"staticCell";
 
 
 }
-//- (void)setupTableView{
-//    [super setupTableView];
-//    
-//    [self.myTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellId];
-//    TSSettingItem *profile = [TSSettingItem itemWithTitle:@"名称" image:@"Mark_43"];
-//    TSSettingGroup *groupOne = [TSSettingGroup groupWithItems:@[profile]];
-//    [self.groups addObject:groupOne];
-//    
-//    TSSettingItem *setting = [TSSettingItem itemWithTitle:@"设置"];
-//    TSSettingItem *private = [TSSettingItem itemWithTitle:@"隐私"];
-//    TSSettingItem *aboutus = [TSSettingItem itemWithTitle:@"关于"];
-//    TSSettingGroup *groupTwo = [TSSettingGroup groupWithItems:@[setting,private,aboutus]];
-//    [self.groups addObject:groupTwo];
-//}
-//
-//#pragma mark - DataSource
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-//    return [self.groups count];
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-//    NSArray *group = [self.groups[section] items];
-//    return [group count];
-//}
-//
+
 #pragma mark - DataSource
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -93,6 +69,7 @@ static NSString *cellId = @"staticCell";
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
+
 #pragma mark - Delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
@@ -101,7 +78,6 @@ static NSString *cellId = @"staticCell";
     return 44;
 }
 
-//#pragma mark - Navigation
 
 
 
