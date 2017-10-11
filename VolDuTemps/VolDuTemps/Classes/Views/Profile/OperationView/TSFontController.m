@@ -20,7 +20,10 @@
 @end
 
 @implementation TSFontController
+
 static const CGFloat margin = 8;
+static NSString *kFont = @"myFontSize";
+
 #pragma mark - Lazy instantiation
 - (UIButton *)defaultBtn{
     if (!_defaultBtn) {
@@ -45,7 +48,6 @@ static const CGFloat margin = 8;
         _slider = [[UISlider alloc] init];
         _slider.maximumValue = 18.0;
         _slider.minimumValue = 12.0;
-        _slider.value = 15.0;
         _slider.continuous = NO;
     }
     return _slider;
@@ -78,6 +80,7 @@ static const CGFloat margin = 8;
     CGFloat W = self.view.bounds.size.width - 2 * margin;
     self.slider.frame = CGRectMake(margin, Y, W, 20);
     
+    self.slider.value = [[NSUserDefaults standardUserDefaults] floatForKey:kFont];
     [self.slider addTarget:self action:@selector(sliderChanged) forControlEvents:UIControlEventValueChanged];
 }
 
@@ -107,8 +110,8 @@ static const CGFloat margin = 8;
 - (void)confirm{
     //保存数据
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setFloat:self.slider.value forKey:@"myFontSize"];
-    
+    [userDefaults setFloat:self.slider.value forKey:kFont];
+    [userDefaults synchronize];
     [self popBack];
 }
 

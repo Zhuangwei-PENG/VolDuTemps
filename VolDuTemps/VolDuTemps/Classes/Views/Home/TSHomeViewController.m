@@ -52,9 +52,13 @@ static const NSString *cellID = @"TSTableViewCell";
 #pragma mark -SetUp UI
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self getUserSettings];
+    [self.myTableView reloadData];
+}
+
+- (void)getUserSettings{
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     self.userFontSize = [userDefaults floatForKey:@"myFontSize"];
-    [self.myTableView reloadData];
 }
 
 - (void)setupUI{
@@ -99,7 +103,6 @@ static const NSString *cellID = @"TSTableViewCell";
     //注册tableview Cell
     [self.myTableView registerClass:[TSTableViewCell class] forCellReuseIdentifier:@"TSTableViewCell"];
     //设置tableview行高
-//    self.myTableView.estimatedRowHeight = 100.0f;
     self.myTableView.rowHeight = 100;
 }
 
@@ -133,8 +136,10 @@ static const NSString *cellID = @"TSTableViewCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     TSTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TSTableViewCell" forIndexPath:indexPath];
+    
     TSDairyModel *model = self.notes[indexPath.row];
     cell.dairyModel = model;
+    
     cell.titleFont = self.userFontSize;
 
     return cell;
