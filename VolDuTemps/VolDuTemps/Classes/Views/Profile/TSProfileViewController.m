@@ -39,10 +39,15 @@ static const NSString *cellId = @"staticCell";
     [super setupTableView];
     
     [self.myTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellId];
-    TSSettingItem *setting = [TSSettingItem itemWithTitle:@"设置"];
-    TSSettingGroup *groupOne = [TSSettingGroup groupWithItems:@[setting]];
+    TSSettingItem *profile = [TSSettingItem itemWithTitle:@"名称" icon:@"Mark_43"];
+    TSSettingGroup *groupOne = [TSSettingGroup groupWithItems:@[profile]];
     [self.groups addObject:groupOne];
     
+    TSSettingItem *setting = [TSSettingItem itemWithTitle:@"设置"];
+    TSSettingItem *private = [TSSettingItem itemWithTitle:@"隐私"];
+    TSSettingItem *aboutus = [TSSettingItem itemWithTitle:@"关于"];
+    TSSettingGroup *groupTwo = [TSSettingGroup groupWithItems:@[setting,private,aboutus]];
+    [self.groups addObject:groupTwo];
 }
 
 #pragma mark - DataSource
@@ -56,12 +61,19 @@ static const NSString *cellId = @"staticCell";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
-    cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
     TSSettingGroup *group = self.groups[indexPath.section];
     TSSettingItem *item = group.items[indexPath.row];
     cell.textLabel.text = [item title];
+    
+    if (indexPath.section == 0) {
+        cell.imageView.image = [UIImage imageNamed:item.icon];
+        cell.textLabel.textAlignment = NSTextAlignmentCenter;
+        return cell;
+    }
+   
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 #pragma mark - Delegate

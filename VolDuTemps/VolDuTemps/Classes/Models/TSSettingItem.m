@@ -9,6 +9,13 @@
 #import "TSSettingItem.h"
 
 @implementation TSSettingItem
+
++ (instancetype)itemWithTitle:(NSString *)title image:(NSString *)image{
+    TSSettingItem *item = [[self alloc] initWithTitle:title];
+    item.image = image;
+    return item;
+}
+
 + (instancetype)itemWithTitle:(NSString *)title{
     return [[self alloc] initWithTitle:title];
 }

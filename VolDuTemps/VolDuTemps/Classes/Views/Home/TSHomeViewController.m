@@ -89,7 +89,8 @@ static const NSString *cellID = @"TSTableViewCell";
     //注册tableview Cell
     [self.myTableView registerClass:[TSTableViewCell class] forCellReuseIdentifier:@"TSTableViewCell"];
     //设置tableview行高
-    self.myTableView.rowHeight = 110;
+//    self.myTableView.estimatedRowHeight = 100.0f;
+    self.myTableView.rowHeight = 100;
 }
 
 #pragma mark - Navigation

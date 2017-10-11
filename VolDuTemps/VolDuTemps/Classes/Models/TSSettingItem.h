@@ -11,6 +11,9 @@
 @interface TSSettingItem : NSObject
 
 @property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *image;
+
++ (instancetype)itemWithTitle:(NSString *)title image:(NSString *)image;
 
 + (instancetype)itemWithTitle:(NSString *)title;
 - (instancetype)initWithTitle:(NSString *)title;
