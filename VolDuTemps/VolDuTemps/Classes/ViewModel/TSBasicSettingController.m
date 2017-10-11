@@ -7,9 +7,7 @@
 //
 
 #import "TSBasicSettingController.h"
-#import "TSSettingGroup.h"
-#import "TSSettingItem.h"
-#import "TSSettingViewCell.h"
+
 
 @interface TSBasicSettingController ()
 
@@ -58,11 +56,11 @@
     TSSettingItem *item = group.items[indexPath.row];
     cell.item = item;
     
-    if (indexPath.section == 0) {
-        cell.imageView.image = [UIImage imageNamed:item.image];
-        cell.textLabel.textAlignment = NSTextAlignmentCenter;
-        return cell;
-    }
+//    if (indexPath.section == 0) {
+//        cell.imageView.image = [UIImage imageNamed:item.image];
+//        cell.textLabel.textAlignment = NSTextAlignmentCenter;
+//        return cell;
+//    }
     
     return cell;
 }
@@ -80,9 +78,9 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section == 0) {
-        return 100;
-    }
+//    if (indexPath.section == 0) {
+//        return 100;
+//    }
     return 44;
 }
 
@@ -93,6 +91,7 @@
     TSSettingItem *item = group.items[indexPath.row];
     if (item.destinationVC) {//如果有跳转就执行跳转
         UIViewController *destinationVC = [[item.destinationVC alloc] init];
+        NSLog(@"%@",item.destinationVC);
         [self.navigationController pushViewController:destinationVC animated:YES];
     }
     if (item.option) {//哪个cell有事情就做事情(自己的事情自己干)

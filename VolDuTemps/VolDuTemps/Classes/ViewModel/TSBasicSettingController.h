@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TSSettingGroup.h"
+#import "TSSettingItem.h"
+#import "TSSettingViewCell.h"
 
 @interface TSBasicSettingController : UITableViewController
 //从外界获取数据

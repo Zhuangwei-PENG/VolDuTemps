@@ -51,8 +51,13 @@
 
 - (void)setupData{
     self.textLabel.text = _item.title;
-    self.detailTextLabel.text = _item.subTitle;
-    self.imageView.image = [UIImage imageNamed:_item.image];
+    if (_item.subTitle) {
+        self.detailTextLabel.text = _item.subTitle;
+    }
+    if (_item.image) {
+        self.imageView.image = [UIImage imageNamed:_item.image];
+    }
+    
 }
 
 - (void)setupAccessoryView{

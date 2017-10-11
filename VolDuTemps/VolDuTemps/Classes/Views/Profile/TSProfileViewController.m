@@ -7,6 +7,7 @@
 //
 
 #import "TSProfileViewController.h"
+#import "TSSettingViewController.h"
 #import "TSSettingGroup.h"
 #import "TSSettingItem.h"
 
@@ -29,25 +30,26 @@ static NSString *cellId = @"staticCell";
 #pragma mark - SepUp UI
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.title = @"我的设置🔧";
     [self setupUI];
     // Do any additional setup after loading the view.
 }
 
 - (void)setupUI{
-//    [super setupUI];
-//    TSBasicSettingController *basicVC = [[TSBasicSettingController alloc] init];
-    
-//    [self.myTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellId];
+
     TSSettingItem *profile = [TSSettingItem itemWithTitle:@"名称" image:@"Mark_43"];
     TSSettingGroup *groupOne = [TSSettingGroup groupWithItems:@[profile]];
     [self.groups addObject:groupOne];
 
     TSSettingItem *setting = [TSSettingItem itemWithTitle:@"设置"];
+    setting.destinationVC = [TSSettingViewController class];
+    
     TSSettingItem *private = [TSSettingItem itemWithTitle:@"隐私"];
     TSSettingItem *aboutus = [TSSettingItem itemWithTitle:@"关于"];
     TSSettingGroup *groupTwo = [TSSettingGroup groupWithItems:@[setting,private,aboutus]];
     [self.groups addObject:groupTwo];
-//    [self.view addSubview:basicVC];
+
+
 }
 //- (void)setupTableView{
 //    [super setupTableView];
