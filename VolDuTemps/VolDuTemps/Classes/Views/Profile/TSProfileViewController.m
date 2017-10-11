@@ -76,30 +76,31 @@ static NSString *cellId = @"staticCell";
 //    return [group count];
 //}
 //
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
-//    TSSettingGroup *group = self.groups[indexPath.section];
-//    TSSettingItem *item = group.items[indexPath.row];
-//    cell.textLabel.text = [item title];
-//    
-//    if (indexPath.section == 0) {
-//        cell.imageView.image = [UIImage imageNamed:item.image];
-//        cell.textLabel.textAlignment = NSTextAlignmentCenter;
-//        return cell;
-//    }
-//   
-//    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-//    return cell;
-//}
-//#pragma mark - Delegate
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    if (indexPath.section == 0) {
-//        return 100;
-//    }
-//    return 44;
-//}
-//
+#pragma mark - DataSource
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    TSSettingViewCell *cell = [TSSettingViewCell cellWithTableView:tableView];
+    TSSettingGroup *group = self.groups[indexPath.section];
+    TSSettingItem *item = group.items[indexPath.row];
+    cell.item = item;
+    
+    if (indexPath.section == 0) {
+        cell.imageView.image = [UIImage imageNamed:item.image];
+        cell.textLabel.textAlignment = NSTextAlignmentCenter;
+        return cell;
+    }
+   
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    return cell;
+}
+#pragma mark - Delegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0) {
+        return 100;
+    }
+    return 44;
+}
+
 //#pragma mark - Navigation
 
 

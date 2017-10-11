@@ -21,11 +21,13 @@
 
 @implementation TSFontController
 static const CGFloat margin = 8;
+#pragma mark - Lazy instantiation
 - (UIButton *)defaultBtn{
     if (!_defaultBtn) {
         _defaultBtn = [[UIButton alloc] init];
         [_defaultBtn setTitle:@"默认大小" forState:UIControlStateNormal];
         [_defaultBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        _defaultBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     }
     return _defaultBtn;
 }
@@ -49,10 +51,7 @@ static const CGFloat margin = 8;
     return _slider;
 }
 
-- (void)viewWillDisappear:(BOOL)animated{
-    NSLog(@"页面即将消失，保存更新数据");
-}
-
+#pragma mark - SetUp UI
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupBarButton];
@@ -64,18 +63,6 @@ static const CGFloat margin = 8;
 - (void)setupBarButton{
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" fontSize:16 target:self action:@selector(popBack) isPopBack:YES];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" fontSize:16 target:self action:@selector(confirm) isPopBack:NO];
-}
-
-- (void)popBack{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (void)confirm{
-    //保存数据
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setFloat:self.slider.value forKey:@"myFontSize"];
-    
-    [self popBack];
 }
 
 - (void)addModelCell{
@@ -110,6 +97,19 @@ static const CGFloat margin = 8;
 - (void)setToDefaultValue{
     self.slider.value = 15;
     [self sliderChanged];
+}
+
+#pragma mark - Navigation
+- (void)popBack{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)confirm{
+    //保存数据
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setFloat:self.slider.value forKey:@"myFontSize"];
+    
+    [self popBack];
 }
 
 
