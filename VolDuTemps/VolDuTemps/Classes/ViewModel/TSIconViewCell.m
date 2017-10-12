@@ -7,7 +7,7 @@
 //
 
 #import "TSIconViewCell.h"
-#import "TSSwitchItem.h"
+
 @interface TSIconViewCell()
 
 @property (nonatomic, strong) UIImageView *iconView;

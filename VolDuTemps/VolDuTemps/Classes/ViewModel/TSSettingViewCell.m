@@ -7,8 +7,6 @@
 //
 
 #import "TSSettingViewCell.h"
-#import "TSSettingItem.h"
-#import "TSSwitchItem.h"
 
 @interface TSSettingViewCell ()
 @property (nonatomic, strong) UISwitch *switchView;

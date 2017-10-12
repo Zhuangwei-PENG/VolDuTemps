@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-@class TSSettingItem;
-@class TSSwitchItem;
+#import "TSSettingItem.h"
+#import "TSSwitchItem.h"
 
 @protocol TSSettingViewCellDelegate<NSObject>
 

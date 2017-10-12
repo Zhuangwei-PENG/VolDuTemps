@@ -81,10 +81,7 @@ static NSString *cellId = @"staticCell";
     if (indexPath.section == 0) {
         return 100;
     }
-    return 44;
+    return [super tableView:tableView heightForRowAtIndexPath:indexPath];;
 }
-
-
-
 
 @end
