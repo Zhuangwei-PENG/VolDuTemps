@@ -46,7 +46,8 @@
 }
 
 - (void)setupTableView{
-    self.tableView.backgroundColor = [UIColor whiteColor];
+    //self.tableView.backgroundColor = [UIColor whiteColor];
+    self.tableView.backgroundColor = [UIColor colorWithHex:0xEDEDED];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.scrollEnabled = NO;
 }

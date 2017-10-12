@@ -10,6 +10,7 @@
 #import "TSSettingViewController.h"
 #import "TSPrivateController.h"
 #import "TSAboutUsController.h"
+#import "TSPersonnalInfoController.h"
 
 #import "TSSettingGroup.h"
 #import "TSSettingItem.h"
@@ -23,25 +24,25 @@
 
 static NSString *cellId = @"staticCell";
 
-//#pragma mark - Lazy instansitaion
-//- (NSMutableArray *)groups{
-//    if (!_groups) {
-//        _groups = [NSMutableArray arrayWithCapacity:4];
-//    }
-//    return _groups;
-//}
-
 #pragma mark - SepUp UI
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"我的设置🔧";
     [self setupUI];
-    // Do any additional setup after loading the view.
+
 }
 
 - (void)setupUI{
     //获取用户设置
-    TSSettingItem *profile = [TSSettingItem itemWithTitle:@"名称" image:@"Mark_43" subTitle:];
+    NSString *userBirth = [self.userDefault stringForKey:@"userBirthday"];
+    NSString *days =@"";
+    if ([userBirth length]) {
+        //计算生日到今天的天数转换成字符串
+        days = @"这是您的第100001天～";
+    }
+    TSSettingItem *profile = [TSSettingItem itemWithTitle:@"名称" image:@"Mark_43" subTitle:days];
+    profile.destinationVC = [TSPersonnalInfoController class];
+    
     TSSettingGroup *groupOne = [TSSettingGroup groupWithItems:@[profile]];
     [self.groups addObject:groupOne];
 
