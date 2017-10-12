@@ -13,6 +13,7 @@
 
 #import "TSSettingGroup.h"
 #import "TSSettingItem.h"
+#import "TSIconViewCell.h"
 
 @interface TSProfileViewController ()
 //@property (nonatomic, strong) NSMutableArray *groups;
@@ -61,18 +62,19 @@ static NSString *cellId = @"staticCell";
 
 #pragma mark - DataSource
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    TSSettingViewCell *cell = [TSSettingViewCell cellWithTableView:tableView];
     TSSettingGroup *group = self.groups[indexPath.section];
     TSSettingItem *item = group.items[indexPath.row];
-    cell.item = item;
     
     if (indexPath.section == 0) {
-        cell.imageView.image = [UIImage imageNamed:item.image];
-        cell.textLabel.textAlignment = NSTextAlignmentCenter;
+        TSIconViewCell *cell = [[TSIconViewCell alloc] init];
+        cell.item = item;
+  
         return cell;
     }
    
+    TSSettingViewCell *cell = [TSSettingViewCell cellWithTableView:tableView];
+
+    cell.item = item;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }

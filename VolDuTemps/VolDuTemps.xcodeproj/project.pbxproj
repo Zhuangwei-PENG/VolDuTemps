@@ -18,6 +18,7 @@
 		CF8300AC1F8DECDF00C2A63E /* TSFontController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8300AB1F8DECDF00C2A63E /* TSFontController.m */; };
 		CF8300AF1F8E00F400C2A63E /* TSPrivateController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8300AE1F8E00F400C2A63E /* TSPrivateController.m */; };
 		CF87A5911F8EFC2700A6359C /* TSAboutUsController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF87A5901F8EFC2700A6359C /* TSAboutUsController.m */; };
+		CF87A5941F8F0E2B00A6359C /* TSIconViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF87A5931F8F0E2B00A6359C /* TSIconViewCell.m */; };
 		CF9148E61F8B05710085BEDF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9148E51F8B05710085BEDF /* AppDelegate.m */; };
 		CF9148EE1F8B05710085BEDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF9148ED1F8B05710085BEDF /* Assets.xcassets */; };
 		CF9148F41F8B05710085BEDF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9148F31F8B05710085BEDF /* main.m */; };
@@ -70,6 +71,8 @@
 		CF8300AE1F8E00F400C2A63E /* TSPrivateController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSPrivateController.m; sourceTree = "<group>"; };
 		CF87A58F1F8EFC2700A6359C /* TSAboutUsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSAboutUsController.h; sourceTree = "<group>"; };
 		CF87A5901F8EFC2700A6359C /* TSAboutUsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSAboutUsController.m; sourceTree = "<group>"; };
+		CF87A5921F8F0E2B00A6359C /* TSIconViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSIconViewCell.h; sourceTree = "<group>"; };
+		CF87A5931F8F0E2B00A6359C /* TSIconViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSIconViewCell.m; sourceTree = "<group>"; };
 		CF9148E11F8B05710085BEDF /* VolDuTemps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VolDuTemps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF9148E41F8B05710085BEDF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CF9148E51F8B05710085BEDF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -244,6 +247,8 @@
 				CF83009B1F8DA95900C2A63E /* TSBasicSettingController.m */,
 				CF83009D1F8DAE3700C2A63E /* TSSettingViewCell.h */,
 				CF83009E1F8DAE3700C2A63E /* TSSettingViewCell.m */,
+				CF87A5921F8F0E2B00A6359C /* TSIconViewCell.h */,
+				CF87A5931F8F0E2B00A6359C /* TSIconViewCell.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -466,6 +471,7 @@
 				CF8300AF1F8E00F400C2A63E /* TSPrivateController.m in Sources */,
 				CF91493D1F8B1B200085BEDF /* TSTableViewCell.m in Sources */,
 				CF9148E61F8B05710085BEDF /* AppDelegate.m in Sources */,
+				CF87A5941F8F0E2B00A6359C /* TSIconViewCell.m in Sources */,
 				CF8300A81F8DC82400C2A63E /* TSSettingViewController.m in Sources */,
 				CF8300A21F8DB63900C2A63E /* TSSwitchItem.m in Sources */,
 				CF8300AC1F8DECDF00C2A63E /* TSFontController.m in Sources */,
