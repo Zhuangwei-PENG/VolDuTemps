@@ -40,6 +40,9 @@
     if (!cell) {
         cell = [[self alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellID];
     }
+    cell.imageView.layer.cornerRadius = 10;
+    cell.imageView.layer.masksToBounds = YES;
+    
     return cell;
 }
 
