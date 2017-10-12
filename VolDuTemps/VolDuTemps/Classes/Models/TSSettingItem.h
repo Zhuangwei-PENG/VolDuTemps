@@ -19,8 +19,8 @@ typedef void(^settingOption) (void);
 @property (nonatomic, assign) Class destinationVC;
 @property (nonatomic, copy) settingOption option;
 
++ (instancetype)itemWithTitle:(NSString *)title image:(NSString *)image subTitle:(NSString *)subTitle;
 + (instancetype)itemWithTitle:(NSString *)title image:(NSString *)image;
-
 + (instancetype)itemWithTitle:(NSString *)title;
-- (instancetype)initWithTitle:(NSString *)title;
+
 @end
