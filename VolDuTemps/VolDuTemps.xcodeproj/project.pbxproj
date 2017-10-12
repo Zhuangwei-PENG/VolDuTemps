@@ -213,8 +213,8 @@
 			isa = PBXGroup;
 			children = (
 				CF91490C1F8B062C0085BEDF /* Views */,
-				CF9149091F8B062C0085BEDF /* Models */,
 				CF91490B1F8B062C0085BEDF /* ViewModel */,
+				CF9149091F8B062C0085BEDF /* Models */,
 				CF91490A1F8B062C0085BEDF /* Tools */,
 			);
 			path = Classes;
@@ -248,6 +248,8 @@
 			children = (
 				CF91493B1F8B1B200085BEDF /* TSTableViewCell.h */,
 				CF91493C1F8B1B200085BEDF /* TSTableViewCell.m */,
+				CFA7975F1F8B2EDE0085D4A1 /* TSDetailViewController.h */,
+				CFA797601F8B2EDE0085D4A1 /* TSDetailViewController.m */,
 				CF83009A1F8DA95900C2A63E /* TSBasicSettingController.h */,
 				CF83009B1F8DA95900C2A63E /* TSBasicSettingController.m */,
 				CF83009D1F8DAE3700C2A63E /* TSSettingViewCell.h */,
@@ -273,6 +275,7 @@
 			children = (
 				CF9149191F8B07790085BEDF /* TSHomeViewController.h */,
 				CF91491A1F8B07790085BEDF /* TSHomeViewController.m */,
+				CFA797681F8B57560085D4A1 /* OperationView */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -286,9 +289,6 @@
 				CF9149141F8B072B0085BEDF /* TSNavigationController.m */,
 				CF9149161F8B075F0085BEDF /* TSBaseViewController.h */,
 				CF9149171F8B075F0085BEDF /* TSBaseViewController.m */,
-				CFA7975F1F8B2EDE0085D4A1 /* TSDetailViewController.h */,
-				CFA797601F8B2EDE0085D4A1 /* TSDetailViewController.m */,
-				CFA797681F8B57560085D4A1 /* OperationView */,
 			);
 			path = Main;
 			sourceTree = "<group>";
