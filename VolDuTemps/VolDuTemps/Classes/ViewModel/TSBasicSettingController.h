@@ -15,5 +15,6 @@
 @interface TSBasicSettingController : UITableViewController
 //从外界获取数据
 @property (nonatomic, strong) NSMutableArray *groups;
+@property (nonatomic, strong) NSUserDefaults *userDefault;
 
 @end

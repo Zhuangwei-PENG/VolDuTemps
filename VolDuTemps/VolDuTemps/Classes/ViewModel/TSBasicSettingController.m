@@ -15,6 +15,12 @@
 @implementation TSBasicSettingController
 
 #pragma mark - Lazy instansitaion
+- (NSUserDefaults *)userDefault{
+    if (!_userDefault) {
+        _userDefault = [NSUserDefaults standardUserDefaults];
+    }
+    return _userDefault;
+}
 - (NSMutableArray *)groups{
     if (!_groups) {
         _groups = [NSMutableArray arrayWithCapacity:4];

@@ -40,8 +40,8 @@ static NSString *cellId = @"staticCell";
 }
 
 - (void)setupUI{
-
-    TSSettingItem *profile = [TSSettingItem itemWithTitle:@"名称" image:@"Mark_43"];
+    //获取用户设置
+    TSSettingItem *profile = [TSSettingItem itemWithTitle:@"名称" image:@"Mark_43" subTitle:];
     TSSettingGroup *groupOne = [TSSettingGroup groupWithItems:@[profile]];
     [self.groups addObject:groupOne];
 
