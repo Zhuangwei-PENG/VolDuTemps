@@ -28,6 +28,7 @@ static NSString *cellId = @"staticCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"我的设置🔧";
+    self.navigationItem.leftBarButtonItem = nil;
     [self setupUI];
 
 }

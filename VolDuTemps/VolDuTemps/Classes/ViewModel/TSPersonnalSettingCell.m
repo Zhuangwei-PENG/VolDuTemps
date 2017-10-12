@@ -64,7 +64,6 @@
     if (type == TSPersonnalSettingCellTypeRIghtText) {
         cellID = @"TSPersonnalSettingCellTypeRIghtText";
     }
-    NSLog(@"%@",cellID);
     TSPersonnalSettingCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     if (!cell) {
         cell = [[self alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellID];

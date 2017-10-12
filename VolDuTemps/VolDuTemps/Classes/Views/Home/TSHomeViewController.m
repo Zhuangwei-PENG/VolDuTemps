@@ -99,6 +99,9 @@ static const NSString *cellID = @"TSTableViewCell";
 //设置tableView视图
 - (void)setupTableView{
     [super setupTableView];
+    //测试颜色
+    self.myTableView.backgroundColor = [UIColor colorWithHex:0xEDEDED];
+    
     self.myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     //注册tableview Cell
     [self.myTableView registerClass:[TSTableViewCell class] forCellReuseIdentifier:@"TSTableViewCell"];

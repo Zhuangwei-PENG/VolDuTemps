@@ -16,6 +16,7 @@
     [btn setTitle:title forState:UIControlStateNormal];
     btn.titleLabel.font = [UIFont systemFontOfSize:fontSize];
     [btn setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
     [btn sizeToFit];
     
     if (isPopback) {

@@ -45,7 +45,6 @@
     TSSettingItem *item = group.items[indexPath.row];
     
     if ([item.image length]) {
-        NSLog(@"%@",item.image);
         cellType = TSPersonnalSettingCellTypeRightImage;
     }
     TSPersonnalSettingCell *cell = [TSPersonnalSettingCell cellWithTableView:tableView type:cellType];

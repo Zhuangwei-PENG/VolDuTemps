@@ -80,7 +80,10 @@
     [self.contentView addSubview:self.timeLbl];
     [self.contentView addSubview:self.bottomLine];
     
-    self.bottomLine.backgroundColor = [UIColor colorWithHex:0xEDEDED];
+    self.contentView.backgroundColor = [UIColor whiteColor];
+    self.accessoryView.backgroundColor = [UIColor whiteColor];
+    
+    self.bottomLine.backgroundColor = [UIColor lightGrayColor];
     self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     self.titleLbl.numberOfLines = 1;
@@ -188,7 +191,7 @@
                                                                        toItem:self.contentView
                                                                     attribute:NSLayoutAttributeBottom
                                                                    multiplier:1
-                                                                     constant:-1],
+                                                                     constant:-0.5],
 
                                        [NSLayoutConstraint constraintWithItem:self.bottomLine
                                                                     attribute:NSLayoutAttributeLeft
@@ -196,15 +199,15 @@
                                                                        toItem:self.titleLbl
                                                                     attribute:NSLayoutAttributeLeft
                                                                    multiplier:1
-                                                                     constant:2 * margin],
+                                                                     constant:0],
 
                                        [NSLayoutConstraint constraintWithItem:self.bottomLine
                                                                     attribute:NSLayoutAttributeRight
                                                                     relatedBy:NSLayoutRelationEqual
-                                                                       toItem:self.textLbl
+                                                                       toItem:self.contentView
                                                                     attribute:NSLayoutAttributeRight
                                                                    multiplier:1
-                                                                     constant:0],
+                                                                     constant:5 * margin],
                                        
                                        [NSLayoutConstraint constraintWithItem:self.bottomLine
                                                                     attribute:NSLayoutAttributeHeight
@@ -212,7 +215,7 @@
                                                                        toItem:nil
                                                                     attribute:NSLayoutAttributeNotAnAttribute
                                                                    multiplier:1
-                                                                     constant:1]
+                                                                     constant:0.5]
                                        ]];
 }
 

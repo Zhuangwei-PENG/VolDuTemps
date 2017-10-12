@@ -56,6 +56,7 @@ static NSString *kFont = @"myFontSize";
 #pragma mark - SetUp UI
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor colorWithHex:0xEDEDED];
     [self setupBarButton];
     [self addModelCell];
     [self addSlider];
@@ -76,7 +77,7 @@ static NSString *kFont = @"myFontSize";
 - (void)addSlider{
     [self.view addSubview:self.slider];
     
-    CGFloat Y = self.modelCell.frame.origin.y + self.modelCell.frame.size.height + margin;
+    CGFloat Y = self.modelCell.frame.origin.y + self.modelCell.frame.size.height + 5 * margin;
     CGFloat W = self.view.bounds.size.width - 2 * margin;
     self.slider.frame = CGRectMake(margin, Y, W, 20);
     
