@@ -63,7 +63,7 @@ static NSString *kFont = @"myFontSize";
 
 }
 - (void)setupBarButton{
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" fontSize:16 target:self action:@selector(popBack) isPopBack:YES];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" fontSize:16 target:self action:@selector(popBack) isPopBack:NO];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" fontSize:16 target:self action:@selector(confirm) isPopBack:NO];
 }
 

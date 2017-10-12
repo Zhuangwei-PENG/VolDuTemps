@@ -21,10 +21,10 @@
 #pragma mark - Setup UI
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"关于我们";
     
+    self.navigationItem.title = @"关于我们";
     self.tableView.backgroundColor = [UIColor colorWithHex:0xEDEDED];
-//    self.navigationController.navigationBar.hidden = YES;
+
     [self setGroups];
 }
 

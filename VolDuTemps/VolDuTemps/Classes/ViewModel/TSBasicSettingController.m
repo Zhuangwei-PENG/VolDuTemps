@@ -29,10 +29,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableView.backgroundColor = [UIColor colorWithHex:0xEDEDED];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" fontSize:16 target:self action:@selector(popBack) isPopBack:YES];
     
     [self setupTableView];
 
+}
+
+- (void)popBack{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)setupTableView{
