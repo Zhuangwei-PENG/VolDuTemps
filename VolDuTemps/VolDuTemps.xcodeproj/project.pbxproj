@@ -150,6 +150,8 @@
 				CF8300AB1F8DECDF00C2A63E /* TSFontController.m */,
 				CF8300AD1F8E00F400C2A63E /* TSPrivateController.h */,
 				CF8300AE1F8E00F400C2A63E /* TSPrivateController.m */,
+				CF8300A61F8DC82400C2A63E /* TSSettingViewController.h */,
+				CF8300A71F8DC82400C2A63E /* TSSettingViewController.m */,
 			);
 			path = OperationView;
 			sourceTree = "<group>";
@@ -282,8 +284,6 @@
 				CF8300A91F8DEC3F00C2A63E /* OperationView */,
 				CF91491C1F8B07870085BEDF /* TSProfileViewController.h */,
 				CF91491D1F8B07870085BEDF /* TSProfileViewController.m */,
-				CF8300A61F8DC82400C2A63E /* TSSettingViewController.h */,
-				CF8300A71F8DC82400C2A63E /* TSSettingViewController.m */,
 			);
 			path = Profile;
 			sourceTree = "<group>";

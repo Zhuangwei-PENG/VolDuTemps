@@ -7,6 +7,7 @@
 //
 
 #import "TSPrivateController.h"
+//#import "GestureViewController.h"
 #import "TSSwitchItem.h"
 
 #import <LocalAuthentication/LocalAuthentication.h>
@@ -26,7 +27,6 @@
     
     self.navigationItem.title = @"隐私";
     [self setGroup];
-//    [self setSwitchState];
     
     
 }
@@ -45,7 +45,7 @@
     self.touchID.option = ^{
         if (weakself.touchID.isOn) {
             NSLog(@"指纹解锁");
-            [self openTouchID];
+            [weakself openTouchID];
             if (weakself.graphID.isOn) {
                 weakself.graphID.isOn = NO;
                 [weakself.tableView reloadData];
@@ -58,6 +58,19 @@
     self.graphID.option = ^{
         if (weakself.graphID.isOn) {
             NSLog(@"图形解锁");
+            //跳转图形解锁界面
+            TSBasicSettingController *vc = [[TSBasicSettingController alloc] init];
+            [weakself.navigationController pushViewController:vc animated:YES];
+            //userDefault 记录锁已经打开的命令
+//            NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+//            [userDefault setBool:weakself.graphID.isOn forKey:@"graphID"];
+//            [userDefault synchronize];
+            //userDefault 记录密码
+//            GestureViewController *gestureVc = [[GestureViewController alloc] init];
+//            gestureVc.type = GestureViewControllerTypeSetting;
+//            weakself.graphID.destinationVC = [GestureViewController class];
+//            [weakself.tableView reloadData];
+            
             if (weakself.touchID.isOn) {
                 weakself.touchID.isOn = NO;
                 [weakself.tableView reloadData];
@@ -89,7 +102,6 @@
     }
 
     [self createTouchID];
-  
 }
 
 - (void)createTouchID{
@@ -197,6 +209,8 @@
     }
 }
 
+#pragma mark - Delegate
+//重写父类的代理方法，给cell添加代理
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     TSSettingViewCell *cell = (TSSettingViewCell *)[super tableView:tableView cellForRowAtIndexPath:indexPath];
     cell.delegate = self;
@@ -204,6 +218,7 @@
     return cell;
 }
 
+//实现cell的代理方法获取Switch的状态
 - (void)switchValueChanged:(TSSwitchItem *)item atIndexPath:(NSIndexPath *)indexPath{
     TSSettingViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
 
@@ -212,13 +227,5 @@
     item.option();
 }
 
-//- (void)tableView:(UITableView *)tableView willBeginEditingRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
-//
-//    UISwitch *switchView = (UISwitch *)cell.accessoryView;
-//    TSSettingGroup *group = self.groups[indexPath.section];
-//    TSSwitchItem *item = (TSSwitchItem *)group.items[indexPath.row];
-//    item.isOn = switchView.isOn;
-//    [self setSwitchState];
-//
-//}
+
 @end
