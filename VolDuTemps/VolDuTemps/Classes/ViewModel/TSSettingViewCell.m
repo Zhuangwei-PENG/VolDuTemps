@@ -56,7 +56,7 @@
         self.detailTextLabel.text = _item.subTitle;
     }
     if (_item.image) {
-        self.imageView.image = [UIImage imageNamed:_item.image];
+        self.imageView.image = _item.image;
     }
     
 }

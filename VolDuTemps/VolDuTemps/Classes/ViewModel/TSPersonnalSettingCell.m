@@ -43,8 +43,8 @@
 
 - (void)setItem:(TSSettingItem *)item{
     _txtLabel.text = item.title;
-    if ([item.image length]) {
-        _iconView.image= [UIImage imageNamed:item.image];
+    if (item.image) {
+        _iconView.image= item.image;
     }
     if ([item.subTitle length]) {
         _detailLabel.text = item.subTitle;

@@ -105,4 +105,12 @@
     }
 }
 
+#pragma mark - Get user setting
+- (UIImage *)getIconImage{
+    NSData *data = [self.userDefault dataForKey:@"userIcon"];
+    if (!data) {
+        return [UIImage imageNamed:@"Mark_43"];
+    }
+    return [UIImage imageWithData:data];
+}
 @end

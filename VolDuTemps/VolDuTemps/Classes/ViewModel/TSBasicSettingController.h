@@ -17,4 +17,6 @@
 @property (nonatomic, strong) NSMutableArray *groups;
 @property (nonatomic, strong) NSUserDefaults *userDefault;
 
+//获取用户头像
+- (UIImage *)getIconImage;
 @end

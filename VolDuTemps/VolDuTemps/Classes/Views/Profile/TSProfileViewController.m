@@ -25,6 +25,12 @@
 static NSString *cellId = @"staticCell";
 
 #pragma mark - SepUp UI
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"我的设置🔧";
@@ -41,7 +47,9 @@ static NSString *cellId = @"staticCell";
         //计算生日到今天的天数转换成字符串
         days = @"这是您的第100001天～";
     }
-    TSSettingItem *profile = [TSSettingItem itemWithTitle:@"名称" image:@"Mark_43" subTitle:days];
+    
+    
+    TSSettingItem *profile = [TSSettingItem itemWithTitle:@"名称" image:nil subTitle:days];
     profile.destinationVC = [TSPersonnalInfoController class];
     
     TSSettingGroup *groupOne = [TSSettingGroup groupWithItems:@[profile]];
@@ -67,8 +75,13 @@ static NSString *cellId = @"staticCell";
 
     if (indexPath.section == 0) {
         TSIconViewCell *cell = [TSIconViewCell cellWithTableView:tableView];
+        
         TSSettingGroup *group = self.groups[indexPath.section];
         TSSettingItem *item = group.items[indexPath.row];
+        //在这里设置图片，reloadCell的时候才会更新
+        UIImage *userImage = [self getIconImage];
+        item.image = userImage;
+        
         cell.item = item;
         return cell;
     }else {

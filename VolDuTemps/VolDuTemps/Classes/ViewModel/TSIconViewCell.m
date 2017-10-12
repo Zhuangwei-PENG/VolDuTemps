@@ -40,7 +40,7 @@
 }
 
 - (void)setItem:(TSSettingItem *)item{
-    _iconView.image = [UIImage imageNamed:item.image];
+    _iconView.image = item.image;
     _nameLabel.text = item.title;
     _timeLabel.text = @"请设置您的生日";
     if ([item.subTitle length]) {

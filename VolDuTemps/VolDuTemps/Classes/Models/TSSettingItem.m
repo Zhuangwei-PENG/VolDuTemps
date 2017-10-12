@@ -10,11 +10,11 @@
 
 @implementation TSSettingItem
 
-+ (instancetype)itemWithTitle:(NSString *)title image:(NSString *)image subTitle:(NSString *)subTitle{
++ (instancetype)itemWithTitle:(NSString *)title image:(UIImage *)image subTitle:(NSString *)subTitle{
     return [[self alloc] initWithTitle:title image:image subTitle:subTitle];
 }
 
-+ (instancetype)itemWithTitle:(NSString *)title image:(NSString *)image{
++ (instancetype)itemWithTitle:(NSString *)title image:(UIImage *)image{
     return [[self alloc] initWithTitle:title image:image subTitle:nil];
 }
 
@@ -22,7 +22,7 @@
     return [[self alloc] initWithTitle:title image:nil subTitle:nil];
 }
 
-- (instancetype)initWithTitle:(NSString *)title image:(NSString *)image subTitle:(NSString *)subTitle{
+- (instancetype)initWithTitle:(NSString *)title image:(UIImage *)image subTitle:(NSString *)subTitle{
     if (self = [self init]) {
         self.title = title;
         self.image = image;
