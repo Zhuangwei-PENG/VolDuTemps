@@ -19,11 +19,11 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"设置";
-    [self setGroup];
+    [self setGroups];
 
 }
 
-- (void)setGroup{self.navigationItem.title = @"设置";
+- (void)setGroups{
     
     TSSettingItem *font = [TSSettingItem itemWithTitle:@"字体大小"];
     TSSettingItem *bgImage = [TSSettingItem itemWithTitle:@"背景图片"];
