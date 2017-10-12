@@ -63,21 +63,17 @@ static NSString *cellId = @"staticCell";
 
 #pragma mark - DataSource
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    TSSettingGroup *group = self.groups[indexPath.section];
-    TSSettingItem *item = group.items[indexPath.row];
-    
+
     if (indexPath.section == 0) {
-        TSIconViewCell *cell = [[TSIconViewCell alloc] init];
+        TSIconViewCell *cell = [TSIconViewCell cellWithTableView:tableView];
+        TSSettingGroup *group = self.groups[indexPath.section];
+        TSSettingItem *item = group.items[indexPath.row];
         cell.item = item;
-  
         return cell;
+    }else {
+        return [super tableView:tableView cellForRowAtIndexPath:indexPath];
     }
    
-    TSSettingViewCell *cell = [TSSettingViewCell cellWithTableView:tableView];
-
-    cell.item = item;
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    return cell;
 }
 
 #pragma mark - Delegate
