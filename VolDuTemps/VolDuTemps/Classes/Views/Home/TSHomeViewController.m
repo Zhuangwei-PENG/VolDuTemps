@@ -63,14 +63,19 @@ static const NSString *cellID = @"TSTableViewCell";
 
 - (void)setupUI{
     [super setupUI];
+    //根据notes是否有数据判断显示哪个页面
+    self.notes = [NSKeyedUnarchiver unarchiveObjectWithFile:kPath];
+    [self sorting];
+    
+    if (self.notes.count == 0) {
+        [self setupVideView];
+    }
 
     self.navigationItem.title = @"笔记列表📒";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewOne)];
     
-    //根据notes是否有数据判断显示哪个页面
-    self.notes = [NSKeyedUnarchiver unarchiveObjectWithFile:kPath];
-    [self sorting];
-    self.notes.count != 0 ? [self setupTableView] : [self setupVideView];
+
+    
     
 }
 
@@ -163,7 +168,7 @@ static const NSString *cellID = @"TSTableViewCell";
     [self.myTableView reloadData];
     
     [NSKeyedArchiver archiveRootObject:self.notes toFile:kPath];
-    
+    //第一次添加数据时，完成后删除空视图
     if (self.videView) {
         [self.videView removeFromSuperview];
     }

@@ -18,12 +18,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setupUI];
+    
 }
 
 - (void)setupUI{
     self.view.backgroundColor = [UIColor lightGrayColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
-
     [self setupTableView];
     
 }
