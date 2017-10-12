@@ -21,6 +21,7 @@
 		CF87A5941F8F0E2B00A6359C /* TSIconViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF87A5931F8F0E2B00A6359C /* TSIconViewCell.m */; };
 		CF87A5971F8F22D700A6359C /* TSPersonnalInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF87A5961F8F22D700A6359C /* TSPersonnalInfoController.m */; };
 		CF87A59A1F8F2B3C00A6359C /* TSPersonnalSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF87A5991F8F2B3C00A6359C /* TSPersonnalSettingCell.m */; };
+		CF87A59D1F8F4F3E00A6359C /* TSChangeIconController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF87A59C1F8F4F3E00A6359C /* TSChangeIconController.m */; };
 		CF9148E61F8B05710085BEDF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9148E51F8B05710085BEDF /* AppDelegate.m */; };
 		CF9148EE1F8B05710085BEDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF9148ED1F8B05710085BEDF /* Assets.xcassets */; };
 		CF9148F41F8B05710085BEDF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9148F31F8B05710085BEDF /* main.m */; };
@@ -79,6 +80,8 @@
 		CF87A5961F8F22D700A6359C /* TSPersonnalInfoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSPersonnalInfoController.m; sourceTree = "<group>"; };
 		CF87A5981F8F2B3C00A6359C /* TSPersonnalSettingCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSPersonnalSettingCell.h; sourceTree = "<group>"; };
 		CF87A5991F8F2B3C00A6359C /* TSPersonnalSettingCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSPersonnalSettingCell.m; sourceTree = "<group>"; };
+		CF87A59B1F8F4F3E00A6359C /* TSChangeIconController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSChangeIconController.h; sourceTree = "<group>"; };
+		CF87A59C1F8F4F3E00A6359C /* TSChangeIconController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSChangeIconController.m; sourceTree = "<group>"; };
 		CF9148E11F8B05710085BEDF /* VolDuTemps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VolDuTemps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF9148E41F8B05710085BEDF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CF9148E51F8B05710085BEDF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -168,6 +171,8 @@
 				CF87A5901F8EFC2700A6359C /* TSAboutUsController.m */,
 				CF87A5951F8F22D700A6359C /* TSPersonnalInfoController.h */,
 				CF87A5961F8F22D700A6359C /* TSPersonnalInfoController.m */,
+				CF87A59B1F8F4F3E00A6359C /* TSChangeIconController.h */,
+				CF87A59C1F8F4F3E00A6359C /* TSChangeIconController.m */,
 			);
 			path = OperationView;
 			sourceTree = "<group>";
@@ -479,6 +484,7 @@
 				CF9149121F8B06A10085BEDF /* TSMainViewController.m in Sources */,
 				CF91491E1F8B07870085BEDF /* TSProfileViewController.m in Sources */,
 				CF60C95E1F8C6647007CFE8F /* NSString+Addition.m in Sources */,
+				CF87A59D1F8F4F3E00A6359C /* TSChangeIconController.m in Sources */,
 				CF9149151F8B072B0085BEDF /* TSNavigationController.m in Sources */,
 				CF8300AF1F8E00F400C2A63E /* TSPrivateController.m in Sources */,
 				CF91493D1F8B1B200085BEDF /* TSTableViewCell.m in Sources */,

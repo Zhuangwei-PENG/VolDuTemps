@@ -8,6 +8,7 @@
 
 #import "TSPersonnalInfoController.h"
 #import "TSPersonnalSettingCell.h"
+#import "TSChangeIconController.h"
 
 @interface TSPersonnalInfoController ()
 @property (nonatomic, strong) TSSettingItem *icon;
@@ -28,6 +29,8 @@
     self.icon = [TSSettingItem itemWithTitle:@"头像" image:@"Mark_43"];
     self.name = [TSSettingItem itemWithTitle:@"名字" image:nil subTitle:@"NAME"];
     self.birthDay = [TSSettingItem itemWithTitle:@"生日" image:nil subTitle:@"1991-2-4"];
+    
+    self.icon.destinationVC = [TSChangeIconController class];
     
     TSSettingGroup *groupOne = [TSSettingGroup groupWithItems:@[self.icon,self.name,self.birthDay]];
     [self.groups addObject:groupOne];
