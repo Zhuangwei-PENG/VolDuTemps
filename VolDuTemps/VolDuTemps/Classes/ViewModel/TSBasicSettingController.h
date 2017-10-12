@@ -10,6 +10,7 @@
 #import "TSSettingGroup.h"
 #import "TSSettingItem.h"
 #import "TSSettingViewCell.h"
+#import "Addition.h"
 
 @interface TSBasicSettingController : UITableViewController
 //从外界获取数据

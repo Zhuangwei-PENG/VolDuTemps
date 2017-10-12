@@ -29,6 +29,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tableView.backgroundColor = [UIColor colorWithHex:0xEDEDED];
+    
     [self setupTableView];
 
 }

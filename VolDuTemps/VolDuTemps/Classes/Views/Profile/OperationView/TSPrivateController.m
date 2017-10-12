@@ -26,12 +26,12 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"隐私";
-    [self setGroup];
+    [self setGroups];
     
     
 }
 
-- (void)setGroup{
+- (void)setGroups{
     __weak typeof(self) weakself = self;
     
     self.passWord = [TSSwitchItem itemWithTitle:@"设置密码"];
