@@ -7,12 +7,14 @@
 //
 
 #import "TSDetailViewController.h"
+#import "TSPhotoViewerController.h"
 #import "Addition.h"
 
 @interface TSDetailViewController ()<TSAddPhotoDelegate>
 
 @property (nonatomic, strong) UIView *bottomLine;
 @property (nonatomic, strong) UIDatePicker *datePicker;
+@property (nonatomic, strong) NSMutableArray *picsToDisplay;
 
 @end
 
@@ -70,6 +72,13 @@
         _photoView = [[TSAddPhoto alloc] init];
     }
     return _photoView;
+}
+//创建数组收集加载的数据
+- (NSMutableArray *)picsToDisplay{
+    if (!_picsToDisplay) {
+        _picsToDisplay = [NSMutableArray arrayWithCapacity:4];
+    }
+    return _picsToDisplay;
 }
 
 #pragma mark - UI setUp
@@ -363,7 +372,6 @@
 
 #pragma mark - Actionsheet delegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-    NSLog(@"%ld",buttonIndex);
     if (buttonIndex == 0) {
         [self presentWithType:UIImagePickerControllerSourceTypeCamera];
     }else if (buttonIndex == 1) {
@@ -375,13 +383,20 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     [super imagePickerController:picker didFinishPickingMediaWithInfo:info];
     [self.photoView addNewPic:self.imageToSave];
+    [self.picsToDisplay addObject:self.imageToSave];
 }
 
 #pragma mark - AddPhotoView delegate
 - (void)TSAddPhoto:(TSAddPhoto *)addPhotoView didClickOnPic:(UIImage *)image{
-    [self presentViewController:[UINavigationController new] animated:YES completion:^{
-        NSLog(@"跳转完成");
-    }];
+    //跳转至图片浏览
+    TSPhotoViewerController *displayVC = [[TSPhotoViewerController alloc] init];
+    displayVC.picsToDisplay = self.picsToDisplay.copy;
+    NSUInteger index = [self.picsToDisplay indexOfObject:image];
+    NSLog(@"%lu",index);
+    displayVC.firstViewIndex = index;
+    [self.navigationController pushViewController:displayVC animated:YES];
+    
+    
 }
 
 - (void)TSAddPhoto:(TSAddPhoto *)addPhotoView didClickAddPicBtn:(UIButton *)button{

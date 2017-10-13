@@ -11,5 +11,8 @@
 @interface TSPhotoViewerController : UICollectionViewController
 
 @property (nonatomic, strong) NSArray *picsToDisplay;
+@property (nonatomic, copy) NSString *titleToDisplay;
+
+@property (nonatomic, assign) NSUInteger firstViewIndex;
 
 @end

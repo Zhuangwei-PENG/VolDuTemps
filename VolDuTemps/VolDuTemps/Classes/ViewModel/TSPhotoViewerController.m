@@ -7,8 +7,9 @@
 //
 
 #import "TSPhotoViewerController.h"
+#import "Addition.h"
 
-@interface TSPhotoViewerController ()
+@interface TSPhotoViewerController ()<UIActionSheetDelegate>
 @property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
 @end
 
@@ -23,7 +24,12 @@ static NSString * const reuseIdentifier = @"Cell";
     return _flowLayout;
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.firstViewIndex inSection:0];
+    [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
 
+}
 - (instancetype)init{
     self.collectionView = [[UICollectionView alloc] initWithFrame:[UIScreen mainScreen].bounds collectionViewLayout:self.flowLayout];
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
@@ -32,9 +38,12 @@ static NSString * const reuseIdentifier = @"Cell";
     return self;
 }
 
+//- (void)setFirstViewIndex:(NSInteger)firstViewIndex{
+//    _firstViewIndex = firstViewIndex;
+//}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-
 }
 
 - (void)setCollectionView{
@@ -46,6 +55,32 @@ static NSString * const reuseIdentifier = @"Cell";
     self.collectionView.pagingEnabled = YES;
     self.collectionView.showsHorizontalScrollIndicator = NO;
     self.collectionView.bounces = NO;
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" fontSize:16 target:self action:@selector(popBack) isPopBack:YES];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"删除" fontSize:16 target:self action:@selector(deletePic) isPopBack:NO];
+    self.navigationItem.title = self.titleToDisplay;
+}
+
+- (void)popBack{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)deletePic{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"要删除这张照片吗？" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"删除" otherButtonTitles:nil];
+    [actionSheet showInView:self.collectionView];
+}
+
+- (void)delete{
+    NSLog(@"删除图片");
+//    self.picsToDisplay
+}
+
+#pragma mark - Actionsheet delegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    NSLog(@"%ld",buttonIndex);
+    if (buttonIndex == 0) {
+        [self delete];
+    }else if (buttonIndex == 1) {
+    }
 }
 
 #pragma mark <UICollectionViewDataSource>
@@ -60,16 +95,23 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:self.picsToDisplay[indexPath.row]];
+    UIImage *image = self.picsToDisplay[indexPath.row];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
     [cell.contentView addSubview:imageView];
-    imageView.frame = CGRectMake(0, 100, self.collectionView.bounds.size.width, self.collectionView.bounds.size.width);
-    NSLog(@"%@",NSStringFromCGRect(imageView.frame));
+    imageView.frame = CGRectMake(0, 100, self.collectionView.bounds.size.width, image.size.height);
+//    NSLog(@"%@",NSStringFromCGRect(imageView.frame));
     return cell;
 }
 
 #pragma mark <UICollectionViewDelegate>
-
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    UIImage *image = self.picsToDisplay[indexPath.row];
+    NSLog(@"%@",NSStringFromCGSize(image.size));
+}
+- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath{
+    UIImage *image = self.picsToDisplay[indexPath.row];
+    NSLog(@"------%@",NSStringFromCGSize(image.size));
+}
 /*
 // Uncomment this method to specify if the specified item should be highlighted during tracking
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {

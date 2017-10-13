@@ -24,5 +24,5 @@
 
 + (instancetype)addPhotoViewWithFrame:(CGRect)Frame;
 - (void)addNewPic:(UIImage *)pic;
-
+- (void)remorePic:(UIImage *)pic;
 @end

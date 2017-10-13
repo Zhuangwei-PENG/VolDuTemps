@@ -84,6 +84,10 @@
 
 }
 
+- (void)remorePic:(UIImage *)pic{
+    [self.pics removeObjectAtIndex:pic];
+}
+
 - (void)reloadView{
     CGFloat dx = kLength + self.margin;
     //每添加一张图片向后移动dx距离
@@ -102,8 +106,6 @@
     
     //添加到视图上
     [self addSubview:pic];
-    
-    NSLog(@"%@",NSStringFromCGRect(pic.frame));
 }
 
 - (void)clickOnBtn{
@@ -113,11 +115,9 @@
 }
 
 - (void)clickOnPic:(UITapGestureRecognizer *)gesture{
-    NSLog(@"点击了图片");
     if ([self.delegate respondsToSelector:@selector(TSAddPhoto:didClickOnPic:)]) {
         UIImageView *imageView = (UIImageView *)gesture.view;
         [self.delegate TSAddPhoto:self didClickOnPic:imageView.image];
-        NSLog(@"%@",imageView);
     }
 //    [[NSNotificationCenter defaultCenter] postNotificationName:@"zoomPic" object:self.picView];
 }
