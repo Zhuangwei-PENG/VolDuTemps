@@ -86,7 +86,7 @@
             [weakself.groups addObject:groupTwo];
             [weakself.tableView reloadData];
             
-        }else if(!weakself.passWord.isOn){
+        }else if(!weakself.passWord.isOn && self.groups.count > 1){
             [weakself.groups removeLastObject];
             [weakself.tableView reloadData];
         }
