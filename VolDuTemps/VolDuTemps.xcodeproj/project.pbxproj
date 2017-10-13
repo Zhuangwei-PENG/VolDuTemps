@@ -25,6 +25,7 @@
 		CF8B9C601F9051310085BF55 /* TSAddPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8B9C5F1F9051310085BF55 /* TSAddPhoto.m */; };
 		CF8B9C631F9056F40085BF55 /* TSTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8B9C621F9056F40085BF55 /* TSTestController.m */; };
 		CF8B9C661F9080DC0085BF55 /* TSPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8B9C651F9080DC0085BF55 /* TSPhotoViewController.m */; };
+		CF8B9C691F9099260085BF55 /* TSPhotoViewerController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8B9C681F9099260085BF55 /* TSPhotoViewerController.m */; };
 		CF9148E61F8B05710085BEDF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9148E51F8B05710085BEDF /* AppDelegate.m */; };
 		CF9148EE1F8B05710085BEDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF9148ED1F8B05710085BEDF /* Assets.xcassets */; };
 		CF9148F41F8B05710085BEDF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9148F31F8B05710085BEDF /* main.m */; };
@@ -91,6 +92,8 @@
 		CF8B9C621F9056F40085BF55 /* TSTestController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSTestController.m; sourceTree = "<group>"; };
 		CF8B9C641F9080DC0085BF55 /* TSPhotoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSPhotoViewController.h; sourceTree = "<group>"; };
 		CF8B9C651F9080DC0085BF55 /* TSPhotoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSPhotoViewController.m; sourceTree = "<group>"; };
+		CF8B9C671F9099260085BF55 /* TSPhotoViewerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSPhotoViewerController.h; sourceTree = "<group>"; };
+		CF8B9C681F9099260085BF55 /* TSPhotoViewerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSPhotoViewerController.m; sourceTree = "<group>"; };
 		CF9148E11F8B05710085BEDF /* VolDuTemps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VolDuTemps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF9148E41F8B05710085BEDF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CF9148E51F8B05710085BEDF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -271,6 +274,8 @@
 				CF8B9C651F9080DC0085BF55 /* TSPhotoViewController.m */,
 				CF83009A1F8DA95900C2A63E /* TSBasicSettingController.h */,
 				CF83009B1F8DA95900C2A63E /* TSBasicSettingController.m */,
+				CF8B9C671F9099260085BF55 /* TSPhotoViewerController.h */,
+				CF8B9C681F9099260085BF55 /* TSPhotoViewerController.m */,
 				CF83009D1F8DAE3700C2A63E /* TSSettingViewCell.h */,
 				CF83009E1F8DAE3700C2A63E /* TSSettingViewCell.m */,
 				CF87A5921F8F0E2B00A6359C /* TSIconViewCell.h */,
@@ -499,6 +504,7 @@
 				CF9149121F8B06A10085BEDF /* TSMainViewController.m in Sources */,
 				CF91491E1F8B07870085BEDF /* TSProfileViewController.m in Sources */,
 				CF60C95E1F8C6647007CFE8F /* NSString+Addition.m in Sources */,
+				CF8B9C691F9099260085BF55 /* TSPhotoViewerController.m in Sources */,
 				CF87A59D1F8F4F3E00A6359C /* TSChangeIconController.m in Sources */,
 				CF8B9C661F9080DC0085BF55 /* TSPhotoViewController.m in Sources */,
 				CF9149151F8B072B0085BEDF /* TSNavigationController.m in Sources */,

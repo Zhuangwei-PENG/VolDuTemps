@@ -59,6 +59,7 @@
 - (void)setupUI{
     //设置背景为黑色
     self.view.backgroundColor = [UIColor blackColor];
+    self.navigationItem.title = @"修改头像";
     
     //设置photoView的Frame
     CGFloat w = self.view.bounds.size.width;
@@ -79,63 +80,8 @@
 //点击右侧按钮更换头像
 - (void)changeIcon{
     //弹出选项
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"更换头像" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照",@"从手机相册选择",@"保存图片",nil];
-    
-    actionSheet.tintColor = [UIColor darkTextColor];
-    actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
-    //显示actionSheet
-    [actionSheet showInView:self.view];
+    [self choosePics:nil];
 }
-
-
-#pragma mark - Choose photo or Take photo
-- (void)presentWithType:(UIImagePickerControllerSourceType)type{
-    if (![UIImagePickerController isSourceTypeAvailable:type]) {
-        NSLog(@"不支持");
-        return;
-    }
-    //实例化 UIImagePickerController
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.sourceType = type;
-    
-    //设置代理和属性
-    picker.delegate = self;
-    picker.allowsEditing = YES;
-    
-    //跳转至相册或照相机
-    [self presentViewController:picker animated:YES completion:^{
-        
-    }];
-    
-}
-
-#pragma mark - Save Image To PhotoLibrary
-- (void)saveImageToPhotoLibrary{
-    //保存图片至相册
-    UIImageWriteToSavedPhotosAlbum(self.photoView.image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
-}
-
-- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo{
-    //保存结果显示
-    if(!error) {
-        [[[UIAlertView alloc] initWithTitle:@"提示"message:@"已存入手机相册"delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
-    }else{
-        [[[UIAlertView alloc] initWithTitle:@"提示"message:@"保存失败"delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
-    }
-}
-
-#pragma mark - ActionSheet delegate
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-    NSLog(@"%ld",buttonIndex);
-    if (buttonIndex == 0) {
-        [self presentWithType:UIImagePickerControllerSourceTypeCamera];
-    }else if (buttonIndex == 1) {
-        [self presentWithType:UIImagePickerControllerSourceTypePhotoLibrary];
-    }else if (buttonIndex == 2){
-        [self saveImageToPhotoLibrary];
-    }
-}
-
 #pragma mark - ImagePicker delegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     //获取文件类型
@@ -147,6 +93,9 @@
         self.photoView.image = nil;
         self.photoView.image = self.image;
         
+        //提示用户
+        [[[UIAlertView alloc] initWithTitle:@"提示"message:@"头像修改完成"delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
+        
         //获取新头像，保存至用户设置
         NSData *data = UIImageJPEGRepresentation(self.image, 0.5);
         [self.userDefault setObject:data forKey:@"userIcon"];
@@ -157,6 +106,4 @@
         
     }
 }
-
-
 @end
