@@ -56,11 +56,6 @@
 - (void)TSAddPhoto:(TSAddPhoto *)addPhotoView didClickAddPicBtn:(UIButton *)button{
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"添加一张照片" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照",@"从手机相册选择",nil];
     [self choosePics:actionSheet];
-    
-    __weak typeof(self) weakSelf;
-    self.imageOperationBlock = ^{
-        [weakSelf.photoView addNewPic:weakSelf.imageToSave];
-    };
 
 }
 

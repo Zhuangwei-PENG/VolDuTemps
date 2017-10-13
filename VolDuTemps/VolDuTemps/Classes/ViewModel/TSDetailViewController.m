@@ -9,7 +9,7 @@
 #import "TSDetailViewController.h"
 #import "Addition.h"
 
-@interface TSDetailViewController ()
+@interface TSDetailViewController ()<TSAddPhotoDelegate>
 
 @property (nonatomic, strong) UIView *bottomLine;
 @property (nonatomic, strong) UIDatePicker *datePicker;
@@ -64,6 +64,13 @@
     }
     return _dateField;
 }
+//创建图片添加视图
+- (TSAddPhoto *)photoView{
+    if (!_photoView) {
+        _photoView = [[TSAddPhoto alloc] init];
+    }
+    return _photoView;
+}
 
 #pragma mark - UI setUp
 - (void)viewDidLoad {
@@ -72,34 +79,40 @@
 }
 
 - (void)setupUI{
+    self.navigationItem.rightBarButtonItem = self.rightButton;
     self.navigationItem.leftBarButtonItem = self.leftButton;
- 
     self.view.backgroundColor = [UIColor whiteColor];
+    
     [self.view addSubview:self.titleField];
     [self.view addSubview:self.textField];
     [self.view addSubview:self.dateField];
     [self.view addSubview:self.bottomLine];
+    [self.view addSubview:self.photoView];
     
     self.bottomLine.backgroundColor = [UIColor colorWithHex:0xEDEDED];
+    self.photoView.delegate = self;
     
-    self.navigationItem.rightBarButtonItem = self.rightButton;
     self.titleField.placeholder = @"标题";
+    
     self.dateField.placeholder = @"选择日期📅";
     self.dateField.font = [UIFont systemFontOfSize:12];
     //设置时间选择键盘
     [self chooseDate];
+    [self layoutSubviews];
     
+}
+- (void)layoutSubviews{
     //设置自动布局
     for (UIView *view in self.view.subviews) {
         view.translatesAutoresizingMaskIntoConstraints = NO;
         [view sizeToFit];
     }
     
-    CGFloat margin = 8;
+    CGFloat margin = 20;
     CGFloat height = 35;
     CGFloat widthOfDate = 100;
     CGFloat widthOfTitle = self.view.bounds.size.width - widthOfDate - 3 * margin;
-    CGFloat widthOfText = self.view.bounds.size.width - 2 * margin;
+    //    CGFloat widthOfText = self.view.bounds.size.width - 2 * margin;
     [self.view addConstraints:@[
                                 [NSLayoutConstraint constraintWithItem:self.dateField
                                                              attribute:NSLayoutAttributeTop
@@ -167,7 +180,7 @@
                                                             multiplier:1
                                                               constant:height]
                                 ]];
-
+    
     
     [self.view addConstraints:@[
                                 [NSLayoutConstraint constraintWithItem:self.textField
@@ -187,57 +200,93 @@
                                                               constant:margin],
                                 
                                 [NSLayoutConstraint constraintWithItem:self.textField
-                                                             attribute:NSLayoutAttributeWidth
+                                                             attribute:NSLayoutAttributeRight
+                                                             relatedBy:NSLayoutRelationEqual
+                                                                toItem:self.view
+                                                             attribute:NSLayoutAttributeRight
+                                                            multiplier:1
+                                                              constant:margin],
+                                
+                                [NSLayoutConstraint constraintWithItem:self.textField
+                                                             attribute:NSLayoutAttributeHeight
                                                              relatedBy:NSLayoutRelationEqual
                                                                 toItem:nil
                                                              attribute:NSLayoutAttributeNotAnAttribute
                                                             multiplier:1
-                                                              constant:widthOfText],
-                                
-                                [NSLayoutConstraint constraintWithItem:self.textField
-                                                             attribute:NSLayoutAttributeBottom
-                                                             relatedBy:NSLayoutRelationEqual
-                                                                toItem:self.view
-                                                             attribute:NSLayoutAttributeBottom
-                                                            multiplier:1
-                                                              constant:margin]
+                                                              constant:height * 2]
                                 ]];
     //设置title底部的分割线
-    [self.view addConstraints:@[[NSLayoutConstraint constraintWithItem:self.bottomLine
-                                                                    attribute:NSLayoutAttributeTop
-                                                                    relatedBy:NSLayoutRelationEqual
-                                                                       toItem:self.titleField
-                                                                    attribute:NSLayoutAttributeBottom
-                                                                   multiplier:1
-                                                                     constant:1],
-                                       
-                                       [NSLayoutConstraint constraintWithItem:self.bottomLine
-                                                                    attribute:NSLayoutAttributeLeft
-                                                                    relatedBy:NSLayoutRelationEqual
-                                                                       toItem:self.view
-                                                                    attribute:NSLayoutAttributeLeft
-                                                                   multiplier:1
-                                                                     constant:margin],
-                                       
-                                       [NSLayoutConstraint constraintWithItem:self.bottomLine
-                                                                    attribute:NSLayoutAttributeRight
-                                                                    relatedBy:NSLayoutRelationEqual
-                                                                       toItem:self.view
-                                                                    attribute:NSLayoutAttributeRight
-                                                                   multiplier:1
-                                                                     constant:-margin],
-                                       
-                                       [NSLayoutConstraint constraintWithItem:self.bottomLine
-                                                                    attribute:NSLayoutAttributeHeight
-                                                                    relatedBy:NSLayoutRelationEqual
-                                                                       toItem:nil
-                                                                    attribute:NSLayoutAttributeNotAnAttribute
-                                                                   multiplier:1
-                                                                     constant:1]
-                                       ]];
+    [self.view addConstraints:@[
+                                [NSLayoutConstraint constraintWithItem:self.bottomLine
+                                                             attribute:NSLayoutAttributeTop
+                                                             relatedBy:NSLayoutRelationEqual
+                                                                toItem:self.titleField
+                                                             attribute:NSLayoutAttributeBottom
+                                                            multiplier:1
+                                                              constant:1],
+                                
+                                [NSLayoutConstraint constraintWithItem:self.bottomLine
+                                                             attribute:NSLayoutAttributeLeft
+                                                             relatedBy:NSLayoutRelationEqual
+                                                                toItem:self.view
+                                                             attribute:NSLayoutAttributeLeft
+                                                            multiplier:1
+                                                              constant:margin],
+                                
+                                [NSLayoutConstraint constraintWithItem:self.bottomLine
+                                                             attribute:NSLayoutAttributeRight
+                                                             relatedBy:NSLayoutRelationEqual
+                                                                toItem:self.view
+                                                             attribute:NSLayoutAttributeRight
+                                                            multiplier:1
+                                                              constant:0],
+                                
+                                [NSLayoutConstraint constraintWithItem:self.bottomLine
+                                                             attribute:NSLayoutAttributeHeight
+                                                             relatedBy:NSLayoutRelationEqual
+                                                                toItem:nil
+                                                             attribute:NSLayoutAttributeNotAnAttribute
+                                                            multiplier:1
+                                                              constant:1]
+                                ]];
+    
+    //设置photoView
+    [self.view addConstraints:@[[NSLayoutConstraint constraintWithItem:self.photoView
+                                                             attribute:NSLayoutAttributeTop
+                                                             relatedBy:NSLayoutRelationEqual
+                                                                toItem:self.textField
+                                                             attribute:NSLayoutAttributeBottom
+                                                            multiplier:1
+                                                              constant:margin * 0.5],
+                                
+                                [NSLayoutConstraint constraintWithItem:self.photoView
+                                                             attribute:NSLayoutAttributeLeft
+                                                             relatedBy:NSLayoutRelationEqual
+                                                                toItem:self.view
+                                                             attribute:NSLayoutAttributeLeft
+                                                            multiplier:1
+                                                              constant:0],
+                                
+                                [NSLayoutConstraint constraintWithItem:self.photoView
+                                                             attribute:NSLayoutAttributeRight
+                                                             relatedBy:NSLayoutRelationEqual
+                                                                toItem:self.view
+                                                             attribute:NSLayoutAttributeRight
+                                                            multiplier:1
+                                                              constant:0],
+                                
+                                [NSLayoutConstraint constraintWithItem:self.photoView
+                                                             attribute:NSLayoutAttributeHeight
+                                                             relatedBy:NSLayoutRelationEqual
+                                                                toItem:nil
+                                                             attribute:NSLayoutAttributeNotAnAttribute
+                                                            multiplier:1
+                                                              constant:2 * height + margin]
+                                ]];
     
     
 }
+
 #pragma mark - Navigation
 - (TSDairyModel *)saveData{
     NSLog(@"保存数据");
@@ -250,7 +299,6 @@
     //如果时新建页面，只要有一个不为空，返回时提示是否保存
     //如果时修改页面，有一个位置修改了，返回时提示是否保存
  
-    
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"是否保存" message:@"确定要返回并保存吗？" preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
@@ -312,5 +360,35 @@
     self.dateField.inputAccessoryView = toorBar;
     
 }
+
+#pragma mark - Actionsheet delegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    NSLog(@"%ld",buttonIndex);
+    if (buttonIndex == 0) {
+        [self presentWithType:UIImagePickerControllerSourceTypeCamera];
+    }else if (buttonIndex == 1) {
+        [self presentWithType:UIImagePickerControllerSourceTypePhotoLibrary];
+    }
+}
+
+#pragma mark - ImagePicker delegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    [super imagePickerController:picker didFinishPickingMediaWithInfo:info];
+    [self.photoView addNewPic:self.imageToSave];
+}
+
+#pragma mark - AddPhotoView delegate
+- (void)TSAddPhoto:(TSAddPhoto *)addPhotoView didClickOnPic:(UIImage *)image{
+    [self presentViewController:[UINavigationController new] animated:YES completion:^{
+        NSLog(@"跳转完成");
+    }];
+}
+
+- (void)TSAddPhoto:(TSAddPhoto *)addPhotoView didClickAddPicBtn:(UIButton *)button{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"添加一张照片" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照",@"从手机相册选择",nil];
+    [self choosePics:actionSheet];
+    
+}
+
 @end
 

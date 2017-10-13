@@ -6,13 +6,15 @@
 //  Copyright © 2017年 Zhuangwei PENG. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "TSPhotoViewController.h"
 #import "TSDairyModel.h"
-
-@interface TSDetailViewController : UIViewController
-
+#import "TSAddPhoto.h"
 
 
+@interface TSDetailViewController : TSPhotoViewController
+
+
+@property (nonatomic, strong) TSAddPhoto *photoView;
 @property (nonatomic, strong) UITextField *titleField;
 @property (nonatomic, strong) UITextView *textField;
 @property (nonatomic, strong) UITextField *dateField;

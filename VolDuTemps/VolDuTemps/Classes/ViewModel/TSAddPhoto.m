@@ -60,9 +60,13 @@
     self.addPicBtn = addBtn;
     
     //计算初始frame
+    
+    if (self.bounds.size.width == 0) {
+        self.bounds = [UIScreen mainScreen].bounds;
+    }
     self.margin = (self.bounds.size.width - 4 * kLength)/5;
     addBtn.frame = CGRectMake(self.margin, self.margin, kLength, kLength);
-
+    NSLog(@"%@",NSStringFromCGRect(addBtn.frame));
 }
 
 - (void)addNewPic:(UIImage *)pic{

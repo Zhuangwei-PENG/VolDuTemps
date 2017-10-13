@@ -23,8 +23,8 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
-//    self.window.rootViewController = [[TSMainViewController alloc] init];
-    self.window.rootViewController = [[TSTestController alloc] init];
+    self.window.rootViewController = [[TSMainViewController alloc] init];
+//    self.window.rootViewController = [[TSTestController alloc] init];
     
     [self.window makeKeyAndVisible];
     
