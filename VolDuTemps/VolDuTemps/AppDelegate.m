@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "TSMainViewController.h"
 
+#import "TSTestController.h"
+
 @interface AppDelegate ()
 
 @end
@@ -21,7 +23,8 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
-    self.window.rootViewController = [[TSMainViewController alloc] init];
+//    self.window.rootViewController = [[TSMainViewController alloc] init];
+    self.window.rootViewController = [[TSTestController alloc] init];
     
     [self.window makeKeyAndVisible];
     
