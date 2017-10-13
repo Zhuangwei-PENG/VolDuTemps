@@ -6,8 +6,8 @@
 //  Copyright © 2017年 Zhuangwei PENG. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "TSPhotoViewController.h"
 
-@interface TSTestController : UIViewController
+@interface TSTestController : TSPhotoViewController
 
 @end

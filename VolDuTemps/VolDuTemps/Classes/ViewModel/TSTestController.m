@@ -7,11 +7,11 @@
 //
 
 #import "TSTestController.h"
+
 #import "TSAddPhoto.h"
 
-@interface TSTestController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate,TSAddPhotoDelegate>
+@interface TSTestController ()<TSAddPhotoDelegate>
 
-@property (nonatomic, weak) UIButton *addBtn;
 @property (nonatomic, weak) TSAddPhoto *photoView;
 
 @end
@@ -28,38 +28,6 @@
     self.photoView = photoView;
     self.photoView.delegate = self;
     
-//    [self.addBtn addTarget:self action:@selector(addMorePics) forControlEvents:UIControlEventTouchUpInside];
-    
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushToZoomPic) name:@"zoomPic" object:nil];
-}
-
-- (void)addMorePics{
-    //弹出选项
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"添加一张照片" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照",@"从手机相册选择",nil];
-    
-    actionSheet.tintColor = [UIColor darkTextColor];
-    actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
-    //显示actionSheet
-    [actionSheet showInView:self.view];
-}
-
-- (void)presentWithType:(UIImagePickerControllerSourceType)type{
-    if (![UIImagePickerController isSourceTypeAvailable:type]) {
-        NSLog(@"不支持");
-        return;
-    }
-    //实例化 UIImagePickerController
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.sourceType = type;
-    
-    //设置代理和属性
-    picker.delegate = self;
-    picker.allowsEditing = YES;
-    
-    //跳转至相册或照相机
-    [self presentViewController:picker animated:YES completion:^{
-        
-    }];
 }
 
 #pragma mark - Actionsheet delegate
@@ -72,21 +40,10 @@
     }
 }
 
-
 #pragma mark - ImagePicker delegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
-    //获取文件类型
-    NSString *fileType = [info objectForKey:UIImagePickerControllerMediaType];
-    //判断是否为图片
-    if ([fileType isEqualToString:@"public.image"]) {
-
-        UIImage *image = info[UIImagePickerControllerEditedImage];
-        [self.photoView addNewPic:image];
-        
-        [picker dismissViewControllerAnimated:YES completion:^{
-            
-        }];
-    }
+    [super imagePickerController:picker didFinishPickingMediaWithInfo:info];
+     [self.photoView addNewPic:self.imageToSave];
 }
 
 #pragma mark - AddPhotoView delegate
@@ -97,7 +54,14 @@
 }
 
 - (void)TSAddPhoto:(TSAddPhoto *)addPhotoView didClickAddPicBtn:(UIButton *)button{
-    [self addMorePics];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"添加一张照片" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照",@"从手机相册选择",nil];
+    [self choosePics:actionSheet];
+    
+    __weak typeof(self) weakSelf;
+    self.imageOperationBlock = ^{
+        [weakSelf.photoView addNewPic:weakSelf.imageToSave];
+    };
+
 }
 
 
