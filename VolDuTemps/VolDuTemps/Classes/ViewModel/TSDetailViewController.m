@@ -10,7 +10,7 @@
 #import "TSPhotoViewerController.h"
 #import "Addition.h"
 
-@interface TSDetailViewController ()<TSAddPhotoDelegate>
+@interface TSDetailViewController ()<TSAddPhotoDelegate, TSPhotoViewerControllerDelegate>
 
 @property (nonatomic, strong) UIView *bottomLine;
 @property (nonatomic, strong) UIDatePicker *datePicker;
@@ -390,18 +390,27 @@
 - (void)TSAddPhoto:(TSAddPhoto *)addPhotoView didClickOnPic:(UIImage *)image{
     //跳转至图片浏览
     TSPhotoViewerController *displayVC = [[TSPhotoViewerController alloc] init];
-    displayVC.picsToDisplay = self.picsToDisplay.copy;
-    NSUInteger index = [self.picsToDisplay indexOfObject:image];
-    NSLog(@"%lu",index);
-    displayVC.firstViewIndex = index;
-    [self.navigationController pushViewController:displayVC animated:YES];
+    displayVC.delegate = self;
     
+    displayVC.picsToDisplay = self.picsToDisplay.copy;
+    
+    NSUInteger index = [self.picsToDisplay indexOfObject:image];
+    displayVC.firstViewIndex = index;
+    
+    [self.navigationController pushViewController:displayVC animated:YES];
     
 }
 
 - (void)TSAddPhoto:(TSAddPhoto *)addPhotoView didClickAddPicBtn:(UIButton *)button{
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"添加一张照片" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照",@"从手机相册选择",nil];
     [self choosePics:actionSheet];
+    
+}
+#pragma mark - Photoviewer delete photo delegate
+- (void)TSPhotoViewerController:(TSPhotoViewerController *)ViewController didDeletedPicAtIndex:(NSUInteger)index{
+    [self.photoView removePic:index];
+    [self.picsToDisplay removeObjectAtIndex:index];
+    NSLog(@"%lu",index);
     
 }
 

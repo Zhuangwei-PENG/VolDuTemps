@@ -11,6 +11,9 @@
 
 @interface TSPhotoViewerController ()<UIActionSheetDelegate>
 @property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
+@property (nonatomic, assign) NSUInteger currentIndex;
+@property (nonatomic, strong) NSMutableArray *currentPics;
+
 @end
 
 @implementation TSPhotoViewerController
@@ -26,6 +29,8 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    self.currentIndex = self.firstViewIndex;
+    self.currentPics = [self.picsToDisplay mutableCopy];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.firstViewIndex inSection:0];
     [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
 
@@ -37,10 +42,6 @@ static NSString * const reuseIdentifier = @"Cell";
     [self setCollectionView];
     return self;
 }
-
-//- (void)setFirstViewIndex:(NSInteger)firstViewIndex{
-//    _firstViewIndex = firstViewIndex;
-//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -70,13 +71,23 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (void)delete{
-    NSLog(@"删除图片");
-//    self.picsToDisplay
+
+    [self.currentPics removeObjectAtIndex:self.currentIndex];
+    
+    if ([self.delegate respondsToSelector:@selector(TSPhotoViewerController:didDeletedPicAtIndex:)]) {
+        [self.delegate TSPhotoViewerController:self didDeletedPicAtIndex:self.currentIndex];
+    }
+    
+    if (self.currentPics.count) {
+        [self.collectionView reloadData];
+    }else{
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
 }
 
 #pragma mark - Actionsheet delegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-    NSLog(@"%ld",buttonIndex);
     if (buttonIndex == 0) {
         [self delete];
     }else if (buttonIndex == 1) {
@@ -90,55 +101,26 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.picsToDisplay.count;
+    return self.currentPics.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    UIImage *image = self.picsToDisplay[indexPath.row];
+    UIImage *image = self.currentPics[indexPath.row];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
     [cell.contentView addSubview:imageView];
-    imageView.frame = CGRectMake(0, 100, self.collectionView.bounds.size.width, image.size.height);
-//    NSLog(@"%@",NSStringFromCGRect(imageView.frame));
+    imageView.frame = CGRectMake(0, 100, self.collectionView.bounds.size.width, self.collectionView.bounds.size.width);
+
     return cell;
 }
 
 #pragma mark <UICollectionViewDelegate>
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    UIImage *image = self.picsToDisplay[indexPath.row];
-    NSLog(@"%@",NSStringFromCGSize(image.size));
-}
-- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath{
-    UIImage *image = self.picsToDisplay[indexPath.row];
-    NSLog(@"------%@",NSStringFromCGSize(image.size));
-}
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    CGFloat offX = scrollView.contentOffset.x / self.collectionView.bounds.size.width;
+    //移动时获得最新的下标
+    self.currentIndex = offX;
 
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
 }
 
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
-}
-*/
 
 @end

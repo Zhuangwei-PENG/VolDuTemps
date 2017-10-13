@@ -14,7 +14,7 @@
 
 @property (nonatomic, strong) NSMutableArray *pics;
 @property (nonatomic, weak) UIImageView *picView;
-@property (nonatomic, weak) UIButton *addPicBtn;
+@property (nonatomic, strong) UIButton *addPicBtn;
 
 @property (nonatomic, assign) CGFloat margin;
 
@@ -30,6 +30,16 @@
         _pics = [NSMutableArray arrayWithCapacity:4];
     }
     return _pics;
+}
+
+- (UIButton *)addPicBtn{
+    if (!_addPicBtn) {
+        _addPicBtn = [[UIButton alloc] init];
+        [_addPicBtn setImage:[UIImage imageNamed:@"compose_pic_add"] forState:UIControlStateNormal];
+        [_addPicBtn setImage:[UIImage imageNamed:@"compose_pic_add_highlighted"] forState:UIControlStateHighlighted];
+        [_addPicBtn sizeToFit];
+    }
+    return _addPicBtn;
 }
 
 #pragma mark - Class initializer
@@ -48,25 +58,15 @@
 
 - (void)setupPhotoView{
     //创建添加按钮
-    UIButton *addBtn = [[UIButton alloc] init];
-    [addBtn setImage:[UIImage imageNamed:@"compose_pic_add"] forState:UIControlStateNormal];
-    [addBtn setImage:[UIImage imageNamed:@"compose_pic_add_highlighted"] forState:UIControlStateHighlighted];
-    [addBtn sizeToFit];
+    [self addSubview:self.addPicBtn];
     
     //添加监听方法
-    [addBtn addTarget:self action:@selector(clickOnBtn) forControlEvents:UIControlEventTouchUpInside];
-    
-    [self addSubview:addBtn];
-    self.addPicBtn = addBtn;
+    [self.addPicBtn addTarget:self action:@selector(clickOnBtn) forControlEvents:UIControlEventTouchUpInside];
     
     //计算初始frame
-    
-    if (self.bounds.size.width == 0) {
-        self.bounds = [UIScreen mainScreen].bounds;
-    }
-    self.margin = (self.bounds.size.width - 4 * kLength)/5;
-    addBtn.frame = CGRectMake(self.margin, self.margin, kLength, kLength);
-    NSLog(@"%@",NSStringFromCGRect(addBtn.frame));
+    [self reloadView];
+   
+
 }
 
 - (void)addNewPic:(UIImage *)pic{
@@ -84,28 +84,54 @@
 
 }
 
-- (void)remorePic:(UIImage *)pic{
-    [self.pics removeObjectAtIndex:pic];
+- (void)removePic:(NSUInteger)index{
+    UIImageView *deleteView = self.pics[index];
+    [deleteView removeFromSuperview];
+    [self.pics removeObjectAtIndex:index];
+    [self reloadView];
 }
 
 - (void)reloadView{
-    CGFloat dx = kLength + self.margin;
-    //每添加一张图片向后移动dx距离
-    if (self.pics.count < 4) {
-        self.addPicBtn.transform = CGAffineTransformTranslate(self.addPicBtn.transform, dx, 0);
-    }else{
-        //添加到第四张移除添加按钮
-        [self.addPicBtn removeFromSuperview];
+    
+    if (self.pics.count == 0) {
+        if (self.bounds.size.width == 0) {
+            self.bounds = [UIScreen mainScreen].bounds;
+        }
+        
+        self.margin = (self.bounds.size.width - 4 * kLength)/5;
+        self.addPicBtn.frame = CGRectMake(self.margin, self.margin, kLength, kLength);
+        return;
+        
+    }else if (self.pics.count > 0) {
+        //如果count = 4，删除+按钮
+        if (self.pics.count == 4) {
+            [self.addPicBtn removeFromSuperview];
+        }else {
+            CGFloat x = self.pics.count * (kLength + self.margin) +self.margin;
+            self.addPicBtn.frame = CGRectMake(x, self.margin, kLength, kLength);
+            if (![self.subviews containsObject:self.addPicBtn]) {
+                [self addSubview:self.addPicBtn];
+            }
+        }
+        
+        CGFloat index = 1;
+        for (UIImageView *subView in self.pics) {
+            CGFloat x = index * self.margin + (index -1) * kLength;
+            subView.frame = CGRectMake(x, self.margin, kLength, kLength);
+            [self addSubview:subView];
+            index ++;
+        }
+        
     }
-    //布置图片位置
-    CGFloat index = self.pics.count;
-    CGFloat x = index * self.margin + (index -1) * kLength;
-    
-    UIImageView *pic = self.pics.lastObject;
-    pic.frame = CGRectMake(x, self.margin, kLength, kLength);
-    
-    //添加到视图上
-    [self addSubview:pic];
+//else{
+//        //添加到第四张移除添加按钮
+//
+//    }
+//    //布置图片位置
+//
+//
+//    //添加到视图上
+//    [self addSubview:pic];
 }
 
 - (void)clickOnBtn{

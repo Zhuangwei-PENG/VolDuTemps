@@ -24,5 +24,5 @@
 
 + (instancetype)addPhotoViewWithFrame:(CGRect)Frame;
 - (void)addNewPic:(UIImage *)pic;
-- (void)remorePic:(UIImage *)pic;
+- (void)removePic:(NSUInteger)index;
 @end

@@ -7,8 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+@class TSPhotoViewerController;
+
+@protocol TSPhotoViewerControllerDelegate <NSObject>
+
+- (void)TSPhotoViewerController:(TSPhotoViewerController *)ViewController didDeletedPicAtIndex:(NSUInteger)index;
+
+@end
 
 @interface TSPhotoViewerController : UICollectionViewController
+
+@property (nonatomic, weak) id<TSPhotoViewerControllerDelegate> delegate;
 
 @property (nonatomic, strong) NSArray *picsToDisplay;
 @property (nonatomic, copy) NSString *titleToDisplay;
