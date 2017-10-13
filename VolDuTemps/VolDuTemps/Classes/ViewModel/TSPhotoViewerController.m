@@ -9,58 +9,62 @@
 #import "TSPhotoViewerController.h"
 
 @interface TSPhotoViewerController ()
-
+@property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
 @end
 
 @implementation TSPhotoViewerController
 
 static NSString * const reuseIdentifier = @"Cell";
 
+- (UICollectionViewFlowLayout *)flowLayout{
+    if (!_flowLayout) {
+        _flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    }
+    return _flowLayout;
+}
+
+
+- (instancetype)init{
+    self.collectionView = [[UICollectionView alloc] initWithFrame:[UIScreen mainScreen].bounds collectionViewLayout:self.flowLayout];
+    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
+    self.collectionView.backgroundColor = [UIColor blackColor];
+    [self setCollectionView];
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Register cell classes
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
-    
-    // Do any additional setup after loading the view.
+
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)setCollectionView{
+    self.flowLayout.itemSize = [UIScreen mainScreen].bounds.size;
+    self.flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    self.flowLayout.minimumLineSpacing = 0;
+    self.flowLayout.minimumInteritemSpacing = 0;
+    
+    self.collectionView.pagingEnabled = YES;
+    self.collectionView.showsHorizontalScrollIndicator = NO;
+    self.collectionView.bounces = NO;
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+    return 1;
 }
 
-
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of items
-    return 0;
+    return self.picsToDisplay.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
-    // Configure the cell
-    
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:self.picsToDisplay[indexPath.row]];
+    [cell.contentView addSubview:imageView];
+    imageView.frame = CGRectMake(0, 100, self.collectionView.bounds.size.width, self.collectionView.bounds.size.width);
+    NSLog(@"%@",NSStringFromCGRect(imageView.frame));
     return cell;
 }
 

@@ -10,4 +10,6 @@
 
 @interface TSPhotoViewerController : UICollectionViewController
 
+@property (nonatomic, strong) NSArray *picsToDisplay;
+
 @end
