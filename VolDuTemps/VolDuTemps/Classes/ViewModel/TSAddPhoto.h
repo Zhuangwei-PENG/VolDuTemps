@@ -20,9 +20,10 @@
 
 
 @property (nonatomic, weak) id<TSAddPhotoDelegate> delegate;
-
-
+//创建方法
 + (instancetype)addPhotoViewWithFrame:(CGRect)Frame;
+//添加一张图片
 - (void)addNewPic:(UIImage *)pic;
+//移除一张图片
 - (void)removePic:(NSUInteger)index;
 @end

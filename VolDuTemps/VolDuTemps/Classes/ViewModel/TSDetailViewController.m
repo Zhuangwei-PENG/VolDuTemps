@@ -381,37 +381,45 @@
 
 #pragma mark - ImagePicker delegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    //获取用户选择的图片，保存到self.imageToSave中
     [super imagePickerController:picker didFinishPickingMediaWithInfo:info];
+    //添加图片到photoView视图上
     [self.photoView addNewPic:self.imageToSave];
+    //添加图片到图片浏览器的数组上
     [self.picsToDisplay addObject:self.imageToSave];
 }
 
 #pragma mark - AddPhotoView delegate
 - (void)TSAddPhoto:(TSAddPhoto *)addPhotoView didClickOnPic:(UIImage *)image{
-    //跳转至图片浏览
+    
+    //创建图片浏览器
     TSPhotoViewerController *displayVC = [[TSPhotoViewerController alloc] init];
     displayVC.delegate = self;
-    
+    //将要显示的数据传给图片浏览器
     displayVC.picsToDisplay = self.picsToDisplay.copy;
-    
+    //将用户点击的图片下标传递给图片浏览器，先显示用户点击的图片
     NSUInteger index = [self.picsToDisplay indexOfObject:image];
     displayVC.firstViewIndex = index;
-    
+    //跳转至图片浏览
     [self.navigationController pushViewController:displayVC animated:YES];
     
 }
 
 - (void)TSAddPhoto:(TSAddPhoto *)addPhotoView didClickAddPicBtn:(UIButton *)button{
+    //修改actionSheet提示
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"添加一张照片" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照",@"从手机相册选择",nil];
     [self choosePics:actionSheet];
     
 }
+
 #pragma mark - Photoviewer delete photo delegate
+
 - (void)TSPhotoViewerController:(TSPhotoViewerController *)ViewController didDeletedPicAtIndex:(NSUInteger)index{
+    //将图片从photoView视图中移除
     [self.photoView removePic:index];
+    //将图片从图片浏览器中移除
     [self.picsToDisplay removeObjectAtIndex:index];
     NSLog(@"%lu",index);
-    
 }
 
 @end

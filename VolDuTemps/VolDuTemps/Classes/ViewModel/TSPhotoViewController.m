@@ -74,9 +74,9 @@
     if ([fileType isEqualToString:@"public.image"]) {
         
         self.imageToSave = info[UIImagePickerControllerEditedImage];
-        if (self.imageOperationBlock) {
-            self.imageOperationBlock();
-        }
+//        if (self.imageOperationBlock) {
+//            self.imageOperationBlock();
+//        }
         
         [picker dismissViewControllerAnimated:YES completion:^{
            

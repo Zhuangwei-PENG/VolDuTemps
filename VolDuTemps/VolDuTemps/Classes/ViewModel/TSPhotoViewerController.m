@@ -66,21 +66,24 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (void)deletePic{
+    //删除图片时，提示用户，监控用户选择
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"要删除这张照片吗？" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"删除" otherButtonTitles:nil];
     [actionSheet showInView:self.collectionView];
 }
 
 - (void)delete{
-
+    //将图片从图片浏览器中移除
     [self.currentPics removeObjectAtIndex:self.currentIndex];
-    
+    //执行代理方法，将删除的图片下标回传给控制器
     if ([self.delegate respondsToSelector:@selector(TSPhotoViewerController:didDeletedPicAtIndex:)]) {
         [self.delegate TSPhotoViewerController:self didDeletedPicAtIndex:self.currentIndex];
     }
     
     if (self.currentPics.count) {
+        //如果还有要显示的图片，更新图片浏览器
         [self.collectionView reloadData];
     }else{
+        //如果图片全部删除了，直接跳回上级界面
         [self.navigationController popViewControllerAnimated:YES];
     }
     
@@ -89,6 +92,7 @@ static NSString * const reuseIdentifier = @"Cell";
 #pragma mark - Actionsheet delegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 0) {
+        //如果选择了删除，删除图片
         [self delete];
     }else if (buttonIndex == 1) {
     }
