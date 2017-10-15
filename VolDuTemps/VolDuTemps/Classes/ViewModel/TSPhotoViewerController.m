@@ -74,6 +74,7 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)delete{
     //将图片从图片浏览器中移除
     [self.currentPics removeObjectAtIndex:self.currentIndex];
+    
     //执行代理方法，将删除的图片下标回传给控制器
     if ([self.delegate respondsToSelector:@selector(TSPhotoViewerController:didDeletedPicAtIndex:)]) {
         [self.delegate TSPhotoViewerController:self didDeletedPicAtIndex:self.currentIndex];
@@ -119,12 +120,12 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 #pragma mark <UICollectionViewDelegate>
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    CGFloat offX = scrollView.contentOffset.x / self.collectionView.bounds.size.width;
-    //移动时获得最新的下标
-    self.currentIndex = offX;
+
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath{
+    self.currentIndex = indexPath.row;
 
 }
+
 
 
 @end

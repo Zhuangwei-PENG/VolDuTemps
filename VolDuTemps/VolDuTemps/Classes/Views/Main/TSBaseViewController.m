@@ -36,11 +36,11 @@
     [self.view addSubview:self.myTableView];
     self.myTableView.delegate = self;
     self.myTableView.dataSource = self;
-    
+    NSLog(@"%f",self.navigationController.navigationBar.bounds.size.height);
     //设置缩进
-//    CGFloat topInset = self.navigationController.navigationBar.bounds.size.height;
+    CGFloat topInset = self.navigationController.navigationBar.bounds.size.height + 20;
     CGFloat bottomInset = self.tabBarController.tabBar.bounds.size.height ? self.tabBarController.tabBar.bounds.size.height:49;
-    self.myTableView.contentInset = UIEdgeInsetsMake(0, 0, bottomInset, 0);
+    self.myTableView.contentInset = UIEdgeInsetsMake(topInset, 0, bottomInset, 0);
 }
 
 #pragma mark - Delegate & DataSource
