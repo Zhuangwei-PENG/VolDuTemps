@@ -9,10 +9,15 @@
 #import "TSDairyModel.h"
 
 @implementation TSDairyModel
+//- (NSArray *)pictures{
+//    
+//}
+
 - (void)encodeWithCoder:(NSCoder *)aCoder{
     [aCoder encodeObject:_title forKey:@"title"];
     [aCoder encodeObject:_text forKey:@"text"];
     [aCoder encodeObject:_time forKey:@"time"];
+    [aCoder encodeObject:_pictures forKey:@"pictures"];
 }
 
 - (nullable instancetype)initWithCoder:(NSCoder *)aDecoder{
@@ -20,6 +25,7 @@
         _title = [aDecoder decodeObjectForKey:@"title"];
         _text = [aDecoder decodeObjectForKey:@"text"];
         _time = [aDecoder decodeObjectForKey:@"time"];
+        _pictures = [aDecoder decodeObjectForKey:@"pictures"];
 
     }
     return self;
@@ -50,7 +56,11 @@
     if ([self.title isEqualToString:model.title]) {
         if ([self.time isEqualToString:model.time]) {
             if ([self.text isEqualToString:model.text]) {
-                return YES;
+                if (!self.pictures.count && !model.pictures.count) {
+                    return YES;
+                }else if ([self.pictures isEqualToArray:model.pictures]) {
+                    return YES;
+                }
             }
         }
     }

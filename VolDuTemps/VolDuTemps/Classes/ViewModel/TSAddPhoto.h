@@ -18,7 +18,7 @@
 
 @interface TSAddPhoto : UIView
 
-
+@property (nonatomic, strong) NSMutableArray *pics;
 @property (nonatomic, weak) id<TSAddPhotoDelegate> delegate;
 //创建方法
 + (instancetype)addPhotoViewWithFrame:(CGRect)Frame;

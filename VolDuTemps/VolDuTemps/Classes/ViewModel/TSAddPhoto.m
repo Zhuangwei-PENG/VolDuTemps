@@ -12,8 +12,8 @@
 
 @interface TSAddPhoto()
 
-@property (nonatomic, strong) NSMutableArray *pics;
-@property (nonatomic, weak) UIImageView *picView;
+@property (nonatomic, strong) NSMutableArray *picViews;
+@property (nonatomic, strong) UIImageView *picView;
 @property (nonatomic, strong) UIButton *addPicBtn;
 
 @property (nonatomic, assign) CGFloat margin;
@@ -25,11 +25,35 @@
 //小图的大小尺寸
 
 #pragma mark - Lazy instantiation
+
+- (NSMutableArray *)picViews{
+    if (!_picViews) {
+        _picViews = [NSMutableArray arrayWithCapacity:4];
+    }
+    return _picViews;
+}
+
+@synthesize pics = _pics;
+
 - (NSMutableArray *)pics{
     if (!_pics) {
         _pics = [NSMutableArray arrayWithCapacity:4];
     }
     return _pics;
+}
+- (void)setPics:(NSMutableArray *)pics{
+    _pics = pics;
+    [pics enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [self.picViews addObject:[self creatPicViewWithPic:obj]];
+    }];
+    [self reloadView];
+}
+
+- (UIImageView *)picView{
+    if (!_picView) {
+        _picView = [[UIImageView alloc] init];
+    }
+    return _picView;
 }
 
 - (UIButton *)addPicBtn{
@@ -69,31 +93,35 @@
 
 }
 
-- (void)addNewPic:(UIImage *)pic{
-   
-    UIImageView *picView= [[UIImageView alloc] initWithImage:pic];
-    self.picView = picView;
-    
+- (UIImageView *)creatPicViewWithPic:(UIImage *)pic{
+    UIImageView *picView = [[UIImageView alloc] initWithImage:pic];
     //添加手势
     UITapGestureRecognizer *singleTap =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickOnPic:)];
-    self.picView.userInteractionEnabled=YES;
-    [self.picView addGestureRecognizer:singleTap];
+    picView.userInteractionEnabled=YES;
+    [picView addGestureRecognizer:singleTap];
+    return picView;
+}
+
+- (void)addNewPic:(UIImage *)pic{
+    self.picView = [self creatPicViewWithPic:pic];
     
-    [self.pics addObject:picView];
+    [self.picViews addObject:self.picView];
+    [self.pics addObject:pic];
     [self reloadView];
 
 }
 
 - (void)removePic:(NSUInteger)index{
-    UIImageView *deleteView = self.pics[index];
+    UIImageView *deleteView = self.picViews[index];
     [deleteView removeFromSuperview];
+    [self.picViews removeObjectAtIndex:index];
     [self.pics removeObjectAtIndex:index];
     [self reloadView];
 }
 
 - (void)reloadView{
     
-    if (self.pics.count == 0) {
+    if (self.picViews.count == 0) {
         if (self.bounds.size.width == 0) {
             self.bounds = [UIScreen mainScreen].bounds;
         }
@@ -102,12 +130,12 @@
         self.addPicBtn.frame = CGRectMake(self.margin, self.margin, kLength, kLength);
         return;
         
-    }else if (self.pics.count > 0) {
+    }else if (self.picViews.count > 0) {
         //如果count = 4，删除+按钮
-        if (self.pics.count == 4) {
+        if (self.picViews.count == 4) {
             [self.addPicBtn removeFromSuperview];
         }else {
-            CGFloat x = self.pics.count * (kLength + self.margin) +self.margin;
+            CGFloat x = self.picViews.count * (kLength + self.margin) +self.margin;
             self.addPicBtn.frame = CGRectMake(x, self.margin, kLength, kLength);
             if (![self.subviews containsObject:self.addPicBtn]) {
                 [self addSubview:self.addPicBtn];
@@ -115,7 +143,7 @@
         }
         
         CGFloat index = 1;
-        for (UIImageView *subView in self.pics) {
+        for (UIImageView *subView in self.picViews) {
             CGFloat x = index * self.margin + (index -1) * kLength;
             subView.frame = CGRectMake(x, self.margin, kLength, kLength);
             [self addSubview:subView];

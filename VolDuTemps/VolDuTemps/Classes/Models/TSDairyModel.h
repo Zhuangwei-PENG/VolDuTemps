@@ -14,6 +14,7 @@
 @property (nonatomic, copy) NSString *text;
 @property (nonatomic, copy) NSString *time;
 
+@property (nonatomic, strong) NSArray *pictures;
 
 + (instancetype)dairyModelWithDict:(NSDictionary *)dict;
 - (instancetype)initWithDict:(NSDictionary *)dict;

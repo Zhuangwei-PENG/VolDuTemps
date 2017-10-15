@@ -17,9 +17,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    //设置日期默认为当前日期
+    NSDate *currentDate = [NSDate date];
+    //格式化日期
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyy-MM-dd";
+    //将日期转换成字符串
+    self.dateField.text = [formatter stringFromDate:currentDate];
     //添加修改时键盘自动弹出
     [self.titleField becomeFirstResponder];
+    
+    
     
 }
 
@@ -37,7 +46,7 @@
 - (void)popBack{
     //如果时新建页面，只要有一个不为空，返回时提示是否保存
     TSDairyModel *model = [super saveData];
-    if ([model.title isVoid] && [model.text isVoid] && [model.time isVoid]) {
+    if ([model.title isVoid] && [model.text isVoid] && [model.time isVoid] && !model.pictures.count) {
         [self popViewController];
     }else{
         [super popBack];

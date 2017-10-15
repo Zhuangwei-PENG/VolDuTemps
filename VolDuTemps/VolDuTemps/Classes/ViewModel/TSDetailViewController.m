@@ -14,7 +14,7 @@
 
 @property (nonatomic, strong) UIView *bottomLine;
 @property (nonatomic, strong) UIDatePicker *datePicker;
-@property (nonatomic, strong) NSMutableArray *picsToDisplay;
+//@property (nonatomic, strong) NSMutableArray *picsToDisplay;
 
 @end
 
@@ -73,13 +73,13 @@
     }
     return _photoView;
 }
-//创建数组收集加载的数据
-- (NSMutableArray *)picsToDisplay{
-    if (!_picsToDisplay) {
-        _picsToDisplay = [NSMutableArray arrayWithCapacity:4];
-    }
-    return _picsToDisplay;
-}
+////创建数组收集加载的数据
+//- (NSMutableArray *)picsToDisplay{
+//    if (!_picsToDisplay) {
+//        _picsToDisplay = [NSMutableArray arrayWithCapacity:4];
+//    }
+//    return _picsToDisplay;
+//}
 
 #pragma mark - UI setUp
 - (void)viewDidLoad {
@@ -299,7 +299,9 @@
 #pragma mark - Navigation
 - (TSDairyModel *)saveData{
     NSLog(@"保存数据");
-    return [TSDairyModel dairyModelWithTitle:self.titleField.text text:self.textField.text time:self.dateField.text];
+    TSDairyModel *model = [TSDairyModel dairyModelWithTitle:self.titleField.text text:self.textField.text time:self.dateField.text];
+    model.pictures = self.photoView.pics.copy;
+    return model;
 
 }
 
@@ -352,6 +354,9 @@
     //设置DatePicker模式为日期
     self.datePicker.datePickerMode = UIDatePickerModeDate;
     
+    //设置最大日期为当前日期
+    self.datePicker.maximumDate = [NSDate date];
+    
     //设置键盘为DatePicker
     self.dateField.inputView = self.datePicker;
     
@@ -386,7 +391,7 @@
     //添加图片到photoView视图上
     [self.photoView addNewPic:self.imageToSave];
     //添加图片到图片浏览器的数组上
-    [self.picsToDisplay addObject:self.imageToSave];
+//    [self.picsToDisplay addObject:self.imageToSave];
 }
 
 #pragma mark - AddPhotoView delegate
@@ -396,9 +401,9 @@
     TSPhotoViewerController *displayVC = [[TSPhotoViewerController alloc] init];
     displayVC.delegate = self;
     //将要显示的数据传给图片浏览器
-    displayVC.picsToDisplay = self.picsToDisplay.copy;
+    displayVC.picsToDisplay = self.photoView.pics.copy;
     //将用户点击的图片下标传递给图片浏览器，先显示用户点击的图片
-    NSUInteger index = [self.picsToDisplay indexOfObject:image];
+    NSUInteger index = [self.photoView.pics indexOfObject:image];
     displayVC.firstViewIndex = index;
     //跳转至图片浏览
     [self.navigationController pushViewController:displayVC animated:YES];
@@ -418,7 +423,7 @@
     //将图片从photoView视图中移除
     [self.photoView removePic:index];
     //将图片从图片浏览器中移除
-    [self.picsToDisplay removeObjectAtIndex:index];
+//    [self.picsToDisplay removeObjectAtIndex:index];
     NSLog(@"%lu",index);
 }
 

@@ -10,7 +10,6 @@
 
 @interface TSModifyViewController ()
 
-@property (nonatomic, strong) UIBarButtonItem *modifyBtn;
 
 @end
 
@@ -22,10 +21,9 @@
     self.titleField.text = self.dairyModelToModify.title;
     self.textField.text = self.dairyModelToModify.text;
     self.dateField.text = self.dairyModelToModify.time;
+    self.photoView.pics = self.dairyModelToModify.pictures.mutableCopy;
     
-//    self.titleField.userInteractionEnabled = NO;
-//    self.textField.userInteractionEnabled = NO;
-//    self.dateField.userInteractionEnabled = NO;
+
     self.view.userInteractionEnabled = NO;
     self.rightButton = [[UIBarButtonItem alloc] initWithTitle:@"修改" style:UIBarButtonItemStylePlain target:self action:@selector(modify)];
     self.rightButton.tintColor = [UIColor darkTextColor];
@@ -34,9 +32,7 @@
 
 }
 - (void)modify{
-//    self.titleField.userInteractionEnabled = !self.titleField.userInteractionEnabled;
-//    self.textField.userInteractionEnabled = !self.textField.userInteractionEnabled;
-//    self.dateField.userInteractionEnabled = !self.dateField.userInteractionEnabled;
+
     self.view.userInteractionEnabled = !self.view.userInteractionEnabled;
     //添加修改时键盘自动弹出
     [self.titleField becomeFirstResponder];
@@ -54,6 +50,7 @@
         self.dairyModelToModify.title = model.title;
         self.dairyModelToModify.text = model.text;
         self.dairyModelToModify.time = model.time;
+        self.dairyModelToModify.pictures = model.pictures;
         
         [self.delegate TSModifyViewController:self];
     }
@@ -65,12 +62,12 @@
 - (void)popBack{
 //如果是修改页面，有一个位置修改了，返回时提示是否保存
     TSDairyModel *model = [super saveData];
+    
     if ([model isSameTo:self.dairyModelToModify]) {
         [self.navigationController popViewControllerAnimated:YES];
     }else{
         [super popBack];
     }
-    NSLog(@"%d",[model isSameTo:self.dairyModelToModify]);
 }
 
 
