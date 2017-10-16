@@ -38,6 +38,7 @@ static NSString *kFont = @"myFontSize";
 - (TSTableViewCell *)modelCell{
     if (!_modelCell) {
         _modelCell = [[TSTableViewCell alloc] init];
+        _modelCell.accessoryType = UITableViewCellAccessoryNone;
         _modelCell.dairyModel = [TSDairyModel dairyModelWithTitle:@"预览字体大小" text:@"拖动下面的滑块，可设置字体的大小" time:@"2017-1-1"];
     }
     return _modelCell;

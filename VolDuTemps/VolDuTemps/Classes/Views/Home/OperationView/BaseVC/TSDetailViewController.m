@@ -299,11 +299,11 @@
 
 #pragma mark - Navigation
 - (TSDairyModel *)saveData{
-    NSLog(@"保存数据");
+    //根据输入内容，创建模型来保存数据
     TSDairyModel *model = [TSDairyModel dairyModelWithTitle:self.titleField.text text:self.textField.text time:self.dateField.text];
     model.pictures = self.photoView.pics.copy;
+    
     return model;
-
 }
 
 - (void)popBack{
@@ -380,8 +380,10 @@
 #pragma mark - Actionsheet delegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 0) {
+        //打开相机
         [self presentWithType:UIImagePickerControllerSourceTypeCamera];
     }else if (buttonIndex == 1) {
+        //打开相册
         [self presentWithType:UIImagePickerControllerSourceTypePhotoLibrary];
     }
 }

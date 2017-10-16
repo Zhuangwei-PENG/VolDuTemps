@@ -12,7 +12,6 @@
 @interface TSPhotoViewController : UIViewController <UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate>
 
 @property (nonatomic, strong) UIImage *imageToSave;
-@property (nonatomic, copy) void(^imageOperationBlock)(void);
 
 /**
  子类如果提供了actionSheet，需要重写代理方法

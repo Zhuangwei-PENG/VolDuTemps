@@ -114,7 +114,7 @@ static NSString * const reuseIdentifier = @"Cell";
     UIImage *image = self.currentPics[indexPath.row];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
     [cell.contentView addSubview:imageView];
-    imageView.frame = CGRectMake(0, 100, self.collectionView.bounds.size.width, self.collectionView.bounds.size.width);
+    imageView.frame = CGRectMake(0, 100, image.size.width, image.size.height);
 
     return cell;
 }

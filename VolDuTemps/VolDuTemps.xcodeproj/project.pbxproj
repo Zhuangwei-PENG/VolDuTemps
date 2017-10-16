@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CF19B9CF1F94527F008F1852 /* TSDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF19B9CE1F94527F008F1852 /* TSDetailViewCell.m */; };
 		CF19B9D21F94594C008F1852 /* TSDetailDisplayController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF19B9D11F94594C008F1852 /* TSDetailDisplayController.m */; };
+		CF19B9D51F949E19008F1852 /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9149341F8B0EB40085BEDF /* UIImage+Additions.m */; };
 		CF60C95B1F8C58FF007CFE8F /* UIBarButtonItem+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = CF60C95A1F8C58FF007CFE8F /* UIBarButtonItem+Addition.m */; };
 		CF60C95E1F8C6647007CFE8F /* NSString+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = CF60C95D1F8C6647007CFE8F /* NSString+Addition.m */; };
 		CF60C9611F8C89DD007CFE8F /* TSSettingGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = CF60C9601F8C89DD007CFE8F /* TSSettingGroup.m */; };
@@ -179,6 +180,8 @@
 		CF19B9D31F94835E008F1852 /* BaseVC */ = {
 			isa = PBXGroup;
 			children = (
+				CF8B9C641F9080DC0085BF55 /* TSPhotoViewController.h */,
+				CF8B9C651F9080DC0085BF55 /* TSPhotoViewController.m */,
 				CFA7975F1F8B2EDE0085D4A1 /* TSDetailViewController.h */,
 				CFA797601F8B2EDE0085D4A1 /* TSDetailViewController.m */,
 			);
@@ -297,8 +300,6 @@
 				CF19B9CE1F94527F008F1852 /* TSDetailViewCell.m */,
 				CF8B9C5E1F9051310085BF55 /* TSAddPhoto.h */,
 				CF8B9C5F1F9051310085BF55 /* TSAddPhoto.m */,
-				CF8B9C641F9080DC0085BF55 /* TSPhotoViewController.h */,
-				CF8B9C651F9080DC0085BF55 /* TSPhotoViewController.m */,
 				CF8B9C671F9099260085BF55 /* TSPhotoViewerController.h */,
 				CF8B9C681F9099260085BF55 /* TSPhotoViewerController.m */,
 				CF83009D1F8DAE3700C2A63E /* TSSettingViewCell.h */,
@@ -509,6 +510,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF19B9D51F949E19008F1852 /* UIImage+Additions.m in Sources */,
 				CFA7976F1F8BC11B0085D4A1 /* UIColor+Addition.m in Sources */,
 				CFA797651F8B3F7F0085D4A1 /* NSString+Hash.m in Sources */,
 				CFA797671F8B3F7F0085D4A1 /* NSString+path.m in Sources */,

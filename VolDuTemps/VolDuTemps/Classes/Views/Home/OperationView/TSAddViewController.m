@@ -32,11 +32,13 @@
 }
 
 - (TSDairyModel *)saveData{
+    //从父类方法中获取创建好的模型
     TSDairyModel *model = [super saveData];
+    //将模型传递给代理(HomeVC),显示在对应Cell中
     if ([self.delegate respondsToSelector:@selector(TSAddViewController:dairy:)]) {
         [self.delegate TSAddViewController:self dairy:model];
     }
-    
+    //将模型传递给显示界面
     TSDetailDisplayController *detailVC = [[TSDetailDisplayController alloc] init];
     detailVC.cells = @[model];
 //    detailVC.delegate = self;

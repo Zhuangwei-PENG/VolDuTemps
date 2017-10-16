@@ -7,7 +7,7 @@
 //
 
 #import "TSPhotoViewController.h"
-
+#import "Addition.h"
 @interface TSPhotoViewController ()
 
 @end
@@ -55,12 +55,14 @@
 
 #pragma mark - Actionsheet delegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-    NSLog(@"%ld",buttonIndex);
     if (buttonIndex == 0) {
+        //打开相机
         [self presentWithType:UIImagePickerControllerSourceTypeCamera];
     }else if (buttonIndex == 1) {
+        //打开相册
         [self presentWithType:UIImagePickerControllerSourceTypePhotoLibrary];
     }else if (buttonIndex == 2){
+        //保存至相册
         [self saveImageToPhotoLibrary];
     }
 }
@@ -73,10 +75,9 @@
     //判断是否为图片
     if ([fileType isEqualToString:@"public.image"]) {
         
-        self.imageToSave = info[UIImagePickerControllerEditedImage];
-//        if (self.imageOperationBlock) {
-//            self.imageOperationBlock();
-//        }
+        UIImage *image = info[UIImagePickerControllerEditedImage];
+        //将图片按比例重画至屏幕宽度
+        self.imageToSave = [image scaleToWidth:[UIScreen mainScreen].bounds.size.width];
         
         [picker dismissViewControllerAnimated:YES completion:^{
            

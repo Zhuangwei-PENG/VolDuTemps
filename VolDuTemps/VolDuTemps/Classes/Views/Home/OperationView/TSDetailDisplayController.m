@@ -39,7 +39,10 @@
 - (void)editDairy {
     TSModifyViewController *modifyVC = [TSModifyViewController detailView];
     modifyVC.delegate = self;
+    
+    //将展示的模型，传递给修改页面
     modifyVC.dairyModelToModify = self.cells[0];
+    NSLog(@"%@",self.cells[0]);
     [self.navigationController pushViewController:modifyVC animated:NO];
     
 }
