@@ -185,9 +185,19 @@
 			path = BaseVC;
 			sourceTree = "<group>";
 		};
+		CF19B9D41F9488C6008F1852 /* BaseVC */ = {
+			isa = PBXGroup;
+			children = (
+				CF83009A1F8DA95900C2A63E /* TSBasicSettingController.h */,
+				CF83009B1F8DA95900C2A63E /* TSBasicSettingController.m */,
+			);
+			path = BaseVC;
+			sourceTree = "<group>";
+		};
 		CF8300A91F8DEC3F00C2A63E /* OperationView */ = {
 			isa = PBXGroup;
 			children = (
+				CF19B9D41F9488C6008F1852 /* BaseVC */,
 				CF8300AA1F8DECDF00C2A63E /* TSFontController.h */,
 				CF8300AB1F8DECDF00C2A63E /* TSFontController.m */,
 				CF8300AD1F8E00F400C2A63E /* TSPrivateController.h */,
@@ -285,22 +295,18 @@
 				CF91493C1F8B1B200085BEDF /* TSTableViewCell.m */,
 				CF19B9CD1F94527F008F1852 /* TSDetailViewCell.h */,
 				CF19B9CE1F94527F008F1852 /* TSDetailViewCell.m */,
-				CF19B9D01F94594C008F1852 /* TSDetailDisplayController.h */,
-				CF19B9D11F94594C008F1852 /* TSDetailDisplayController.m */,
+				CF8B9C5E1F9051310085BF55 /* TSAddPhoto.h */,
+				CF8B9C5F1F9051310085BF55 /* TSAddPhoto.m */,
 				CF8B9C641F9080DC0085BF55 /* TSPhotoViewController.h */,
 				CF8B9C651F9080DC0085BF55 /* TSPhotoViewController.m */,
 				CF8B9C671F9099260085BF55 /* TSPhotoViewerController.h */,
 				CF8B9C681F9099260085BF55 /* TSPhotoViewerController.m */,
-				CF83009A1F8DA95900C2A63E /* TSBasicSettingController.h */,
-				CF83009B1F8DA95900C2A63E /* TSBasicSettingController.m */,
 				CF83009D1F8DAE3700C2A63E /* TSSettingViewCell.h */,
 				CF83009E1F8DAE3700C2A63E /* TSSettingViewCell.m */,
 				CF87A5921F8F0E2B00A6359C /* TSIconViewCell.h */,
 				CF87A5931F8F0E2B00A6359C /* TSIconViewCell.m */,
 				CF87A5981F8F2B3C00A6359C /* TSPersonnalSettingCell.h */,
 				CF87A5991F8F2B3C00A6359C /* TSPersonnalSettingCell.m */,
-				CF8B9C5E1F9051310085BF55 /* TSAddPhoto.h */,
-				CF8B9C5F1F9051310085BF55 /* TSAddPhoto.m */,
 				CF8B9C611F9056F40085BF55 /* TSTestController.h */,
 				CF8B9C621F9056F40085BF55 /* TSTestController.m */,
 			);
@@ -396,6 +402,8 @@
 				CFA7976A1F8B57820085D4A1 /* TSAddViewController.m */,
 				CFA7976C1F8B578F0085D4A1 /* TSModifyViewController.h */,
 				CFA7976D1F8B578F0085D4A1 /* TSModifyViewController.m */,
+				CF19B9D01F94594C008F1852 /* TSDetailDisplayController.h */,
+				CF19B9D11F94594C008F1852 /* TSDetailDisplayController.m */,
 			);
 			path = OperationView;
 			sourceTree = "<group>";

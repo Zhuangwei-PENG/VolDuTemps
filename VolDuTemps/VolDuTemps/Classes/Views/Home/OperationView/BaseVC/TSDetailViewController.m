@@ -318,6 +318,7 @@
     
     UIAlertAction *save = [UIAlertAction actionWithTitle:@"保存" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self saveData];
+        [self.navigationController popToRootViewControllerAnimated:YES];
     }];
     
     UIAlertAction *notSave = [UIAlertAction actionWithTitle:@"不保存" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
