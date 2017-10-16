@@ -17,7 +17,7 @@
 
 #define kPath [@"notes" appendDocumentsPath]
 
-@interface TSHomeViewController ()<TSAddViewControllerDelegate, TSModifyViewControllerDelegate>
+@interface TSHomeViewController ()<TSAddViewControllerDelegate, TSDetailDisplayControllerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *notes;
 
@@ -119,10 +119,8 @@ static const NSString *cellID = @"TSTableViewCell";
 //修改日记
 - (void)editDetailViewWith:(TSDairyModel *)sender{
     TSDetailDisplayController *detailVC = [[TSDetailDisplayController alloc] init];
-//    TSModifyViewController *modifyVC = [TSModifyViewController detailView];
-//    modifyVC.delegate = self;
-//    modifyVC.dairyModelToModify = sender;
     detailVC.cells = @[sender];
+    detailVC.delegate = self;
     [self pushDetailView:detailVC];
 }
 //添加新日记
@@ -176,12 +174,16 @@ static const NSString *cellID = @"TSTableViewCell";
     }
 }
 
-- (void)TSModifyViewController: (TSModifyViewController *)TSModifyViewController{
+- (void)TSDetailDisplayController:(TSDetailDisplayController *)detailDisplayController{
     //在这里需要对self.notes按时间排序
     [self sorting];
     [self.myTableView reloadData];
     [NSKeyedArchiver archiveRootObject:self.notes toFile:kPath];
 }
+
+//- (void)TSModifyViewController: (TSModifyViewController *)TSModifyViewController{
+//    
+//}
 
 //- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
 //    return YES;

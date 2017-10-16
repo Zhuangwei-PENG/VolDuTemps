@@ -19,6 +19,6 @@
 @interface TSModifyViewController : TSDetailViewController
 
 @property (nonatomic, strong) TSDairyModel *dairyModelToModify;
-@property (nonatomic, strong) id<TSModifyViewControllerDelegate> delegate;
+@property (nonatomic, weak) id<TSModifyViewControllerDelegate> delegate;
 
 @end

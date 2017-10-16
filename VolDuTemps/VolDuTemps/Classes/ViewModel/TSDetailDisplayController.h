@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+@class TSDetailDisplayController;
+
+@protocol TSDetailDisplayControllerDelegate<NSObject>
+
+- (void)TSDetailDisplayController:(TSDetailDisplayController *)detailDisplayController;
+
+@end
 
 @interface TSDetailDisplayController : UITableViewController
+
+@property (nonatomic, weak) id<TSDetailDisplayControllerDelegate> delegate;
 @property (nonatomic, strong) NSArray *cells;
+
 @end

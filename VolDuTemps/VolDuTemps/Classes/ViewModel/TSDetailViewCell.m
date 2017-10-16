@@ -17,6 +17,7 @@
 @property (nonatomic, strong) UILabel *timeLabel;
 @property (nonatomic, strong) UILabel *txtLabel;
 @property (nonatomic, strong) NSMutableArray *pictures;
+@property (nonatomic, strong) NSMutableArray *picViews;
 
 @property (nonatomic, assign, readwrite) CGFloat heightOfCell;
 
@@ -67,6 +68,13 @@ static const CGFloat textFont = 14;
     return _pictures;
 }
 
+- (NSMutableArray *)picViews{
+    if (!_picViews) {
+        _picViews = [NSMutableArray arrayWithCapacity:4];
+    }
+    return _picViews;
+}
+
 #pragma mark - Override setter method
 - (void)setPictures:(NSMutableArray *)pictures{
     _pictures = pictures;
@@ -111,6 +119,12 @@ static const CGFloat textFont = 14;
 }
 
 - (void)creatPictureViews{
+    if (self.picViews.count) {
+        for (UIImageView *imageView in self.picViews) {
+            [imageView removeFromSuperview];
+        }
+    }
+    
     for (UIImage *image in self.pictures) {
         //创建方法可以抽取
         UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
@@ -127,6 +141,7 @@ static const CGFloat textFont = 14;
         NSLog(@"--%f",self.heightOfCell);
         
         [self.contentView addSubview:imageView];
+        [self.picViews addObject:imageView];
     }
 }
 

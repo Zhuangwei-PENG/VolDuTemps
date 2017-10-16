@@ -412,6 +412,8 @@
 }
 
 - (void)TSAddPhoto:(TSAddPhoto *)addPhotoView didClickAddPicBtn:(UIButton *)button{
+    //退回键盘
+    [self.view endEditing:YES];
     //修改actionSheet提示
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"添加一张照片" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照",@"从手机相册选择",nil];
     [self choosePics:actionSheet];

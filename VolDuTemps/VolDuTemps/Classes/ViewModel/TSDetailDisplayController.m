@@ -7,9 +7,11 @@
 //
 
 #import "TSDetailDisplayController.h"
+#import "TSModifyViewController.h"
 #import "TSDetailViewCell.h"
+#import "Addition.h"
 
-@interface TSDetailDisplayController ()
+@interface TSDetailDisplayController ()<TSModifyViewControllerDelegate>
 @property (nonatomic, assign) CGFloat heightOfCell;
 @end
 
@@ -23,18 +25,29 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.tableView registerClass:[TSDetailViewCell class] forCellReuseIdentifier:<#(nonnull NSString *)#>
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"修改" fontSize:15 target:self action:@selector(editDairy) isPopBack:NO];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" fontSize:16 target:self action:@selector(popBack) isPopBack:YES];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)popBack{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)editDairy {
+    TSModifyViewController *modifyVC = [TSModifyViewController detailView];
+    modifyVC.delegate = self;
+    modifyVC.dairyModelToModify = self.cells[0];
+    [self.navigationController pushViewController:modifyVC animated:NO];
+    
+}
+#pragma mark - Delegate
+- (void)TSModifyViewController: (TSModifyViewController *)TSModifyViewController{
+    [self.tableView reloadData];
+    if ([self.delegate respondsToSelector:@selector(TSDetailDisplayController:)]) {
+        [self.delegate TSDetailDisplayController:self];
+    }
 }
 
 #pragma mark - Table view data source

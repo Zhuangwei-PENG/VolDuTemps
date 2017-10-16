@@ -7,6 +7,7 @@
 //
 
 #import "TSModifyViewController.h"
+#import "Addition.h"
 
 @interface TSModifyViewController ()
 
@@ -24,22 +25,20 @@
     self.photoView.pics = self.dairyModelToModify.pictures.mutableCopy;
     
 
-    self.view.userInteractionEnabled = NO;
-    self.rightButton = [[UIBarButtonItem alloc] initWithTitle:@"修改" style:UIBarButtonItemStyleDone target:self action:@selector(modify)];
-    self.rightButton.tintColor = [UIColor darkTextColor];
-    [self.rightButton setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} forState:UIControlStateNormal];
-
-    self.navigationItem.rightBarButtonItem = self.rightButton;
+//    self.view.userInteractionEnabled = NO;
+//    self.rightButton = [[UIBarButtonItem alloc] initWithTitle:@"修改" style:UIBarButtonItemStyleDone target:self action:@selector(modify)];
+//    self.rightButton.tintColor = [UIColor darkTextColor];
+//    [self.rightButton setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} forState:UIControlStateNormal];
+    
+    //修改时键盘自动弹出
+    [self.titleField becomeFirstResponder];
+    self.navigationItem.rightBarButtonItem =  [[UIBarButtonItem alloc] initWithTitle:@"完成" fontSize:15 target:self action:@selector(finishedEditing) isPopBack:NO];
 
 }
-- (void)modify{
+- (void)finishedEditing{
 
-    self.view.userInteractionEnabled = !self.view.userInteractionEnabled;
-    //添加修改时键盘自动弹出
-    [self.titleField becomeFirstResponder];
-    if ([self.rightButton.title isEqualToString:@"保存"]) {
-        [self saveData];
-    }
+    self.view.userInteractionEnabled = NO;
+    [self saveData];
     
     self.textField.userInteractionEnabled ? [self.rightButton setTitle:@"保存"] : [self.rightButton setTitle:@"修改"];
 }
@@ -55,7 +54,7 @@
         
         [self.delegate TSModifyViewController:self];
     }
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:NO];
     
     return nil;
 }

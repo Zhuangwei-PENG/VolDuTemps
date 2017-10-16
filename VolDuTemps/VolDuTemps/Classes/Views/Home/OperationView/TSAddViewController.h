@@ -18,6 +18,6 @@
 
 @interface TSAddViewController : TSDetailViewController
 
-@property (nonatomic, strong) id<TSAddViewControllerDelegate> delegate;
+@property (nonatomic, weak) id<TSAddViewControllerDelegate> delegate;
 
 @end
