@@ -20,7 +20,12 @@
     [btn sizeToFit];
     
     if (isPopback) {
-        [btn setImage:[UIImage imageNamed:@"navigationbar_back_withtext"] forState:UIControlStateNormal];
+        UIImage *image = [UIImage imageNamed:@"navigationbar_back_withtext"];
+        [btn setImage:image forState:UIControlStateNormal];
+        //设置按钮的宽度等于文字加上图片宽度
+        CGSize textSize = [title sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:fontSize]}];
+        CGSize imageSize = image.size;
+        btn.frame = CGRectMake(0, 0, textSize.width + imageSize.width, imageSize.height);
     }
     
     [btn addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];

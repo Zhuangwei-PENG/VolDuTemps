@@ -25,8 +25,9 @@
     
 
     self.view.userInteractionEnabled = NO;
-    self.rightButton = [[UIBarButtonItem alloc] initWithTitle:@"修改" style:UIBarButtonItemStylePlain target:self action:@selector(modify)];
+    self.rightButton = [[UIBarButtonItem alloc] initWithTitle:@"修改" style:UIBarButtonItemStyleDone target:self action:@selector(modify)];
     self.rightButton.tintColor = [UIColor darkTextColor];
+    [self.rightButton setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} forState:UIControlStateNormal];
 
     self.navigationItem.rightBarButtonItem = self.rightButton;
 

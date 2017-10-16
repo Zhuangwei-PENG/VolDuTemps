@@ -90,6 +90,7 @@
 - (void)setupUI{
     self.navigationItem.rightBarButtonItem = self.rightButton;
     self.navigationItem.leftBarButtonItem = self.leftButton;
+
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self.view addSubview:self.titleField];
