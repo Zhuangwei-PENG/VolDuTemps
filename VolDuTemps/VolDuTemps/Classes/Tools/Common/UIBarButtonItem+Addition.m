@@ -22,7 +22,7 @@
     if (isPopback) {
         UIImage *image = [UIImage imageNamed:@"navigationbar_back_withtext"];
         [btn setImage:image forState:UIControlStateNormal];
-        //设置按钮的宽度等于文字加上图片宽度
+        //设置按钮的宽度等于文字加上图片宽度 (ios 8 不显示)
         CGSize textSize = [title sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:fontSize]}];
         CGSize imageSize = image.size;
         btn.frame = CGRectMake(0, 0, textSize.width + imageSize.width, imageSize.height);

@@ -36,11 +36,16 @@
     [self.view addSubview:self.myTableView];
     self.myTableView.delegate = self;
     self.myTableView.dataSource = self;
-    NSLog(@"%f",self.navigationController.navigationBar.bounds.size.height);
-    //设置缩进
-    CGFloat topInset = self.navigationController.navigationBar.bounds.size.height + 20;
-    CGFloat bottomInset = self.tabBarController.tabBar.bounds.size.height ? self.tabBarController.tabBar.bounds.size.height:49;
-    self.myTableView.contentInset = UIEdgeInsetsMake(topInset, 0, bottomInset, 0);
+
+    //设置缩进（iOS 10之前不会自动缩进）
+//    self.edgesForExtendedLayout = UIRectEdgeAll;
+    CGFloat systemVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
+    if (systemVersion <= 10.0) {
+        CGFloat topInset = self.navigationController.navigationBar.bounds.size.height + 20;
+        CGFloat bottomInset = self.tabBarController.tabBar.bounds.size.height ? self.tabBarController.tabBar.bounds.size.height:49;
+        self.myTableView.contentInset = UIEdgeInsetsMake(topInset, 0, bottomInset, 0);
+    }
+
 }
 
 #pragma mark - Delegate & DataSource
