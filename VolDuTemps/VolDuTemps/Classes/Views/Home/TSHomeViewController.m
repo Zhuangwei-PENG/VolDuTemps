@@ -9,6 +9,7 @@
 #import "TSHomeViewController.h"
 #import "TSAddViewController.h"
 #import "TSModifyViewController.h"
+#import "TSDetailDisplayController.h"
 
 #import "TSTableViewCell.h"
 #import "TSDairyModel.h"
@@ -117,11 +118,12 @@ static const NSString *cellID = @"TSTableViewCell";
 #pragma mark - Navigation
 //修改日记
 - (void)editDetailViewWith:(TSDairyModel *)sender{
-    TSModifyViewController *modifyVC = [TSModifyViewController detailView];
-    modifyVC.delegate = self;
-    modifyVC.dairyModelToModify = sender;
-
-    [self pushDetailView:modifyVC];
+    TSDetailDisplayController *detailVC = [[TSDetailDisplayController alloc] init];
+//    TSModifyViewController *modifyVC = [TSModifyViewController detailView];
+//    modifyVC.delegate = self;
+//    modifyVC.dairyModelToModify = sender;
+    detailVC.cells = @[sender];
+    [self pushDetailView:detailVC];
 }
 //添加新日记
 - (void)addNewOne{
@@ -131,7 +133,7 @@ static const NSString *cellID = @"TSTableViewCell";
     [self pushDetailView:addVC];
 }
 
-- (void)pushDetailView:(TSDetailViewController *)controller{
+- (void)pushDetailView:(UIViewController *)controller{
     [self.navigationController pushViewController:controller animated:YES];
 }
 

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF19B9CF1F94527F008F1852 /* TSDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF19B9CE1F94527F008F1852 /* TSDetailViewCell.m */; };
+		CF19B9D21F94594C008F1852 /* TSDetailDisplayController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF19B9D11F94594C008F1852 /* TSDetailDisplayController.m */; };
 		CF60C95B1F8C58FF007CFE8F /* UIBarButtonItem+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = CF60C95A1F8C58FF007CFE8F /* UIBarButtonItem+Addition.m */; };
 		CF60C95E1F8C6647007CFE8F /* NSString+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = CF60C95D1F8C6647007CFE8F /* NSString+Addition.m */; };
 		CF60C9611F8C89DD007CFE8F /* TSSettingGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = CF60C9601F8C89DD007CFE8F /* TSSettingGroup.m */; };
@@ -56,6 +58,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CF19B9CD1F94527F008F1852 /* TSDetailViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDetailViewCell.h; sourceTree = "<group>"; };
+		CF19B9CE1F94527F008F1852 /* TSDetailViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDetailViewCell.m; sourceTree = "<group>"; };
+		CF19B9D01F94594C008F1852 /* TSDetailDisplayController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSDetailDisplayController.h; sourceTree = "<group>"; };
+		CF19B9D11F94594C008F1852 /* TSDetailDisplayController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDetailDisplayController.m; sourceTree = "<group>"; };
 		CF60C9591F8C58FF007CFE8F /* UIBarButtonItem+Addition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Addition.h"; sourceTree = "<group>"; };
 		CF60C95A1F8C58FF007CFE8F /* UIBarButtonItem+Addition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Addition.m"; sourceTree = "<group>"; };
 		CF60C95C1F8C6647007CFE8F /* NSString+Addition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Addition.h"; sourceTree = "<group>"; };
@@ -270,12 +276,16 @@
 				CF91493C1F8B1B200085BEDF /* TSTableViewCell.m */,
 				CFA7975F1F8B2EDE0085D4A1 /* TSDetailViewController.h */,
 				CFA797601F8B2EDE0085D4A1 /* TSDetailViewController.m */,
+				CF19B9CD1F94527F008F1852 /* TSDetailViewCell.h */,
+				CF19B9CE1F94527F008F1852 /* TSDetailViewCell.m */,
+				CF19B9D01F94594C008F1852 /* TSDetailDisplayController.h */,
+				CF19B9D11F94594C008F1852 /* TSDetailDisplayController.m */,
 				CF8B9C641F9080DC0085BF55 /* TSPhotoViewController.h */,
 				CF8B9C651F9080DC0085BF55 /* TSPhotoViewController.m */,
-				CF83009A1F8DA95900C2A63E /* TSBasicSettingController.h */,
-				CF83009B1F8DA95900C2A63E /* TSBasicSettingController.m */,
 				CF8B9C671F9099260085BF55 /* TSPhotoViewerController.h */,
 				CF8B9C681F9099260085BF55 /* TSPhotoViewerController.m */,
+				CF83009A1F8DA95900C2A63E /* TSBasicSettingController.h */,
+				CF83009B1F8DA95900C2A63E /* TSBasicSettingController.m */,
 				CF83009D1F8DAE3700C2A63E /* TSSettingViewCell.h */,
 				CF83009E1F8DAE3700C2A63E /* TSSettingViewCell.m */,
 				CF87A5921F8F0E2B00A6359C /* TSIconViewCell.h */,
@@ -489,6 +499,7 @@
 				CFA797611F8B2EDE0085D4A1 /* TSDetailViewController.m in Sources */,
 				CF91491B1F8B07790085BEDF /* TSHomeViewController.m in Sources */,
 				CFA7976B1F8B57820085D4A1 /* TSAddViewController.m in Sources */,
+				CF19B9D21F94594C008F1852 /* TSDetailDisplayController.m in Sources */,
 				CFA7976E1F8B578F0085D4A1 /* TSModifyViewController.m in Sources */,
 				CFA797641F8B34AF0085D4A1 /* TSDairyModel.m in Sources */,
 				CF9148F41F8B05710085BEDF /* main.m in Sources */,
@@ -512,6 +523,7 @@
 				CF8B9C631F9056F40085BF55 /* TSTestController.m in Sources */,
 				CF8300AF1F8E00F400C2A63E /* TSPrivateController.m in Sources */,
 				CF91493D1F8B1B200085BEDF /* TSTableViewCell.m in Sources */,
+				CF19B9CF1F94527F008F1852 /* TSDetailViewCell.m in Sources */,
 				CF9148E61F8B05710085BEDF /* AppDelegate.m in Sources */,
 				CF87A5941F8F0E2B00A6359C /* TSIconViewCell.m in Sources */,
 				CF8300A81F8DC82400C2A63E /* TSSettingViewController.m in Sources */,

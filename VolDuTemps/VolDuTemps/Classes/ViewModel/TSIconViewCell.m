@@ -17,6 +17,7 @@
 @end
 
 @implementation TSIconViewCell
+
 #pragma mark - Lazy instantiation
 - (UIImageView *)iconView{
     if (!_iconView) {
@@ -72,9 +73,8 @@
     [self.contentView addSubview:self.iconView];
     [self.contentView addSubview:self.nameLabel];
     [self.contentView addSubview:self.timeLabel];
-    
-//    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    
+
+    //是否可以改成imageView?
     self.iconView.layer.cornerRadius = 10;
     self.iconView.layer.masksToBounds = YES;
     
