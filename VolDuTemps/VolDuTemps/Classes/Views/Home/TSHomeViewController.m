@@ -16,14 +16,19 @@
 #import "Addition.h"
 
 #define kPath [@"notes" appendDocumentsPath]
+#define kRowHeight 110
 
-@interface TSHomeViewController ()<TSAddViewControllerDelegate, TSDetailDisplayControllerDelegate>
+@interface TSHomeViewController ()<TSAddViewControllerDelegate, TSDetailDisplayControllerDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *notes;
 
 @property (nonatomic, strong) UIView *videView;
 
 @property (nonatomic, assign) CGFloat userFontSize;
+
+@property (nonatomic, strong) NSIndexPath *cellIndexPath;
+
+@property (nonatomic, assign) CGFloat rowHeight;
 
 @end
 
@@ -42,6 +47,13 @@ static const NSString *cellID = @"TSTableViewCell";
         _videView = [[UIView alloc] init];
     }
     return _videView;
+}
+
+- (NSIndexPath *)cellIndexPath{
+    if (!_cellIndexPath) {
+        _cellIndexPath = [[NSIndexPath alloc] init];
+    }
+    return _cellIndexPath;
 }
 
 - (void)viewDidLoad {
@@ -64,10 +76,11 @@ static const NSString *cellID = @"TSTableViewCell";
 
 - (void)setupUI{
     [super setupUI];
-    //根据notes是否有数据判断显示哪个页面
+ 
     self.notes = [NSKeyedUnarchiver unarchiveObjectWithFile:kPath];
     [self sorting];
     
+   //根据notes是否有数据判断是否显示空页面
     if (self.notes.count == 0) {
         [self setupVideView];
     }
@@ -112,7 +125,7 @@ static const NSString *cellID = @"TSTableViewCell";
     //注册tableview Cell
     [self.myTableView registerClass:[TSTableViewCell class] forCellReuseIdentifier:@"TSTableViewCell"];
     //设置tableview行高
-    self.myTableView.rowHeight = 100;
+//    self.myTableView.rowHeight = 100;
 }
 
 #pragma mark - Navigation
@@ -143,11 +156,8 @@ static const NSString *cellID = @"TSTableViewCell";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    TSTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TSTableViewCell" forIndexPath:indexPath];
-    
-    TSDairyModel *model = self.notes[indexPath.row];
-    cell.dairyModel = model;
-    
+
+    TSTableViewCell *cell = [TSTableViewCell tableViewCellWith:tableView dairyModel:self.notes[indexPath.row]];
     cell.titleFont = self.userFontSize;
 
     return cell;
@@ -155,11 +165,39 @@ static const NSString *cellID = @"TSTableViewCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     TSDairyModel *model = self.notes[indexPath.row];
-
     [self editDetailViewWith:model];
 }
 
-#pragma mark - Delegate
+#pragma mark - TableView Delegate
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
+
+- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
+    //创建左滑删除按钮
+    UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"删除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"删除" message:@"确定要移除这篇日记吗？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        [alertView show];
+        self.cellIndexPath = indexPath;
+    }];
+    //创建左滑编辑按钮
+    UITableViewRowAction *editAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"编辑" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        
+        [self editDetailViewWith:self.notes[indexPath.row]];
+        
+    }];
+    editAction.backgroundColor = [UIColor colorWithHex:0xE0AD3B];
+    return @[deleteAction, editAction];
+}
+
+//设置tableview行高
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return kRowHeight;
+}
+
+
+#pragma mark - TSAddViewController Delegate
 - (void)TSAddViewController: (TSAddViewController *)TSAddViewController dairy: (TSDairyModel *)dairyModel{
     
     [self.notes addObject:dairyModel];
@@ -174,6 +212,7 @@ static const NSString *cellID = @"TSTableViewCell";
     }
 }
 
+#pragma mark - TSDetailDisplayController Delegate
 - (void)TSDetailDisplayController:(TSDetailDisplayController *)detailDisplayController{
     //在这里需要对self.notes按时间排序
     [self sorting];
@@ -181,43 +220,22 @@ static const NSString *cellID = @"TSTableViewCell";
     [NSKeyedArchiver archiveRootObject:self.notes toFile:kPath];
 }
 
-//- (void)TSModifyViewController: (TSModifyViewController *)TSModifyViewController{
-//    
-//}
-
-//- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
-//    return YES;
-//}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-//    if (editingStyle == UITableViewCellEditingStyleDelete) {
-//
-//        // 删除数据源的数据,self.cellData是你自己的数据
-////        [self.cellData removeObjectAtIndex:indexPath.row];
-//        // 删除列表中数据
-//        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-//    }
-
+#pragma mark - AlertView Delegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 1) {
+        [self.notes removeObjectAtIndex:self.cellIndexPath.row];
+        [self.myTableView deleteRowsAtIndexPaths:@[self.cellIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [NSKeyedArchiver archiveRootObject:self.notes toFile:kPath];
+        
+        if (!self.notes.count) {
+            [self setupVideView];
+        }
+    }
 }
 
-- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
-    //创建左滑删除按钮
-    UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"删除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-        
-        [self.notes removeObjectAtIndex:indexPath.row];
-        [self.myTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
+    [self.myTableView setEditing:NO animated:YES];
 
-        [NSKeyedArchiver archiveRootObject:self.notes toFile:kPath];
-    }];
-    //创建左滑编辑按钮
-    UITableViewRowAction *editAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"编辑" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-        
-        [self editDetailViewWith:self.notes[indexPath.row]];
-
-    }];
-    editAction.backgroundColor = [UIColor colorWithHex:0xE0AD3B];
-    return @[editAction,deleteAction];
 }
 
 #pragma mark - Sorting self.notes
@@ -227,10 +245,6 @@ static const NSString *cellID = @"TSTableViewCell";
     
     NSArray *sortedArr = [self.notes.copy sortedArrayUsingDescriptors:[NSArray arrayWithObject:sort]];
     self.notes = [sortedArr mutableCopy];
-    
-//    for (int i = 0; i< sortedArr.count; i++) {
-//        NSLog(@"%@ -- %@",[sortedArr[i] title], [sortedArr[i] time]);
-//    }
     
 }
 

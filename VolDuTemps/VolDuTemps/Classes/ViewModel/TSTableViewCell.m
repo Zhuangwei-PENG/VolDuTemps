@@ -20,6 +20,9 @@
 
 
 @implementation TSTableViewCell
+
+static const CGFloat margin = 8;
+
 #pragma mark - Lazy instantiation
 - (UIView *)bottomLine{
     if (!_bottomLine) {
@@ -63,6 +66,15 @@
         [self setupCell];
     }
     return self;
+}
++ (instancetype)tableViewCellWith:(UITableView *)tableView dairyModel:(TSDairyModel *)model{
+    NSString *cellID = @"TSTableViewCell";
+    TSTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    if (!cell) {
+        cell = [[self alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellID];
+    }
+    cell.dairyModel = model;
+    return cell;
 }
 
 //设置字体大小
@@ -111,7 +123,7 @@
     self.timeLbl.textAlignment = NSTextAlignmentRight;
 
     //自动布局
-    CGFloat margin = 8;
+    
     //设置titleLbl的自动布局
     [self.contentView addConstraints:@[[NSLayoutConstraint constraintWithItem:self.titleLbl
                                                                     attribute:NSLayoutAttributeTop

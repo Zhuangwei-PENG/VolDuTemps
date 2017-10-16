@@ -14,4 +14,6 @@
 @property (nonatomic, strong) TSDairyModel *dairyModel;
 @property (nonatomic, assign) CGFloat titleFont;
 
++ (instancetype)tableViewCellWith:(UITableView *)tableView dairyModel:(TSDairyModel *)model;
+
 @end
