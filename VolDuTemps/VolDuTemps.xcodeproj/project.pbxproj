@@ -176,6 +176,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF19B9D31F94835E008F1852 /* BaseVC */ = {
+			isa = PBXGroup;
+			children = (
+				CFA7975F1F8B2EDE0085D4A1 /* TSDetailViewController.h */,
+				CFA797601F8B2EDE0085D4A1 /* TSDetailViewController.m */,
+			);
+			path = BaseVC;
+			sourceTree = "<group>";
+		};
 		CF8300A91F8DEC3F00C2A63E /* OperationView */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,8 +283,6 @@
 			children = (
 				CF91493B1F8B1B200085BEDF /* TSTableViewCell.h */,
 				CF91493C1F8B1B200085BEDF /* TSTableViewCell.m */,
-				CFA7975F1F8B2EDE0085D4A1 /* TSDetailViewController.h */,
-				CFA797601F8B2EDE0085D4A1 /* TSDetailViewController.m */,
 				CF19B9CD1F94527F008F1852 /* TSDetailViewCell.h */,
 				CF19B9CE1F94527F008F1852 /* TSDetailViewCell.m */,
 				CF19B9D01F94594C008F1852 /* TSDetailDisplayController.h */,
@@ -384,6 +391,7 @@
 		CFA797681F8B57560085D4A1 /* OperationView */ = {
 			isa = PBXGroup;
 			children = (
+				CF19B9D31F94835E008F1852 /* BaseVC */,
 				CFA797691F8B57820085D4A1 /* TSAddViewController.h */,
 				CFA7976A1F8B57820085D4A1 /* TSAddViewController.m */,
 				CFA7976C1F8B578F0085D4A1 /* TSModifyViewController.h */,

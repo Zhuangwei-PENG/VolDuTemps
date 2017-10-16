@@ -7,6 +7,7 @@
 //
 
 #import "TSAddViewController.h"
+#import "TSDetailDisplayController.h"
 #import "Addition.h"
 
 @interface TSAddViewController ()
@@ -28,17 +29,18 @@
     //添加修改时键盘自动弹出
     [self.titleField becomeFirstResponder];
     
-    
-    
 }
 
 - (TSDairyModel *)saveData{
-    
+    TSDairyModel *model = [super saveData];
     if ([self.delegate respondsToSelector:@selector(TSAddViewController:dairy:)]) {
-        TSDairyModel *model = [super saveData];
         [self.delegate TSAddViewController:self dairy:model];
     }
-    [self popViewController];
+    
+    TSDetailDisplayController *detailVC = [[TSDetailDisplayController alloc] init];
+    detailVC.cells = @[model];
+//    detailVC.delegate = self;
+    [self.navigationController pushViewController:detailVC animated:NO];
     
     return nil;
 }
