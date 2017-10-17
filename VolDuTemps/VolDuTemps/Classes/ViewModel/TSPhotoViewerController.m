@@ -125,7 +125,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath{
     self.currentIndex = indexPath.row;
-    self.navigationItem.title = [NSString stringWithFormat:@"%lu/%lu",self.currentIndex + 1, self.currentPics.count];
+//    self.navigationItem.title = [NSString stringWithFormat:@"%lu/%lu",self.currentIndex + 1, self.currentPics.count];
 //    self.navigationController.navigationBar.titleTextAttributes =
 
 }
