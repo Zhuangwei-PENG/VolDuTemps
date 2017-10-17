@@ -8,6 +8,7 @@
 
 #import "TSDetailViewCell.h"
 #import "TSDairyModel.h"
+#import "Addition.h"
 
 #define kScreenSize [UIScreen mainScreen].bounds.size
 @interface TSDetailViewCell()
@@ -126,18 +127,18 @@ static const CGFloat textFont = 14;
     }
     
     for (UIImage *image in self.pictures) {
+        //根据图片比例计算高度
+        CGFloat imageW = kScreenSize.width - 2*margin;
+        UIImage *newImage = [image scaleToWidth:imageW];
         //创建方法可以抽取
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:newImage];
         //给ImageView 添加监听事件
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnImage)];
         imageView.userInteractionEnabled = YES;
         [imageView addGestureRecognizer:tap];
         
-        //根据图片比例计算高度
-        CGFloat imageW = kScreenSize.width - 2*margin;
-        CGFloat imageH = image.size.height / image.size.height * imageW;
-        imageView.frame = CGRectMake(margin, self.heightOfCell, imageW, imageH);
-        self.heightOfCell += imageH +margin;
+        imageView.frame = CGRectMake(margin, self.heightOfCell, newImage.size.width, newImage.size.height);
+        self.heightOfCell += newImage.size.height +margin;
         NSLog(@"--%f",self.heightOfCell);
         
         [self.contentView addSubview:imageView];

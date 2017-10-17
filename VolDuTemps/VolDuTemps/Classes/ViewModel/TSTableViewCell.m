@@ -9,11 +9,15 @@
 #import "TSTableViewCell.h"
 #import "Addition.h"
 
+#define kViewW 58
+
 @interface TSTableViewCell()
 
 @property (nonatomic, strong) UILabel *titleLbl;
 @property (nonatomic, strong) UILabel *textLbl;
 @property (nonatomic, strong) UILabel *timeLbl;
+@property (nonatomic, strong) UIImageView *imgView;
+
 @property (nonatomic, strong) UIView *bottomLine;
 
 @end
@@ -52,12 +56,25 @@ static const CGFloat margin = 8;
     return _timeLbl;
 }
 
+- (UIImageView *)imgView{
+    if (!_imgView) {
+        _imgView = [[UIImageView alloc] init];
+    }
+    return _imgView;
+}
+
 - (void)setDairyModel:(TSDairyModel *)dairyModel{
     _dairyModel = dairyModel;
     self.textLbl.text = dairyModel.text;
     self.titleLbl.text = dairyModel.title;
     self.timeLbl.text = dairyModel.time;
-    
+    if (dairyModel.pictures.count) {
+        self.imgView.image = [UIImage getCompositeImageWith:dairyModel.pictures width:kViewW margin:3];
+        self.imgView.backgroundColor = [UIColor colorWithHex:0xEDEDED];
+    }else{
+        self.imgView.image = nil;
+        self.imgView.backgroundColor = [UIColor whiteColor];
+    }
 }
 
 #pragma mark - designed initializer
@@ -91,6 +108,10 @@ static const CGFloat margin = 8;
     [self.contentView addSubview:self.textLbl];
     [self.contentView addSubview:self.timeLbl];
     [self.contentView addSubview:self.bottomLine];
+    [self.contentView addSubview:self.imgView];
+    
+    self.imgView.layer.cornerRadius = 5;
+    self.imgView.layer.masksToBounds = YES;
     
     self.contentView.backgroundColor = [UIColor whiteColor];
     self.accessoryView.backgroundColor = [UIColor whiteColor];
@@ -102,9 +123,11 @@ static const CGFloat margin = 8;
     self.textLbl.numberOfLines = 3;
     self.timeLbl.numberOfLines = 1;
     
+//    self.titleLbl.textColor = [UIColor darkTextColor];
 //    self.titleLbl.backgroundColor = [UIColor randomColor];
 //    self.textLbl.backgroundColor = [UIColor randomColor];
 //    self.timeLbl.backgroundColor = [UIColor randomColor];
+//    
     
     if (self.titleFont == 0) {
         self.titleFont = 16;
@@ -216,6 +239,40 @@ static const CGFloat margin = 8;
                                                                     attribute:NSLayoutAttributeRight
                                                                    multiplier:1
                                                                      constant:0]
+                                       ]];
+    
+    //设置ImageView的自动布局
+    [self.contentView addConstraints:@[[NSLayoutConstraint constraintWithItem:self.imgView
+                                                                    attribute:NSLayoutAttributeTop
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.textLbl
+                                                                    attribute:NSLayoutAttributeTop
+                                                                   multiplier:1
+                                                                     constant:0],
+                                       
+                                       [NSLayoutConstraint constraintWithItem:self.imgView
+                                                                    attribute:NSLayoutAttributeRight
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.timeLbl
+                                                                    attribute:NSLayoutAttributeRight
+                                                                   multiplier:1
+                                                                     constant:0],
+                                       
+                                       [NSLayoutConstraint constraintWithItem:self.imgView
+                                                                    attribute:NSLayoutAttributeWidth
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:nil
+                                                                    attribute:NSLayoutAttributeNotAnAttribute
+                                                                   multiplier:1
+                                                                     constant:55],
+                                       
+                                       [NSLayoutConstraint constraintWithItem:self.imgView
+                                                                    attribute:NSLayoutAttributeHeight
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:nil
+                                                                    attribute:NSLayoutAttributeNotAnAttribute
+                                                                   multiplier:1
+                                                                     constant:55]
                                        ]];
     //设置cell底部的分割线
     [self.contentView addConstraints:@[[NSLayoutConstraint constraintWithItem:self.bottomLine

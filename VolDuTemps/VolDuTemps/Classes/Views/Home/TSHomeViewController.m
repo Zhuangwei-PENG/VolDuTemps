@@ -28,7 +28,6 @@
 
 @property (nonatomic, strong) NSIndexPath *cellIndexPath;
 
-@property (nonatomic, assign) CGFloat rowHeight;
 
 @end
 
@@ -85,7 +84,7 @@ static const NSString *cellID = @"TSTableViewCell";
         [self setupVideView];
     }
 
-    self.navigationItem.title = @"笔记列表📒";
+    self.navigationItem.title = @"日记列表📒";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewOne)];
     
 

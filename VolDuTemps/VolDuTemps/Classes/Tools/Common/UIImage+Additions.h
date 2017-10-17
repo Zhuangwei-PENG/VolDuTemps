@@ -16,4 +16,6 @@
 
 + (UIImage *)getScreenSnap;
 - (UIImage *)scaleToWidth:(CGFloat)width;
++ (UIImage *)getCompositeImageWith:(NSArray<UIImage *>*)images width:(CGFloat)width margin:(CGFloat)margin;
+- (UIImage*)convertViewToImage:(UIView*)view;
 @end

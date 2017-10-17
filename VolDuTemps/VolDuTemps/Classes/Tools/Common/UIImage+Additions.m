@@ -89,4 +89,64 @@
     UIGraphicsEndImageContext();
     return image;
 }
+
++ (UIImage *)getCompositeImageWith:(NSArray<UIImage *>*)images width:(CGFloat)width margin:(CGFloat)margin{
+    CGFloat w = (width - 3 * margin) * 0.5;
+    UIView *compositeView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, width)];
+    compositeView.layer.cornerRadius = margin;
+    compositeView.layer.masksToBounds = YES;
+    int i = 0;
+    if (images.count == 4) {
+        for (UIImage *image in images) {
+            UIImageView *imageView =[[UIImageView alloc] initWithImage:[image scaleToWidth:w]];
+            imageView.frame = CGRectMake(margin + (w + margin) * (i % 2), margin + (w + margin) * (i / 2), w, w);
+            
+            [compositeView addSubview:imageView];
+            i++;
+        }
+    }else if (images.count == 3) {
+        for (UIImage *image in images) {
+            UIImageView *imageView =[[UIImageView alloc] initWithImage:[image scaleToWidth:w]];
+            if (i == 0) {
+                imageView.frame = CGRectMake((width - w) * 0.5, margin + (w + margin) * (i / 2), w, w);
+            }else{
+                imageView.frame = CGRectMake( margin + (w + margin) * (i - 1), w + 2 * margin, w, w);
+            }
+            
+            [compositeView addSubview:imageView];
+            i++;
+        }
+    }else if (images.count == 2) {
+        for (UIImage *image in images) {
+            UIImageView *imageView =[[UIImageView alloc] initWithImage:[image scaleToWidth:w]];
+            if (i == 0) {
+                imageView.frame = CGRectMake(margin, margin, w, w);
+            }else{
+                imageView.frame = CGRectMake(w + 2 * margin, w + 2 * margin, w, w);
+            }
+            
+            [compositeView addSubview:imageView];
+            i++;
+        }
+    }else if (images.count == 1) {
+        for (UIImage *image in images) {
+            UIImageView *imageView =[[UIImageView alloc] initWithImage:[image scaleToWidth:width]];
+            imageView.frame = CGRectMake(0, 0, width, width);
+            
+            [compositeView addSubview:imageView];
+            i++;
+        }
+    }
+    return [[self alloc] convertViewToImage:compositeView];
+}
+
+- (UIImage*)convertViewToImage:(UIView*)view{
+    CGSize size = view.bounds.size;
+    // 下面方法，第一个参数表示区域大小。第二个参数表示是否是非透明的。如果需要显示半透明效果，需要传NO，否则传YES。第三个参数就是屏幕密度了
+    UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
+    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage*image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
 @end
