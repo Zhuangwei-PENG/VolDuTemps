@@ -99,6 +99,7 @@
         //获取新头像，保存至用户设置
         NSData *data = UIImageJPEGRepresentation(self.image, 0.5);
         [self.userDefault setObject:data forKey:@"userIcon"];
+        [self.userDefault synchronize];
         
         [picker dismissViewControllerAnimated:YES completion:^{
             

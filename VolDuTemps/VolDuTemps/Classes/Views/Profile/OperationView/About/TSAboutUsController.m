@@ -8,10 +8,6 @@
 
 #import "TSAboutUsController.h"
 
-#define kScreenW [UIScreen mainScreen].bounds.size.width
-#define kMargin 10
-#define kHeaderH 150
-
 @interface TSAboutUsController ()
 @property (nonatomic, strong) TSSettingItem *comment;
 @property (nonatomic, strong) TSSettingItem *functions;

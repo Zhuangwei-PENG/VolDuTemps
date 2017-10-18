@@ -7,13 +7,12 @@
 //
 
 #import "TSProfileViewController.h"
+
+#import "TSPersonnalInfoController.h"
 #import "TSSettingViewController.h"
 #import "TSPrivateController.h"
 #import "TSAboutUsController.h"
-#import "TSPersonnalInfoController.h"
 
-#import "TSSettingGroup.h"
-#import "TSSettingItem.h"
 #import "TSIconViewCell.h"
 
 @interface TSProfileViewController ()

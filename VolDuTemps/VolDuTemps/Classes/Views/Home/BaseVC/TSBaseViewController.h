@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Addition.h"
 
 @interface TSBaseViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
 

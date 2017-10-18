@@ -7,9 +7,6 @@
 //
 
 #import "TSBasicSettingController.h"
-#define kUserNameKey @"userName"
-#define kUserBirthKey @"userBirth"
-#define kUserIconKey @"userIcon"
 
 @interface TSBasicSettingController ()
 

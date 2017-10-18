@@ -10,7 +10,6 @@
 #import "TSDairyModel.h"
 #import "Addition.h"
 
-#define kScreenSize [UIScreen mainScreen].bounds.size
 @interface TSDetailViewCell()
 
 @property (nonatomic, strong) UIImageView *iconView;
@@ -25,11 +24,6 @@
 @end
 
 @implementation TSDetailViewCell
-
-static const CGFloat margin = 10;
-static const CGFloat length = 60;
-static const CGFloat titleFont = 15;
-static const CGFloat textFont = 14;
 
 @synthesize pictures = _pictures;
 
@@ -112,11 +106,11 @@ static const CGFloat textFont = 14;
 - (void)setTxtLabelFrame{
     //设置正文Frame，按内容显示
     CGFloat textHeight = [self.txtLabel.text sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]}].height;
-    self.txtLabel.frame = CGRectMake(margin, 2*margin + length, kScreenSize.width - 2 * margin, textHeight);
+    self.txtLabel.frame = CGRectMake(kMargin, 2*kMargin + kIconWidth, kScreenW - 2 * kMargin, textHeight);
     [self.txtLabel sizeToFit];
     
     //获取cell的高度
-    self.heightOfCell = CGRectGetMaxY(self.txtLabel.frame) + margin;
+    self.heightOfCell = CGRectGetMaxY(self.txtLabel.frame) + kMargin;
 }
 
 - (void)creatPictureViews{
@@ -128,7 +122,7 @@ static const CGFloat textFont = 14;
     
     for (UIImage *image in self.pictures) {
         //根据图片比例计算高度
-        CGFloat imageW = kScreenSize.width - 2*margin;
+        CGFloat imageW = kScreenW - 2*kMargin;
         UIImage *newImage = [image scaleToWidth:imageW];
         //创建方法可以抽取
         UIImageView *imageView = [[UIImageView alloc] initWithImage:newImage];
@@ -137,8 +131,8 @@ static const CGFloat textFont = 14;
         imageView.userInteractionEnabled = YES;
         [imageView addGestureRecognizer:tap];
         
-        imageView.frame = CGRectMake(margin, self.heightOfCell, newImage.size.width, newImage.size.height);
-        self.heightOfCell += newImage.size.height +margin;
+        imageView.frame = CGRectMake(kMargin, self.heightOfCell, newImage.size.width, newImage.size.height);
+        self.heightOfCell += newImage.size.height +kMargin;
         
         [self.contentView addSubview:imageView];
         [self.picViews addObject:imageView];
@@ -173,12 +167,12 @@ static const CGFloat textFont = 14;
     self.txtLabel.font = [UIFont systemFontOfSize:textFont];
     
     //设置头像Frame
-    self.iconView.frame = CGRectMake(margin, margin, length, length);
+    self.iconView.frame = CGRectMake(kMargin, kMargin, kIconWidth, kIconWidth);
     //设置标题Frame
     CGFloat titleH = 40;
-    self.titleLabel.frame = CGRectMake(2*margin + length, margin, kScreenSize.width - (3 * margin + length), titleH);
+    self.titleLabel.frame = CGRectMake(2*kMargin + kIconWidth, kMargin, kScreenW - (3 * kMargin + kIconWidth), titleH);
     //设置日期Frame
-    self.timeLabel.frame = CGRectMake(2*margin + length, CGRectGetMaxY(self.titleLabel.frame), kScreenSize.width - (3*margin + length), length - titleH);
+    self.timeLabel.frame = CGRectMake(2*kMargin + kIconWidth, CGRectGetMaxY(self.titleLabel.frame), kScreenW - (3*kMargin + kIconWidth), kIconWidth - titleH);
     self.timeLabel.textAlignment = NSTextAlignmentRight;
 
     

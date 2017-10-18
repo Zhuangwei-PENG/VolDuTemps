@@ -1,9 +1,9 @@
 //
-//  UIImage+Additions.h
-//  YHTodo
+//  UIImage+Addition.m
+//  VolDuTemps
 //
-//  Created by Oboe_b on 16/2/24.
-//  Copyright © 2016年 Oboe_b. All rights reserved.
+//  Created by Zhuangwei PENG on 2017/10/10.
+//  Copyright © 2017年 Zhuangwei PENG. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

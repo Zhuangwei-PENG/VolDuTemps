@@ -172,33 +172,4 @@
 }
 
 
-
-
-
-
-
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
-
-
-//+ (instancetype)cellWithTableView:(UITableView *)tableView{
-//    static NSString *cellID = @"iconCell";
-//    TSIconViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-//    if (!cell) {
-//        cell = [[self alloc] init];
-//    }
-//    cell.imageView.layer.cornerRadius = 10;
-//    cell.imageView.layer.masksToBounds = YES;
-//
-//    return cell;
-//}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
 @end

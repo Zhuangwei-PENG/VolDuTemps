@@ -7,8 +7,7 @@
 //
 
 #import "TSAddPhoto.h"
-
-#define kLength 70
+#import "Addition.h"
 
 @interface TSAddPhoto()
 
@@ -126,8 +125,8 @@
             self.bounds = [UIScreen mainScreen].bounds;
         }
         
-        self.margin = (self.bounds.size.width - 4 * kLength)/5;
-        self.addPicBtn.frame = CGRectMake(self.margin, self.margin, kLength, kLength);
+        self.margin = (self.bounds.size.width - 4 * kIconWidth)/5;
+        self.addPicBtn.frame = CGRectMake(self.margin, self.margin, kIconWidth, kIconWidth);
         return;
         
     }else if (self.picViews.count > 0) {
@@ -135,8 +134,8 @@
         if (self.picViews.count == 4) {
             [self.addPicBtn removeFromSuperview];
         }else {
-            CGFloat x = self.picViews.count * (kLength + self.margin) +self.margin;
-            self.addPicBtn.frame = CGRectMake(x, self.margin, kLength, kLength);
+            CGFloat x = self.picViews.count * (kIconWidth + self.margin) +self.margin;
+            self.addPicBtn.frame = CGRectMake(x, self.margin, kIconWidth, kIconWidth);
             if (![self.subviews containsObject:self.addPicBtn]) {
                 [self addSubview:self.addPicBtn];
             }
@@ -144,8 +143,8 @@
         
         CGFloat index = 1;
         for (UIImageView *subView in self.picViews) {
-            CGFloat x = index * self.margin + (index -1) * kLength;
-            subView.frame = CGRectMake(x, self.margin, kLength, kLength);
+            CGFloat x = index * self.margin + (index -1) * kIconWidth;
+            subView.frame = CGRectMake(x, self.margin, kIconWidth, kIconWidth);
             [self addSubview:subView];
             index ++;
         }

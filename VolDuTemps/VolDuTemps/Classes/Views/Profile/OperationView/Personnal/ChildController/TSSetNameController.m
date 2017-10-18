@@ -85,6 +85,7 @@
 - (void)confirmNameChange{
     if([self.inputField.text length]){
         [self.userDefault setObject:self.inputField.text forKey:self.saveKey];
+        [self.userDefault synchronize];
         [self cancelNameChange];
     }else{
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"没有输入内容，请重写填写" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];

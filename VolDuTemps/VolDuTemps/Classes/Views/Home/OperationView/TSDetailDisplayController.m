@@ -11,7 +11,6 @@
 #import "TSDetailViewCell.h"
 #import "Addition.h"
 
-#define defaultFont 14
 
 @interface TSDetailDisplayController ()<TSModifyViewControllerDelegate>
 @property (nonatomic, assign) CGFloat heightOfCell;
@@ -28,8 +27,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"修改" fontSize:defaultFont target:self action:@selector(editDairy) isPopBack:NO];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" fontSize:defaultFont target:self action:@selector(popBack) isPopBack:YES];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"修改" fontSize:itemFont target:self action:@selector(editDairy) isPopBack:NO];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" fontSize:itemFont target:self action:@selector(popBack) isPopBack:YES];
     self.navigationItem.title = self.cells[0].time;
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;

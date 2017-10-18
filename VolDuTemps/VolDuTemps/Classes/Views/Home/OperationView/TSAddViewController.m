@@ -8,7 +8,6 @@
 
 #import "TSAddViewController.h"
 #import "TSDetailDisplayController.h"
-#import "Addition.h"
 
 @interface TSAddViewController ()
 

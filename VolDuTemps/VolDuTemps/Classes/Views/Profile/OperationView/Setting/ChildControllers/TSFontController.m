@@ -17,20 +17,26 @@
 @property (nonatomic, strong) UISlider *slider;
 @property (nonatomic, strong) UIButton *defaultBtn;
 
+@property (nonatomic, strong) NSUserDefaults *userDefault;
+
 @end
 
 @implementation TSFontController
 
-static const CGFloat margin = 8;
-static NSString *kFont = @"myFontSize";
-
 #pragma mark - Lazy instantiation
+- (NSUserDefaults *)userDefault{
+    if (!_userDefault) {
+        _userDefault =[NSUserDefaults standardUserDefaults];
+    }
+    return _userDefault;
+}
+
 - (UIButton *)defaultBtn{
     if (!_defaultBtn) {
         _defaultBtn = [[UIButton alloc] init];
         [_defaultBtn setTitle:@"默认大小" forState:UIControlStateNormal];
         [_defaultBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        _defaultBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        _defaultBtn.titleLabel.font = [UIFont systemFontOfSize:12];
     }
     return _defaultBtn;
 }
@@ -71,36 +77,35 @@ static NSString *kFont = @"myFontSize";
 
 - (void)addModelCell{
     [self.view addSubview:self.modelCell];
-    self.modelCell.frame = CGRectMake(0, 64,  self.view.bounds.size.width, 100);
-
+    self.modelCell.frame = CGRectMake(0, kTopInset, kScreenW, kRowHeight);
+    self.modelCell.userFont = [self.userDefault floatForKey:kUserFontKey];
 }
 
 - (void)addSlider{
     [self.view addSubview:self.slider];
     
-    CGFloat Y = self.modelCell.frame.origin.y + self.modelCell.frame.size.height + 5 * margin;
-    CGFloat W = self.view.bounds.size.width - 2 * margin;
-    self.slider.frame = CGRectMake(margin, Y, W, 20);
+    CGFloat Y = CGRectGetMaxY(self.modelCell.frame) + 5 * kMargin;
+    CGFloat W = kScreenW - 2 * kMargin;
+    self.slider.frame = CGRectMake(kMargin, Y, W, 2 *kMargin);
     
-    self.slider.value = [[NSUserDefaults standardUserDefaults] floatForKey:kFont];
+    self.slider.value = [[NSUserDefaults standardUserDefaults] floatForKey:kUserFontKey];
     [self.slider addTarget:self action:@selector(sliderChanged) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)addDefaultBtn{
     [self.view addSubview:self.defaultBtn];
-    CGFloat Y = self.slider.frame.origin.y + self.slider.frame.size.height + margin;
-    CGFloat W = self.view.bounds.size.width;
-    self.defaultBtn.frame = CGRectMake(0, Y, W, 44);
+    CGFloat Y = CGRectGetMaxY(self.slider.frame) + kMargin;
+    self.defaultBtn.frame = CGRectMake(0, Y, kScreenW, 44);
     
     [self.defaultBtn addTarget:self action:@selector(setToDefaultValue) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)sliderChanged{
-    self.modelCell.titleFont = self.slider.value;
+    self.modelCell.userFont = self.slider.value;
 }
 
 - (void)setToDefaultValue{
-    self.slider.value = 15;
+    self.slider.value = 14;
     [self sliderChanged];
 }
 
@@ -111,9 +116,8 @@ static NSString *kFont = @"myFontSize";
 
 - (void)confirm{
     //保存数据
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setFloat:self.slider.value forKey:kFont];
-    [userDefaults synchronize];
+    [self.userDefault setFloat:self.slider.value forKey:kUserFontKey];
+    [self.userDefault synchronize];
     [self popBack];
 }
 

@@ -1,9 +1,9 @@
 //
-//  NSString+path.m
-//  20-沙盒演练
+//  NSString+Addition.m
+//  VolDuTemps
 //
-//  Created by Apple on 16/3/9.
-//  Copyright © 2016年 Apple. All rights reserved.
+//  Created by Zhuangwei PENG on 2017/10/10.
+//  Copyright © 2017年 Zhuangwei PENG. All rights reserved.
 //
 
 #import "NSString+path.h"

@@ -12,7 +12,7 @@
 @interface TSTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) TSDairyModel *dairyModel;
-@property (nonatomic, assign) CGFloat titleFont;
+@property (nonatomic, assign) CGFloat userFont;
 
 + (instancetype)tableViewCellWith:(UITableView *)tableView dairyModel:(TSDairyModel *)model;
 

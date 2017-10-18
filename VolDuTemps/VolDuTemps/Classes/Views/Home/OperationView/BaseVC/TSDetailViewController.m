@@ -8,7 +8,7 @@
 
 #import "TSDetailViewController.h"
 #import "TSPhotoViewerController.h"
-#import "Addition.h"
+
 
 @interface TSDetailViewController ()<TSAddPhotoDelegate, TSPhotoViewerControllerDelegate>
 

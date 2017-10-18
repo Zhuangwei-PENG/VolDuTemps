@@ -9,7 +9,6 @@
 #import "TSPhotoViewerController.h"
 #import "Addition.h"
 
-#define kScreenSize [UIScreen mainScreen].bounds.size
 
 @interface TSPhotoViewerController ()<UIActionSheetDelegate>
 @property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
@@ -50,7 +49,6 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
    
 }
 
@@ -121,7 +119,7 @@ static NSString * const reuseIdentifier = @"Cell";
     UIImage *image = self.currentPics[indexPath.row];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
     [cell.contentView addSubview:imageView];
-    imageView.frame = CGRectMake(0, (kScreenSize.height - image.size.height) * 0.5, image.size.width, image.size.height);
+    imageView.frame = CGRectMake(0, (kScreenH - image.size.height) * 0.5, image.size.width, image.size.height);
 
     return cell;
 }
@@ -130,8 +128,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath{
     self.currentIndex = indexPath.row;
-//        self.navigationItem.title = [NSString stringWithFormat:@"%ld/%ld", self.currentIndex, self.currentPics.count];
-    self.navigationItem.title = [NSString stringWithFormat:@"%u/%u",self.currentIndex + 1, self.currentPics.count];
+    self.navigationItem.title = [NSString stringWithFormat:@"%lu/%lu",self.currentIndex + 1, (unsigned long)self.currentPics.count];
 //    self.navigationController.navigationBar.titleTextAttributes =
 
 }

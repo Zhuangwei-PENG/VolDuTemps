@@ -1,8 +1,9 @@
 //
 //  UIColor+Addition.m
-//  01-生活圈
+//  VolDuTemps
 //
-//  Copyright © 2016年 Oboe_b. All rights reserved.
+//  Created by Zhuangwei PENG on 2017/10/10.
+//  Copyright © 2017年 Zhuangwei PENG. All rights reserved.
 //
 
 #import "UIColor+Addition.h"

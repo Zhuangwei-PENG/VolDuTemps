@@ -9,7 +9,7 @@
 #import "TSTableViewCell.h"
 #import "Addition.h"
 
-#define kViewW 58
+
 
 @interface TSTableViewCell()
 
@@ -69,7 +69,7 @@ static const CGFloat margin = 8;
     self.titleLbl.text = dairyModel.title;
     self.timeLbl.text = dairyModel.time;
     if (dairyModel.pictures.count) {
-        self.imgView.image = [UIImage getCompositeImageWith:dairyModel.pictures width:kViewW margin:3];
+        self.imgView.image = [UIImage getCompositeImageWith:dairyModel.pictures width:kViewW margin:kSmallMargin];
         self.imgView.backgroundColor = [UIColor colorWithHex:0xEDEDED];
     }else{
         self.imgView.image = nil;
@@ -95,11 +95,14 @@ static const CGFloat margin = 8;
 }
 
 //设置字体大小
-- (void)setTitleFont:(CGFloat)titleFont{
-    _titleFont = titleFont;
-    self.titleLbl.font = [UIFont systemFontOfSize:_titleFont];
-    self.textLbl.font = [UIFont systemFontOfSize:_titleFont-2];
-    self.timeLbl.font = [UIFont systemFontOfSize:_titleFont-3];
+- (void)setUserFont:(CGFloat)userFont{
+    _userFont = userFont;
+    if(!_userFont){
+        _userFont = titleFont;
+    }
+    self.titleLbl.font = [UIFont systemFontOfSize:_userFont];
+    self.textLbl.font = [UIFont systemFontOfSize:_userFont-3];
+    self.timeLbl.font = [UIFont systemFontOfSize:_userFont-2];
 }
 
 - (void)setupCell{
@@ -115,26 +118,18 @@ static const CGFloat margin = 8;
     
     self.contentView.backgroundColor = [UIColor whiteColor];
     self.accessoryView.backgroundColor = [UIColor whiteColor];
-    
-    self.bottomLine.backgroundColor = [UIColor lightGrayColor];
     self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
+    self.bottomLine.backgroundColor = [UIColor lightGrayColor];
+
     self.titleLbl.numberOfLines = 1;
     self.textLbl.numberOfLines = 3;
     self.timeLbl.numberOfLines = 1;
     
-    self.titleLbl.textColor = [UIColor darkTextColor];
+//    self.titleLbl.textColor = [UIColor darkTextColor];
 //    self.titleLbl.backgroundColor = [UIColor randomColor];
 //    self.textLbl.backgroundColor = [UIColor randomColor];
 //    self.timeLbl.backgroundColor = [UIColor randomColor];
-//
-    
-    if (self.titleFont == 0) {
-        self.titleFont = 16;
-    }
-    self.titleLbl.font = [UIFont systemFontOfSize:self.titleFont];
-    self.textLbl.font = [UIFont systemFontOfSize:self.titleFont-2];
-    self.timeLbl.font = [UIFont systemFontOfSize:self.titleFont-3];
     
     for (UIView *subview in self.contentView.subviews) {
         //取消autoresizing
@@ -144,7 +139,7 @@ static const CGFloat margin = 8;
     
     //设置对齐
     self.timeLbl.textAlignment = NSTextAlignmentRight;
-
+    self.titleLbl.textAlignment = NSTextAlignmentLeft;
     //自动布局
     //设置timeLbl的自动布局
     [self.contentView addConstraints:@[[NSLayoutConstraint constraintWithItem:self.timeLbl
@@ -308,13 +303,6 @@ static const CGFloat margin = 8;
                                                                    multiplier:1
                                                                      constant:0.5]
                                        ]];
-}
-
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 @end

@@ -9,6 +9,7 @@
 #import "TSPhotoViewController.h"
 #import "TSDairyModel.h"
 #import "TSAddPhoto.h"
+#import "Addition.h"
 
 
 @interface TSDetailViewController : TSPhotoViewController

@@ -13,13 +13,6 @@
 
 #import "TSTableViewCell.h"
 #import "TSDairyModel.h"
-#import "Addition.h"
-
-#define kPath [@"notes" appendDocumentsPath]
-#define kRowHeight 110
-#define kUserNameKey @"userName"
-#define kUserFontKey @"userFont"
-#define kUserIconKey @"userIcon"
 
 @interface TSHomeViewController ()<TSAddViewControllerDelegate, TSDetailDisplayControllerDelegate, UIAlertViewDelegate>
 
@@ -197,7 +190,7 @@ static const NSString *cellID = @"TSTableViewCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
     TSTableViewCell *cell = [TSTableViewCell tableViewCellWith:tableView dairyModel:self.notes[indexPath.row]];
-    cell.titleFont = self.userFontSize;
+    cell.userFont = self.userFontSize;
 
     return cell;
 }

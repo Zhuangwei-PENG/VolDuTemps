@@ -26,9 +26,9 @@
 - (void)setGroups{
     
     TSSettingItem *font = [TSSettingItem itemWithTitle:@"字体大小"];
-    TSSettingItem *bgImage = [TSSettingItem itemWithTitle:@"背景图片"];
+//    TSSettingItem *bgImage = [TSSettingItem itemWithTitle:@"背景图片"];
     
-    TSSettingGroup *settingGroupOne = [TSSettingGroup groupWithItems:@[font, bgImage]];
+    TSSettingGroup *settingGroupOne = [TSSettingGroup groupWithItems:@[font]];
     [self.groups addObject:settingGroupOne];
     
     font.destinationVC = [TSFontController class];
