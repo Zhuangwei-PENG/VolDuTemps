@@ -48,7 +48,7 @@
 - (void)setupTableView{
     //self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.backgroundColor = [UIColor colorWithHex:0xEDEDED];
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.scrollEnabled = NO;
 }
 
@@ -97,7 +97,6 @@
     TSSettingItem *item = group.items[indexPath.row];
     if (item.destinationVC) {//如果有跳转就执行跳转
         UIViewController *destinationVC = [[item.destinationVC alloc] init];
-        NSLog(@"%@",item.destinationVC);
         [self.navigationController pushViewController:destinationVC animated:YES];
     }
     if (item.option) {//哪个cell有事情就做事情(自己的事情自己干)

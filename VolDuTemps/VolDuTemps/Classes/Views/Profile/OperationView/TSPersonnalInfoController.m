@@ -9,6 +9,7 @@
 #import "TSPersonnalInfoController.h"
 #import "TSPersonnalSettingCell.h"
 #import "TSChangeIconController.h"
+#import "TSSetNameController.h"
 
 @interface TSPersonnalInfoController ()
 @property (nonatomic, strong) TSSettingItem *icon;
@@ -39,6 +40,7 @@
     self.birthDay = [TSSettingItem itemWithTitle:@"生日" image:nil subTitle:@"1991-2-4"];
     
     self.icon.destinationVC = [TSChangeIconController class];
+    self.name.destinationVC = [TSSetNameController class];
     
     TSSettingGroup *groupOne = [TSSettingGroup groupWithItems:@[self.icon,self.name,self.birthDay]];
     [self.groups addObject:groupOne];
