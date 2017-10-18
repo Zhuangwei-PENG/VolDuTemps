@@ -37,6 +37,7 @@
     
     [self createNameField];
     
+    self.navigationItem.title = @"设置名字";
     //获取用户名字
     self.saveKey = @"userName";
     self.inputField.text = [self getUserSetting];

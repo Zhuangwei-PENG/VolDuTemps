@@ -20,6 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationItem.title = @"设置生日";
+    
     self.saveKey = @"userBirth";
     self.inputField.text = [self getUserSetting];
     [self setupUI];
@@ -56,6 +58,14 @@
     
     //设置最大日期为当前日期
     self.datePicker.maximumDate = [NSDate date];
+    
+    //格式化日期
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyy-MM-dd";
+    //将日期转换成字符串
+    NSDate *userBirth = [formatter dateFromString:self.inputField.text];
+    //设置当前日期为用户生日
+    self.datePicker.date = userBirth;
     
     //设置键盘为DatePicker
     self.inputField.inputView = self.datePicker;

@@ -74,6 +74,15 @@ static const NSString *cellID = @"TSTableViewCell";
     
 }
 
+- (void)setHomeTitle{
+    NSString *userName = [self getUserName];
+    if ([userName length]) {
+        self.navigationItem.title = [NSString stringWithFormat:@"%@ 的日记",userName];
+    }else{
+        self.navigationItem.title = @"日记列表";
+    }
+}
+
 //重复代码，需要抽取
 - (UIImage *)getIconImage{
     NSData *data = [[NSUserDefaults standardUserDefaults] dataForKey:kUserIconKey];
@@ -100,10 +109,9 @@ static const NSString *cellID = @"TSTableViewCell";
     [super viewWillAppear:animated];
     [self getUserSettings];
     [self createIcon];
+    [self setHomeTitle];
     [self.myTableView reloadData];
 }
-
-
 
 - (void)setupUI{
     [super setupUI];
@@ -115,13 +123,7 @@ static const NSString *cellID = @"TSTableViewCell";
     if (self.notes.count == 0) {
         [self setupVideView];
     }
-    
-    NSString *userName = [self getUserName];
-    if ([userName length]) {
-         self.navigationItem.title = [NSString stringWithFormat:@"%@ 的日记",userName];
-    }else{
-        self.navigationItem.title = @"日记列表";
-    }
+
    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewOne)];
     

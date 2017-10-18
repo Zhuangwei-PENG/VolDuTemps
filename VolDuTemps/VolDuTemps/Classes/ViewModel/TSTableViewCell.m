@@ -124,9 +124,9 @@ static const CGFloat margin = 8;
     self.timeLbl.numberOfLines = 1;
     
     self.titleLbl.textColor = [UIColor darkTextColor];
-    self.titleLbl.backgroundColor = [UIColor randomColor];
-    self.textLbl.backgroundColor = [UIColor randomColor];
-    self.timeLbl.backgroundColor = [UIColor randomColor];
+//    self.titleLbl.backgroundColor = [UIColor randomColor];
+//    self.textLbl.backgroundColor = [UIColor randomColor];
+//    self.timeLbl.backgroundColor = [UIColor randomColor];
 //
     
     if (self.titleFont == 0) {

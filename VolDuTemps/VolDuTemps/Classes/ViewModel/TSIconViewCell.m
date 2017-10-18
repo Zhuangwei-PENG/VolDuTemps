@@ -43,10 +43,10 @@
 - (void)setItem:(TSSettingItem *)item{
     _iconView.image = item.image;
     _nameLabel.text = item.title;
-    _timeLabel.text = @"请设置您的生日";
-    if ([item.subTitle length]) {
-       _timeLabel.text = item.subTitle;
-    }
+    _timeLabel.text = item.subTitle;
+//    if ([item.subTitle length]) {
+//       _timeLabel.text = item.subTitle;
+//    }
     
 }
 

@@ -32,6 +32,7 @@ static NSString *cellId = @"staticCell";
     
     self.profile.title = [self getUserName];
     self.profile.image = [self getIconImage];
+    self.profile.subTitle = [self getTotalDays];
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
@@ -75,11 +76,17 @@ static NSString *cellId = @"staticCell";
 }
 
 - (NSString *)getTotalDays{
-    NSString *userBirth = [self.userDefault stringForKey:@"userBirthday"];
-    NSString *days =@"";
+    NSString *userBirth = [self.userDefault stringForKey:@"userBirth"];
+    NSString *days =@"请设置您的生日";
     if ([userBirth length]) {
         //计算生日到今天的天数转换成字符串
-        days = @"这是您的第100001天～";
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"yyyy-MM-dd";
+        
+        NSDate *birth = [formatter dateFromString:userBirth];
+        NSTimeInterval interval = [birth timeIntervalSinceNow];
+        NSInteger aDay = 24 * 3600;
+        days = [NSString stringWithFormat:@"这是您出生后的第%.f天～",(interval/aDay)*(-1) ];
     }
     return days;
 }

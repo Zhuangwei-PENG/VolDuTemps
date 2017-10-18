@@ -26,19 +26,21 @@
     
     self.icon.image = [self getIconImage];
     self.name.subTitle = [self getUserName];
+    self.birthDay.subTitle = [self getUserBirth];
     [self.tableView reloadData];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setGroups];
+    self.navigationItem.title = @"个人信息";
 }
 
 - (void)setGroups{
     
     self.icon = [TSSettingItem itemWithTitle:@"头像" image:nil];
     self.name = [TSSettingItem itemWithTitle:@"名字" image:nil subTitle:[self getUserName]];
-    self.birthDay = [TSSettingItem itemWithTitle:@"生日" image:nil subTitle:@"1991-2-4"];
+    self.birthDay = [TSSettingItem itemWithTitle:@"生日" image:nil subTitle:[self getUserBirth]];
     
     self.icon.destinationVC = [TSChangeIconController class];
     self.name.destinationVC = [TSSetNameController class];
@@ -58,10 +60,7 @@
     
     TSSettingGroup *group = self.groups[indexPath.section];
     TSSettingItem *item = group.items[indexPath.row];
-//    if (indexPath.section == 0 && indexPath.row == 0) {
-//        UIImage *userIcon = [self getIconImage];
-//        item.image = userIcon;
-//    }
+
     if (item.image) {
         cellType = TSPersonnalSettingCellTypeRightImage;
     }

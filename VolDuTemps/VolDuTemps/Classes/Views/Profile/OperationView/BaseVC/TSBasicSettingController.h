@@ -21,4 +21,6 @@
 - (UIImage *)getIconImage;
 //获取用户名字
 - (NSString *)getUserName;
+//获取用户生日
+- (NSString *)getUserBirth;
 @end
