@@ -145,6 +145,11 @@
 		CFA7976A1F8B57820085D4A1 /* TSAddViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSAddViewController.m; sourceTree = "<group>"; };
 		CFA7976C1F8B578F0085D4A1 /* TSModifyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSModifyViewController.h; sourceTree = "<group>"; };
 		CFA7976D1F8B578F0085D4A1 /* TSModifyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSModifyViewController.m; sourceTree = "<group>"; };
+		CFBE6B1C1F979F2E00E0D05B /* sorting.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sorting.gif; sourceTree = "<group>"; };
+		CFBE6B1D1F979F2F00E0D05B /* editExistOne.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = editExistOne.gif; sourceTree = "<group>"; };
+		CFBE6B1E1F979F2F00E0D05B /* setFontSize.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = setFontSize.gif; sourceTree = "<group>"; };
+		CFBE6B1F1F979F3000E0D05B /* addNewOne.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = addNewOne.gif; sourceTree = "<group>"; };
+		CFBE6B201F979F3000E0D05B /* setBirthDay.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = setBirthDay.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -443,6 +448,11 @@
 		CFBE6B1B1F979ED300E0D05B /* Gif */ = {
 			isa = PBXGroup;
 			children = (
+				CFBE6B1F1F979F3000E0D05B /* addNewOne.gif */,
+				CFBE6B1D1F979F2F00E0D05B /* editExistOne.gif */,
+				CFBE6B201F979F3000E0D05B /* setBirthDay.gif */,
+				CFBE6B1E1F979F2F00E0D05B /* setFontSize.gif */,
+				CFBE6B1C1F979F2E00E0D05B /* sorting.gif */,
 			);
 			path = Gif;
 			sourceTree = "<group>";
