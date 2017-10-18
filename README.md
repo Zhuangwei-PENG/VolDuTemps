@@ -5,6 +5,15 @@
 
 ![image](https://github.com/Zhuangwei-PENG/VolDuTemps/blob/master/VolDuTemps/VolDuTemps/Classes/Gif/addNewOne.gif)
 
-功能一 修改日记
+功能二 修改日记
 
 ![image](https://github.com/Zhuangwei-PENG/VolDuTemps/blob/master/VolDuTemps/VolDuTemps/Classes/Gif/editExistOne.gif)
+
+功能三 设置字体大小
+
+![image](https://github.com/Zhuangwei-PENG/VolDuTemps/blob/master/VolDuTemps/VolDuTemps/Classes/Gif/setFontSize.gif)
+
+功能四 按日期排序
+
+![image](https://github.com/Zhuangwei-PENG/VolDuTemps/blob/master/VolDuTemps/VolDuTemps/Classes/Gif/sorting.gif)
+
