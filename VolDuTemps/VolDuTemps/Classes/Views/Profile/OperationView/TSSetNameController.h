@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+#define kScreenSize [UIScreen mainScreen].bounds.size
+
 @interface TSSetNameController : UIViewController
 
+@property (nonatomic, weak) UITextField *inputField;
+@property (nonatomic, strong) NSUserDefaults *userDefault;
+@property (nonatomic, strong) NSString *saveKey;
+
+- (NSString *)getUserSetting;
 @end

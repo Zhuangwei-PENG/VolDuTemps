@@ -11,6 +11,7 @@
 		CF19B9D21F94594C008F1852 /* TSDetailDisplayController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF19B9D11F94594C008F1852 /* TSDetailDisplayController.m */; };
 		CF19B9D51F949E19008F1852 /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9149341F8B0EB40085BEDF /* UIImage+Additions.m */; };
 		CF313EC91F96E82700D087DA /* TSSetNameController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF313EC81F96E82700D087DA /* TSSetNameController.m */; };
+		CF313ECC1F970B7100D087DA /* TSSetDateController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF313ECB1F970B7100D087DA /* TSSetDateController.m */; };
 		CF60C95B1F8C58FF007CFE8F /* UIBarButtonItem+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = CF60C95A1F8C58FF007CFE8F /* UIBarButtonItem+Addition.m */; };
 		CF60C95E1F8C6647007CFE8F /* NSString+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = CF60C95D1F8C6647007CFE8F /* NSString+Addition.m */; };
 		CF60C9611F8C89DD007CFE8F /* TSSettingGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = CF60C9601F8C89DD007CFE8F /* TSSettingGroup.m */; };
@@ -66,6 +67,8 @@
 		CF19B9D11F94594C008F1852 /* TSDetailDisplayController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSDetailDisplayController.m; sourceTree = "<group>"; };
 		CF313EC71F96E82700D087DA /* TSSetNameController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSSetNameController.h; sourceTree = "<group>"; };
 		CF313EC81F96E82700D087DA /* TSSetNameController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSSetNameController.m; sourceTree = "<group>"; };
+		CF313ECA1F970B7100D087DA /* TSSetDateController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSSetDateController.h; sourceTree = "<group>"; };
+		CF313ECB1F970B7100D087DA /* TSSetDateController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TSSetDateController.m; sourceTree = "<group>"; };
 		CF60C9591F8C58FF007CFE8F /* UIBarButtonItem+Addition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Addition.h"; sourceTree = "<group>"; };
 		CF60C95A1F8C58FF007CFE8F /* UIBarButtonItem+Addition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Addition.m"; sourceTree = "<group>"; };
 		CF60C95C1F8C6647007CFE8F /* NSString+Addition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Addition.h"; sourceTree = "<group>"; };
@@ -208,6 +211,8 @@
 				CF8300AB1F8DECDF00C2A63E /* TSFontController.m */,
 				CF313EC71F96E82700D087DA /* TSSetNameController.h */,
 				CF313EC81F96E82700D087DA /* TSSetNameController.m */,
+				CF313ECA1F970B7100D087DA /* TSSetDateController.h */,
+				CF313ECB1F970B7100D087DA /* TSSetDateController.m */,
 				CF8300AD1F8E00F400C2A63E /* TSPrivateController.h */,
 				CF8300AE1F8E00F400C2A63E /* TSPrivateController.m */,
 				CF8300A61F8DC82400C2A63E /* TSSettingViewController.h */,
@@ -521,6 +526,7 @@
 				CFA797671F8B3F7F0085D4A1 /* NSString+path.m in Sources */,
 				CFA797611F8B2EDE0085D4A1 /* TSDetailViewController.m in Sources */,
 				CF91491B1F8B07790085BEDF /* TSHomeViewController.m in Sources */,
+				CF313ECC1F970B7100D087DA /* TSSetDateController.m in Sources */,
 				CFA7976B1F8B57820085D4A1 /* TSAddViewController.m in Sources */,
 				CF19B9D21F94594C008F1852 /* TSDetailDisplayController.m in Sources */,
 				CFA7976E1F8B578F0085D4A1 /* TSModifyViewController.m in Sources */,

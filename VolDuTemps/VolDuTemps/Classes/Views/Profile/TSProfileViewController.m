@@ -39,7 +39,7 @@ static NSString *cellId = @"staticCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"我的设置🔧";
+    self.navigationItem.title = @"我的设置";
     self.navigationItem.leftBarButtonItem = nil;
     [self setupUI];
 
@@ -47,21 +47,18 @@ static NSString *cellId = @"staticCell";
 
 - (void)setupUI{
     //获取用户设置
-    NSString *userBirth = [self.userDefault stringForKey:@"userBirthday"];
-    NSString *days =@"";
-    if ([userBirth length]) {
-        //计算生日到今天的天数转换成字符串
-        days = @"这是您的第100001天～";
-    }
+
     
-    
-    TSSettingItem *profile = [TSSettingItem itemWithTitle:@"名称" image:nil subTitle:days];
+    //设置第一组
+    TSSettingItem *profile = [TSSettingItem itemWithTitle:@"名称" image:nil subTitle:[self getTotalDays]];
     self.profile = profile;
     profile.destinationVC = [TSPersonnalInfoController class];
     
     TSSettingGroup *groupOne = [TSSettingGroup groupWithItems:@[profile]];
     [self.groups addObject:groupOne];
 
+    
+    //设置第二组
     TSSettingItem *setting = [TSSettingItem itemWithTitle:@"设置"];
     setting.destinationVC = [TSSettingViewController class];
     
@@ -75,6 +72,16 @@ static NSString *cellId = @"staticCell";
     [self.groups addObject:groupTwo];
 
 
+}
+
+- (NSString *)getTotalDays{
+    NSString *userBirth = [self.userDefault stringForKey:@"userBirthday"];
+    NSString *days =@"";
+    if ([userBirth length]) {
+        //计算生日到今天的天数转换成字符串
+        days = @"这是您的第100001天～";
+    }
+    return days;
 }
 
 #pragma mark - DataSource
