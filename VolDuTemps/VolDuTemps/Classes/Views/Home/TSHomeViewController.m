@@ -55,16 +55,34 @@ static const NSString *cellID = @"TSTableViewCell";
     return _cellIndexPath;
 }
 
+#pragma mark -SetUp UI
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
 }
 
-#pragma mark -SetUp UI
+- (void)createIcon{
+    UIImage *image = [self getIconImage];
+    UIImageView *iconView = [[UIImageView alloc] initWithImage:[image scaleToWidth:35]];
+    iconView.layer.cornerRadius = 5;
+    iconView.layer.masksToBounds = YES;
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:iconView];
+    
+}
+
+- (UIImage *)getIconImage{
+    NSData *data = [[NSUserDefaults standardUserDefaults] dataForKey:@"userIcon"];
+    if (!data) {
+        return [UIImage imageNamed:@"Mark_43"];
+    }
+    return [UIImage imageWithData:data];
+}
+
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self getUserSettings];
+    [self createIcon];
     [self.myTableView reloadData];
 }
 
@@ -84,7 +102,7 @@ static const NSString *cellID = @"TSTableViewCell";
         [self setupVideView];
     }
 
-    self.navigationItem.title = @"日记列表📒";
+    self.navigationItem.title = @"日记列表";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewOne)];
     
 

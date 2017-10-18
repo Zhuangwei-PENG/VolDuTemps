@@ -28,15 +28,18 @@ static NSString * const reuseIdentifier = @"Cell";
     }
     return _flowLayout;
 }
+- (void)viewDidLayoutSubviews{
+    //在 UICollectionView 显示它的subview 之前调用不起作用，所以要在子view layout后调用
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.firstViewIndex inSection:0];
+    [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+}
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.currentIndex = self.firstViewIndex;
     self.currentPics = [self.picsToDisplay mutableCopy];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.firstViewIndex inSection:0];
-    [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-
 }
+
 - (instancetype)init{
     self.collectionView = [[UICollectionView alloc] initWithFrame:[UIScreen mainScreen].bounds collectionViewLayout:self.flowLayout];
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
@@ -47,10 +50,12 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+   
 }
 
 - (void)setCollectionView{
-    self.flowLayout.itemSize = [UIScreen mainScreen].bounds.size;
+    self.flowLayout.itemSize = CGSizeMake(320, 504);
     self.flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     self.flowLayout.minimumLineSpacing = 0;
     self.flowLayout.minimumInteritemSpacing = 0;
@@ -60,7 +65,7 @@ static NSString * const reuseIdentifier = @"Cell";
     self.collectionView.bounces = NO;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" fontSize:16 target:self action:@selector(popBack) isPopBack:YES];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"删除" fontSize:16 target:self action:@selector(deletePic) isPopBack:NO];
-    self.navigationItem.title = self.titleToDisplay;
+
 }
 
 - (void)popBack{
@@ -125,7 +130,8 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath{
     self.currentIndex = indexPath.row;
-//    self.navigationItem.title = [NSString stringWithFormat:@"%lu/%lu",self.currentIndex + 1, self.currentPics.count];
+//        self.navigationItem.title = [NSString stringWithFormat:@"%ld/%ld", self.currentIndex, self.currentPics.count];
+    self.navigationItem.title = [NSString stringWithFormat:@"%u/%u",self.currentIndex + 1, self.currentPics.count];
 //    self.navigationController.navigationBar.titleTextAttributes =
 
 }

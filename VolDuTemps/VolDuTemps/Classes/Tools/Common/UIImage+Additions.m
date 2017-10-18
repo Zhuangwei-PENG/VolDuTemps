@@ -83,7 +83,7 @@
     
     CGFloat height = self.size.height * (width / self.size.width);
     CGRect rect = CGRectMake(0, 0, width, height);
-    UIGraphicsBeginImageContext(rect.size);
+    UIGraphicsBeginImageContextWithOptions(rect.size, NO, [UIScreen mainScreen].scale);
     [self drawInRect:rect];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();

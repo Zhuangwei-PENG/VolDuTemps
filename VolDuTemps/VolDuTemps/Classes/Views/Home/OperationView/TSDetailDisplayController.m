@@ -11,6 +11,8 @@
 #import "TSDetailViewCell.h"
 #import "Addition.h"
 
+#define defaultFont 14
+
 @interface TSDetailDisplayController ()<TSModifyViewControllerDelegate>
 @property (nonatomic, assign) CGFloat heightOfCell;
 @end
@@ -26,8 +28,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"修改" fontSize:15 target:self action:@selector(editDairy) isPopBack:NO];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" fontSize:16 target:self action:@selector(popBack) isPopBack:YES];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"修改" fontSize:defaultFont target:self action:@selector(editDairy) isPopBack:NO];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" fontSize:defaultFont target:self action:@selector(popBack) isPopBack:YES];
+    self.navigationItem.title = self.cells[0].time;
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
@@ -42,7 +45,6 @@
     
     //将展示的模型，传递给修改页面
     modifyVC.dairyModelToModify = self.cells[0];
-    NSLog(@"%@",self.cells[0]);
     [self.navigationController pushViewController:modifyVC animated:NO];
     
 }

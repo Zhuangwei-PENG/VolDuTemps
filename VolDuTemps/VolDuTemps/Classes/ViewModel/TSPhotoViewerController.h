@@ -20,7 +20,6 @@
 @property (nonatomic, weak) id<TSPhotoViewerControllerDelegate> delegate;
 
 @property (nonatomic, strong) NSArray *picsToDisplay;
-@property (nonatomic, copy) NSString *titleToDisplay;
 
 @property (nonatomic, assign) NSUInteger firstViewIndex;
 

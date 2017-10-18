@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @class TSDetailDisplayController;
-@class TSDetailViewCell;
+@class TSDairyModel;
 
 @protocol TSDetailDisplayControllerDelegate<NSObject>
 
@@ -19,6 +19,6 @@
 @interface TSDetailDisplayController : UITableViewController
 
 @property (nonatomic, weak) id<TSDetailDisplayControllerDelegate> delegate;
-@property (nonatomic, strong) NSArray<TSDetailViewCell*> *cells;
+@property (nonatomic, strong) NSArray<TSDairyModel*> *cells;
 
 @end

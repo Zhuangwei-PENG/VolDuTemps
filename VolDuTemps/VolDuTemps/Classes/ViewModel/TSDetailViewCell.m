@@ -27,8 +27,8 @@
 @implementation TSDetailViewCell
 
 static const CGFloat margin = 10;
-static const CGFloat length = 70;
-static const CGFloat titleFont = 16;
+static const CGFloat length = 60;
+static const CGFloat titleFont = 15;
 static const CGFloat textFont = 14;
 
 @synthesize pictures = _pictures;
@@ -87,7 +87,7 @@ static const CGFloat textFont = 14;
     self.txtLabel.text = dairyModel.text;
     [self setTxtLabelFrame];
     self.titleLabel.text = dairyModel.title;
-    self.timeLabel.text = dairyModel.time;
+    self.timeLabel.text = [NSString stringWithFormat:@"🖋 %@",dairyModel.time];
     self.pictures = dairyModel.pictures.mutableCopy;
 }
 
@@ -112,7 +112,7 @@ static const CGFloat textFont = 14;
 - (void)setTxtLabelFrame{
     //设置正文Frame，按内容显示
     CGFloat textHeight = [self.txtLabel.text sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]}].height;
-    self.txtLabel.frame = CGRectMake(margin, 2*margin + length, kScreenSize.width - 2*margin, textHeight);
+    self.txtLabel.frame = CGRectMake(margin, 2*margin + length, kScreenSize.width - 2 * margin, textHeight);
     [self.txtLabel sizeToFit];
     
     //获取cell的高度
@@ -139,7 +139,6 @@ static const CGFloat textFont = 14;
         
         imageView.frame = CGRectMake(margin, self.heightOfCell, newImage.size.width, newImage.size.height);
         self.heightOfCell += newImage.size.height +margin;
-        NSLog(@"--%f",self.heightOfCell);
         
         [self.contentView addSubview:imageView];
         [self.picViews addObject:imageView];
@@ -177,7 +176,7 @@ static const CGFloat textFont = 14;
     self.iconView.frame = CGRectMake(margin, margin, length, length);
     //设置标题Frame
     CGFloat titleH = 40;
-    self.titleLabel.frame = CGRectMake(2*margin + length, margin, kScreenSize.width - (3*margin + length), titleH);
+    self.titleLabel.frame = CGRectMake(2*margin + length, margin, kScreenSize.width - (3 * margin + length), titleH);
     //设置日期Frame
     self.timeLabel.frame = CGRectMake(2*margin + length, CGRectGetMaxY(self.titleLabel.frame), kScreenSize.width - (3*margin + length), length - titleH);
     self.timeLabel.textAlignment = NSTextAlignmentRight;

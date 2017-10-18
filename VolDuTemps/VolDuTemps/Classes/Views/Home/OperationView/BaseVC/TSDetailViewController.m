@@ -104,6 +104,7 @@
     
     self.titleField.placeholder = @"标题";
     
+    
     self.dateField.placeholder = @"选择日期📅";
     self.dateField.font = [UIFont systemFontOfSize:12];
     //设置时间选择键盘
@@ -215,7 +216,7 @@
                                                                 toItem:self.view
                                                              attribute:NSLayoutAttributeRight
                                                             multiplier:1
-                                                              constant:margin],
+                                                              constant:-margin],
                                 
                                 [NSLayoutConstraint constraintWithItem:self.textField
                                                              attribute:NSLayoutAttributeHeight

@@ -123,11 +123,11 @@ static const CGFloat margin = 8;
     self.textLbl.numberOfLines = 3;
     self.timeLbl.numberOfLines = 1;
     
-//    self.titleLbl.textColor = [UIColor darkTextColor];
-//    self.titleLbl.backgroundColor = [UIColor randomColor];
-//    self.textLbl.backgroundColor = [UIColor randomColor];
-//    self.timeLbl.backgroundColor = [UIColor randomColor];
-//    
+    self.titleLbl.textColor = [UIColor darkTextColor];
+    self.titleLbl.backgroundColor = [UIColor randomColor];
+    self.textLbl.backgroundColor = [UIColor randomColor];
+    self.timeLbl.backgroundColor = [UIColor randomColor];
+//
     
     if (self.titleFont == 0) {
         self.titleFont = 16;
@@ -146,6 +146,39 @@ static const CGFloat margin = 8;
     self.timeLbl.textAlignment = NSTextAlignmentRight;
 
     //自动布局
+    //设置timeLbl的自动布局
+    [self.contentView addConstraints:@[[NSLayoutConstraint constraintWithItem:self.timeLbl
+                                                                    attribute:NSLayoutAttributeTop
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.contentView
+                                                                    attribute:NSLayoutAttributeTop
+                                                                   multiplier:1
+                                                                     constant:2 * margin],
+                                       
+                                       [NSLayoutConstraint constraintWithItem:self.timeLbl
+                                                                    attribute:NSLayoutAttributeHeight
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:nil
+                                                                    attribute:NSLayoutAttributeNotAnAttribute
+                                                                   multiplier:1
+                                                                     constant:20],
+                                       
+                                       [NSLayoutConstraint constraintWithItem:self.timeLbl
+                                                                    attribute:NSLayoutAttributeRight
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.contentView
+                                                                    attribute:NSLayoutAttributeRight
+                                                                   multiplier:1
+                                                                     constant:-margin],
+                                       
+                                       [NSLayoutConstraint constraintWithItem:self.timeLbl
+                                                                    attribute:NSLayoutAttributeWidth
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:nil
+                                                                    attribute:NSLayoutAttributeNotAnAttribute
+                                                                   multiplier:1
+                                                                     constant:80]
+                                       ]];
     
     //设置titleLbl的自动布局
     [self.contentView addConstraints:@[[NSLayoutConstraint constraintWithItem:self.titleLbl
@@ -162,58 +195,26 @@ static const CGFloat margin = 8;
                                                                        toItem:self.contentView
                                                                     attribute:NSLayoutAttributeLeft
                                                                    multiplier:1
-                                                                     constant:margin],
+                                                                     constant:2*margin],
                                        
                                        [NSLayoutConstraint constraintWithItem:self.titleLbl
-                                                                    attribute:NSLayoutAttributeWidth
+                                                                    attribute:NSLayoutAttributeRight
                                                                     relatedBy:NSLayoutRelationEqual
-                                                                       toItem:nil
-                                                                    attribute:NSLayoutAttributeNotAnAttribute
+                                                                       toItem:self.timeLbl
+                                                                    attribute:NSLayoutAttributeLeft
                                                                    multiplier:1
-                                                                     constant:160],
+                                                                     constant:-margin],
                                        
                                        [NSLayoutConstraint constraintWithItem:self.titleLbl
                                                                     attribute:NSLayoutAttributeHeight
                                                                     relatedBy:NSLayoutRelationEqual
-                                                                       toItem:nil
-                                                                    attribute:NSLayoutAttributeNotAnAttribute
+                                                                       toItem:self.timeLbl
+                                                                    attribute:NSLayoutAttributeHeight
                                                                    multiplier:1
-                                                                     constant:20]
+                                                                     constant:0]
                                        ]];
     
-    //设置timeLbl的自动布局
-    [self.contentView addConstraints:@[[NSLayoutConstraint constraintWithItem:self.timeLbl
-                                                                    attribute:NSLayoutAttributeTop
-                                                                    relatedBy:NSLayoutRelationEqual
-                                                                       toItem:self.titleLbl
-                                                                    attribute:NSLayoutAttributeTop
-                                                                   multiplier:1
-                                                                     constant:0],
-                                       
-                                       [NSLayoutConstraint constraintWithItem:self.timeLbl
-                                                                    attribute:NSLayoutAttributeBottom
-                                                                    relatedBy:NSLayoutRelationEqual
-                                                                       toItem:self.titleLbl
-                                                                    attribute:NSLayoutAttributeBottom
-                                                                   multiplier:1
-                                                                     constant:0],
-                                       
-                                       [NSLayoutConstraint constraintWithItem:self.timeLbl
-                                                                    attribute:NSLayoutAttributeRight
-                                                                    relatedBy:NSLayoutRelationEqual
-                                                                       toItem:self.contentView
-                                                                    attribute:NSLayoutAttributeRight
-                                                                   multiplier:1
-                                                                     constant:-margin],
-                                       
-                                       [NSLayoutConstraint constraintWithItem:self.timeLbl
-                                                                    attribute:NSLayoutAttributeLeft
-                                                                    relatedBy:NSLayoutRelationEqual
-                                                                       toItem:self.titleLbl
-                                                                    attribute:NSLayoutAttributeRight
-                                                                   multiplier:1
-                                                                     constant:margin]
-                                       ]];
+
 
     //设置textLbl的自动布局
     [self.contentView addConstraints:@[[NSLayoutConstraint constraintWithItem:self.textLbl
@@ -230,7 +231,7 @@ static const CGFloat margin = 8;
                                                                        toItem:self.titleLbl
                                                                     attribute:NSLayoutAttributeLeft
                                                                    multiplier:1
-                                                                     constant:margin],
+                                                                     constant:0],
                                        
                                        [NSLayoutConstraint constraintWithItem:self.textLbl
                                                                     attribute:NSLayoutAttributeRight

@@ -24,6 +24,8 @@
     self.dateField.text = self.dairyModelToModify.time;
     self.photoView.pics = self.dairyModelToModify.pictures.mutableCopy;
     
+    //显示标题
+    self.navigationItem.title = @"修改日记";
     //修改时键盘自动弹出
     [self.titleField becomeFirstResponder];
     self.navigationItem.rightBarButtonItem =  [[UIBarButtonItem alloc] initWithTitle:@"完成" fontSize:15 target:self action:@selector(finishedEditing) isPopBack:NO];
