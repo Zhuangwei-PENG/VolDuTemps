@@ -65,6 +65,9 @@
     //将日期转换成字符串
     NSDate *userBirth = [formatter dateFromString:self.inputField.text];
     //设置当前日期为用户生日
+    if (!userBirth) {
+        userBirth = [NSDate date];
+    }
     self.datePicker.date = userBirth;
     
     //设置键盘为DatePicker

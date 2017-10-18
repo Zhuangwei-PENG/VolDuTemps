@@ -7,6 +7,7 @@
 //
 
 #import "TSNavigationController.h"
+#import "Addition.h"
 
 @interface TSNavigationController ()
 
@@ -24,6 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationController.navigationBar.titleTextAttributes = @{NSFontAttributeName : [UIFont systemFontOfSize:titleFont]};
     self.view.backgroundColor = [UIColor whiteColor];
     // Do any additional setup after loading the view.
 }

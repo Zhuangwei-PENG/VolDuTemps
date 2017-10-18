@@ -29,7 +29,7 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 - (void)viewDidLayoutSubviews{
     //在 UICollectionView 显示它的subview 之前调用不起作用，所以要在子view layout后调用
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.firstViewIndex inSection:0];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.currentIndex inSection:0];
     [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
 }
 
@@ -37,6 +37,9 @@ static NSString * const reuseIdentifier = @"Cell";
     [super viewWillAppear:animated];
     self.currentIndex = self.firstViewIndex;
     self.currentPics = [self.picsToDisplay mutableCopy];
+    
+//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.currentIndex inSection:0];
+//    [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
 }
 
 - (instancetype)init{
@@ -61,8 +64,8 @@ static NSString * const reuseIdentifier = @"Cell";
     self.collectionView.pagingEnabled = YES;
     self.collectionView.showsHorizontalScrollIndicator = NO;
     self.collectionView.bounces = NO;
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" fontSize:16 target:self action:@selector(popBack) isPopBack:YES];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"删除" fontSize:16 target:self action:@selector(deletePic) isPopBack:NO];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" fontSize:itemFont target:self action:@selector(popBack) isPopBack:YES];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"删除" fontSize:itemFont target:self action:@selector(deletePic) isPopBack:NO];
 
 }
 
@@ -119,7 +122,7 @@ static NSString * const reuseIdentifier = @"Cell";
     UIImage *image = self.currentPics[indexPath.row];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
     [cell.contentView addSubview:imageView];
-    imageView.frame = CGRectMake(0, (kScreenH - image.size.height) * 0.5, image.size.width, image.size.height);
+    imageView.frame = CGRectMake(0, (kScreenH - image.size.height) * 0.5 - kTopInset, image.size.width, image.size.height);
 
     return cell;
 }

@@ -27,14 +27,14 @@
 //创建保存按钮
 - (UIBarButtonItem *)rightButton{
     if (!_rightButton) {
-        _rightButton = [[UIBarButtonItem alloc] initWithTitle:@"保存" fontSize:16 target:self action:@selector(saveData) isPopBack:NO];
+        _rightButton = [[UIBarButtonItem alloc] initWithTitle:@"保存" fontSize:itemFont target:self action:@selector(saveData) isPopBack:NO];
     }
     return _rightButton;
 }
 //创建返回按钮
 - (UIBarButtonItem *)leftButton{
     if (!_leftButton) {
-        _leftButton = [[UIBarButtonItem alloc] initWithTitle:@"返回" fontSize:16 target:self action:@selector(popBack) isPopBack:YES];
+        _leftButton = [[UIBarButtonItem alloc] initWithTitle:@"返回" fontSize:itemFont target:self action:@selector(popBack) isPopBack:YES];
     }
     return _leftButton;
 }
@@ -402,6 +402,7 @@
 #pragma mark - AddPhotoView delegate
 - (void)TSAddPhoto:(TSAddPhoto *)addPhotoView didClickOnPic:(UIImage *)image{
     
+    [self.view endEditing:YES];
     //创建图片浏览器
     TSPhotoViewerController *displayVC = [[TSPhotoViewerController alloc] init];
     displayVC.delegate = self;

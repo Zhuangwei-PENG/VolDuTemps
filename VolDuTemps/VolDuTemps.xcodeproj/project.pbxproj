@@ -312,6 +312,7 @@
 				CF91490B1F8B062C0085BEDF /* ViewModel */,
 				CF9149091F8B062C0085BEDF /* Models */,
 				CF91490A1F8B062C0085BEDF /* Tools */,
+				CFBE6B1B1F979ED300E0D05B /* Gif */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -437,6 +438,13 @@
 				CF19B9D11F94594C008F1852 /* TSDetailDisplayController.m */,
 			);
 			path = OperationView;
+			sourceTree = "<group>";
+		};
+		CFBE6B1B1F979ED300E0D05B /* Gif */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Gif;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

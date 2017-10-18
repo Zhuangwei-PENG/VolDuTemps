@@ -60,7 +60,8 @@ static const NSString *cellID = @"TSTableViewCell";
 
 - (void)createIcon{
     UIImage *image = [self getIconImage];
-    UIImageView *iconView = [[UIImageView alloc] initWithImage:[image scaleToWidth:35]];
+    UIImageView *iconView = [[UIImageView alloc] initWithImage:[image scaleToWidth:kSmallIcon]];
+    iconView.frame = CGRectMake(0, 0, kSmallIcon, kSmallIcon);
     iconView.layer.cornerRadius = 5;
     iconView.layer.masksToBounds = YES;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:iconView];

@@ -13,55 +13,39 @@
 #import "UIImage+Additions.h"
 #import "UIBarButtonItem+Addition.h"
 
-#define kTopInset 64
-#define kBottomInset 49
 
-//Home
-#define kPath [@"notes" appendDocumentsPath]
-#define kRowHeight 110
+//Device info
+#define kScreenW [UIScreen mainScreen].bounds.size.width
+#define kScreenH [UIScreen mainScreen].bounds.size.height
+
+//User setting
 #define kUserNameKey @"userName"
 #define kUserFontKey @"userFont"
 #define kUserIconKey @"userIcon"
 #define kUserBirthKey @"userBirth"
 
-//DetailDisplay
+//Default setting
 #define itemFont 14
-#define textFont 13
 #define titleFont 15
 
-//BasicSetting
+//TableView
+#define kTopInset 64
+#define kBottomInset 49
 
-//AboutUS
-#define kScreenW [UIScreen mainScreen].bounds.size.width
-#define kScreenH [UIScreen mainScreen].bounds.size.height
+//TSTableViewCell
+#define kRowHeight 110
 
+//Home
+#define kPath [@"notes" appendDocumentsPath]
+
+//Constants
 #define kMargin 10
 #define kSmallMargin 4
+
 #define kHeaderH 150
 #define kPicWidth 70
 #define kIconWidth 60
 #define kViewW 58
+#define kSmallIcon 35
 
-//TSTableViewCell
-//
-
-//TSDetailViewCell
-//#define kScreenSize [UIScreen mainScreen].bounds.size
-//static const CGFloat margin = 10;
-//static const CGFloat length = 60;
-//static const CGFloat titleFont = 15;
-//static const CGFloat textFont = 14;
-
-//TSAddPhoto
-
-
-//SettingViewCell
-
-
-//IconViewCell
-//static const CGFloat margin2 = 15;
-//static const CGFloat iconH = 70;
-
-//PersonalSettingCell
-//static const  CGFloat margin3 = 8;
 

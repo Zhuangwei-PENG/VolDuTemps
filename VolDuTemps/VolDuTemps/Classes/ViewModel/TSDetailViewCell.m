@@ -163,8 +163,8 @@
     self.txtLabel.textColor = [UIColor darkTextColor];
     
     self.titleLabel.font = [UIFont systemFontOfSize:titleFont];
-    self.timeLabel.font = [UIFont systemFontOfSize:textFont];
-    self.txtLabel.font = [UIFont systemFontOfSize:textFont];
+    self.timeLabel.font = [UIFont systemFontOfSize:titleFont-2];
+    self.txtLabel.font = [UIFont systemFontOfSize:titleFont-2];
     
     //设置头像Frame
     self.iconView.frame = CGRectMake(kMargin, kMargin, kIconWidth, kIconWidth);

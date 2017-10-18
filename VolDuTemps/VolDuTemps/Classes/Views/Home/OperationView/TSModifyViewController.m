@@ -27,7 +27,7 @@
     self.navigationItem.title = @"修改日记";
     //修改时键盘自动弹出
     [self.titleField becomeFirstResponder];
-    self.navigationItem.rightBarButtonItem =  [[UIBarButtonItem alloc] initWithTitle:@"完成" fontSize:15 target:self action:@selector(finishedEditing) isPopBack:NO];
+    self.navigationItem.rightBarButtonItem =  [[UIBarButtonItem alloc] initWithTitle:@"完成" fontSize:itemFont target:self action:@selector(finishedEditing) isPopBack:NO];
 
 }
 - (void)finishedEditing{
