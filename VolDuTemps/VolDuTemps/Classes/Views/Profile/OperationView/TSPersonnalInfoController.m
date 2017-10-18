@@ -22,21 +22,21 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-//    [self.tableView reloadData];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    
+    self.icon.image = [self getIconImage];
+    self.name.subTitle = [self getUserName];
+    [self.tableView reloadData];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  
     [self setGroups];
 }
 
 - (void)setGroups{
     
     self.icon = [TSSettingItem itemWithTitle:@"头像" image:nil];
-    self.name = [TSSettingItem itemWithTitle:@"名字" image:nil subTitle:@"NAME"];
+    self.name = [TSSettingItem itemWithTitle:@"名字" image:nil subTitle:[self getUserName]];
     self.birthDay = [TSSettingItem itemWithTitle:@"生日" image:nil subTitle:@"1991-2-4"];
     
     self.icon.destinationVC = [TSChangeIconController class];
@@ -56,10 +56,10 @@
     
     TSSettingGroup *group = self.groups[indexPath.section];
     TSSettingItem *item = group.items[indexPath.row];
-    if (indexPath.section == 0 && indexPath.row == 0) {
-        UIImage *userIcon = [self getIconImage];
-        item.image = userIcon;
-    }
+//    if (indexPath.section == 0 && indexPath.row == 0) {
+//        UIImage *userIcon = [self getIconImage];
+//        item.image = userIcon;
+//    }
     if (item.image) {
         cellType = TSPersonnalSettingCellTypeRightImage;
     }

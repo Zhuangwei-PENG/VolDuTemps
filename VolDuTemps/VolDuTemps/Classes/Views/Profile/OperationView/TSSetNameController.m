@@ -64,7 +64,7 @@
     nameField.leftViewMode = UITextFieldViewModeAlways;
     //textfield 必须监听EditingChanged
     [nameField addTarget:self action:@selector(nameDidChange) forControlEvents:UIControlEventEditingChanged];
-    
+
     [self.view addSubview:nameField];
 }
 
@@ -75,11 +75,12 @@
 - (void)confirmNameChange{
     if([self.nameField.text length]){
         [self.userDefault setObject:self.nameField.text forKey:kUserNameKey];
+        [self cancelNameChange];
     }else{
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"没有输入名字，请重写填写" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
         [alertView show];
     }
-    [self cancelNameChange];
+    
 }
 
 - (void)nameDidChange{

@@ -19,4 +19,6 @@
 
 //获取用户头像
 - (UIImage *)getIconImage;
+//获取用户名字
+- (NSString *)getUserName;
 @end

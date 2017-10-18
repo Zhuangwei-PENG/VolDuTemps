@@ -17,7 +17,9 @@
 #import "TSIconViewCell.h"
 
 @interface TSProfileViewController ()
-//@property (nonatomic, strong) NSMutableArray *groups;
+
+@property (nonatomic, weak) TSSettingItem *profile;
+
 @end
 
 @implementation TSProfileViewController
@@ -27,6 +29,10 @@ static NSString *cellId = @"staticCell";
 #pragma mark - SepUp UI
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
+    self.profile.title = [self getUserName];
+    self.profile.image = [self getIconImage];
+    
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
@@ -50,6 +56,7 @@ static NSString *cellId = @"staticCell";
     
     
     TSSettingItem *profile = [TSSettingItem itemWithTitle:@"名称" image:nil subTitle:days];
+    self.profile = profile;
     profile.destinationVC = [TSPersonnalInfoController class];
     
     TSSettingGroup *groupOne = [TSSettingGroup groupWithItems:@[profile]];
@@ -75,19 +82,17 @@ static NSString *cellId = @"staticCell";
 
     if (indexPath.section == 0) {
         TSIconViewCell *cell = [TSIconViewCell cellWithTableView:tableView];
-        
+
         TSSettingGroup *group = self.groups[indexPath.section];
         TSSettingItem *item = group.items[indexPath.row];
-        //在这里设置图片，reloadCell的时候才会更新
-        UIImage *userImage = [self getIconImage];
-        item.image = userImage;
-        
+
         cell.item = item;
         return cell;
+        
     }else {
         return [super tableView:tableView cellForRowAtIndexPath:indexPath];
     }
-   
+
 }
 
 #pragma mark - Delegate

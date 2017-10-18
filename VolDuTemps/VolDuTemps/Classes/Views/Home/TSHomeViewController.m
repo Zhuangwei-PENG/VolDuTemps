@@ -17,6 +17,9 @@
 
 #define kPath [@"notes" appendDocumentsPath]
 #define kRowHeight 110
+#define kUserNameKey @"userName"
+#define kUserFontKey @"userFont"
+#define kUserIconKey @"userIcon"
 
 @interface TSHomeViewController ()<TSAddViewControllerDelegate, TSDetailDisplayControllerDelegate, UIAlertViewDelegate>
 
@@ -71,12 +74,26 @@ static const NSString *cellID = @"TSTableViewCell";
     
 }
 
+//重复代码，需要抽取
 - (UIImage *)getIconImage{
-    NSData *data = [[NSUserDefaults standardUserDefaults] dataForKey:@"userIcon"];
+    NSData *data = [[NSUserDefaults standardUserDefaults] dataForKey:kUserIconKey];
     if (!data) {
         return [UIImage imageNamed:@"Mark_43"];
     }
     return [UIImage imageWithData:data];
+}
+
+- (void)getUserSettings{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    self.userFontSize = [userDefaults floatForKey:kUserFontKey];
+}
+
+- (NSString *)getUserName{
+    NSString *userName = [[NSUserDefaults standardUserDefaults] objectForKey:kUserNameKey];
+    if ([userName length]) {
+        return userName;
+    }
+    return @"";
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -86,10 +103,7 @@ static const NSString *cellID = @"TSTableViewCell";
     [self.myTableView reloadData];
 }
 
-- (void)getUserSettings{
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    self.userFontSize = [userDefaults floatForKey:@"myFontSize"];
-}
+
 
 - (void)setupUI{
     [super setupUI];
@@ -101,8 +115,14 @@ static const NSString *cellID = @"TSTableViewCell";
     if (self.notes.count == 0) {
         [self setupVideView];
     }
-
-    self.navigationItem.title = @"日记列表";
+    
+    NSString *userName = [self getUserName];
+    if ([userName length]) {
+         self.navigationItem.title = [NSString stringWithFormat:@"%@ 的日记",userName];
+    }else{
+        self.navigationItem.title = @"日记列表";
+    }
+   
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewOne)];
     
 

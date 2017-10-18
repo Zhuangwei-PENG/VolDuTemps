@@ -7,6 +7,7 @@
 //
 
 #import "TSBasicSettingController.h"
+#define kUserNameKey @"userName"
 
 @interface TSBasicSettingController ()
 
@@ -103,7 +104,7 @@
         item.option();
     }
 }
-
+//重复代码
 #pragma mark - Get user setting
 - (UIImage *)getIconImage{
     NSData *data = [self.userDefault dataForKey:@"userIcon"];
@@ -112,4 +113,13 @@
     }
     return [UIImage imageWithData:data];
 }
+
+- (NSString *)getUserName{
+    NSString *userName = [self.userDefault objectForKey:kUserNameKey];
+    if ([userName length]) {
+        return userName;
+    }
+    return @"";
+}
+
 @end
